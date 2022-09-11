@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@900&display=swap'); /* Taste the world...*/
+
+.landingParentContainer {
+    width: 100%;
+    height: 95vh;
+    color: white;
+    margin-top: 10vh;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-image: url("../../public/static/images/pizzaBg.jpg");
+}
+
+.landing {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.catchySlogan {
+    width: 100%;
+    display: flex;
+    padding: 0 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.catchySlogan span{
+    margin: 0;
+    font-size: 5rem;
+    position: relative;
+    letter-spacing: 3px;
+    display: inline-block;
+    animation: waviy 2.5s infinite;
+    animation-delay: calc(.1s * var(--i));
+    font-family: 'Londrina Solid', cursive;
+}
+
+@keyframes waviy {
+    0%,40%,100% {
+      transform: translateY(0)
+    }
+    20% {
+      transform: translateY(-20px)
+    }
+}
+
+.orderNowButton {
+    border: none;
+    outline: none;
+    color: white;
+    cursor: pointer;
+    font-size: large;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    background-color: rgb(255, 111, 111);
+}
+
+@media screen and (max-width: 1000px) {
+    .catchySlogan span{
+        font-size: 4.5rem;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .landingParentContainer {
+        height: 80vh;
+        background-position: center;
+    }
+
+    .landing {
+        padding-top: 10vh;
+    }
+
+    .catchySlogan span{
+        font-size: 2.5rem;
+    }
+
+    .orderNowButton {
+        font-size: small;
+        margin-top: 10px;
+        background-color: rgb(255, 111, 111);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .landingParentContainer {
+        height: 80vh;
+        background-position: bottom;
+    }
+}
+
+@media screen and (max-width: 750px) and (max-height: 650px) {
+    .delieverySlogan {
+        font-size: small;
+    }
+
+    .orderNowButton {
+        margin-top: 5px;
+        padding: 10px 15px;
+    }
+}

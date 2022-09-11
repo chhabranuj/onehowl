@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@900&display=swap'); /* title */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap'); /* menuContent */
+
+.titleBarParent {
+    top: 0;
+    width: 100%;
+    height: 10vh;
+    z-index: 1000;
+    color: white;
+    position: fixed;
+    background-color: white;
+}
+
+.titlePartOne {
+    font-size: x-large;
+    font-family: 'Bitter', serif;
+    color: rgba(0, 0, 0, 0.75);
+    font-family: 'Londrina Solid', cursive;
+}
+
+.title:hover .titlePartOne {
+    color: rgb(255, 111, 111);
+}
+
+.titlePartTwo {
+    font-size: xx-large;
+    color: rgb(255, 111, 111);
+    font-family: 'Londrina Solid', cursive;
+}
+
+.title:hover .titlePartTwo {
+    color: rgba(0, 0, 0, 0.75);
+}
+
+/* For big screens */
+
+.bigScreenContainer {
+    height: 100%;
+    display: flex;
+    padding: 0 10%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.titleBarMenuParent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.titleBarMenuContent {
+    margin: 0 20px;
+    cursor: pointer;
+    font-size: large;
+    color: rgba(0, 0, 0, 0.75);
+    font-family: 'Work Sans', sans-serif;
+}
+
+.titleBarMenuContent:hover {
+    color: rgb(255, 111, 111);
+}
+
+/* For small screens */
+
+.smallScreenContainer {
+    display: none;
+}
+
+.menuIcons {
+    margin: 0 10px;
+    cursor: pointer;
+    font-size: medium;
+    color: rgba(0, 0, 0, 0.75);
+}
+
+.menuIcons:hover {
+    color: rgb(255, 111, 111);
+}
+
+@media screen and (max-width: 1000px) {
+    /* For big screens */
+
+    .bigScreenContainer {
+        display: none;
+    }
+
+    /* For small screens */
+
+    .smallScreenContainer {
+        height: 100%;
+        display: flex;
+        padding: 0 5%;
+        align-items: center;
+        justify-content: space-between;
+    }
+}

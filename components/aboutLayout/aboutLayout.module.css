@@ -1,0 +1,95 @@
+.aboutParent {
+    height: 60vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    background-color: #fff;
+}
+
+.leftContainer {
+    width: 42%;
+    margin: 0 4%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    margin: 0;
+    font-size: xx-large;
+    font-family: fangsong;
+    color: rgb(57 62 64);
+}
+
+.content {
+    color: grey;
+    line-height: 1.2;
+    font-size: large;
+    letter-spacing: 1px;
+    font-family: monospace;
+}
+
+.rightContainer {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fastFoodImages {
+    max-width: 70%;
+    max-height: 85%;
+    border-radius: 15px;
+}
+
+@media screen and (max-width: 1000px) {
+    .aboutParent {
+        width: 100%;
+        padding: 5%;
+        height: auto;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .leftContainer {
+        width: 90%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .title {
+        font-weight: bold;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    .rightContainer {
+        width: 70%;
+        margin-top: 20px;
+    }
+
+    .fastFoodImages {
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .aboutParent {
+        padding: 50px 5%;
+    }
+
+    .rightContainer {
+        width: 100%;
+    }
+
+    .fastFoodImages {
+        max-width: 90%;
+    }
+}
