@@ -17,11 +17,11 @@ export default function Home() {
       <TitleBarLayout />
       <LandingLayout />
       <AboutLayout />
-      {/* <OurServicesLayout />
+      {/* <OurServicesLayout /> */}
       <HungryBannerLayout />
       <BrandsLayout />
-      <AboutLayout />
-      <AboutLayout /> */}
+      {/* <AboutLayout /> */}
+      {/* <AboutLayout /> */}
     </div>
   )
 }

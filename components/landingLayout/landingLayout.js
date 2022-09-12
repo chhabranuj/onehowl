@@ -1,9 +1,27 @@
+import { useEffect, useState } from "react";
 import landingLayoutStyle from "./landingLayout.module.css";
 
 const LandingLayout = () => {
 
+    const images = ["/static/images/landingImage1.jpg", "/static/images/landingImage2.jpg"];
+
+    const [activeImage, setActiveImage] = useState(images[0]);
+
+    useEffect(() => {
+        let count = 0
+        setInterval(() => {
+            if(count === images.length - 1) {
+                count = 0;
+            }
+            else{
+                count += 1;
+            }
+            setActiveImage(images[count])
+        }, 10000);
+    }, [])
+
     return (
-        <div className={landingLayoutStyle.landingParentContainer}>
+        <div style={{"backgroundImage": `url(${activeImage})`}} className={landingLayoutStyle.landingParentContainer}>
                 <div className={landingLayoutStyle.landing}>
                     <div className={landingLayoutStyle.catchySlogan}>
                         <div>
