@@ -1,16 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@900&display=swap'); /* Taste the world...*/
-
 .aboutParent {
     height: 85vh;
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-color: #fff;
     background-size: cover;
+    justify-content: center;
     background-position: top;
+    background-color: #fff;
     background-repeat: no-repeat;
-    background-image: url("../../public/static/images/aboutBg.jpg");
+    background-image: url("../../public/static/images/aboutbg4.jpeg");
 }
 
 .leftContainer {
@@ -24,14 +21,14 @@
 }
 
 .title{
-    margin: 0;
     color: #fff;
     font-size: 3.5rem;
+    margin: 0 0 1rem 0;
     background-clip: text;
     background-size: 200% auto;
-    font-family: 'Bebas Neue', cursive;
     -webkit-text-fill-color: transparent;
     animation: textclip 3s linear infinite;
+    font-family: "Londrina Solid",Sans-serif;
     background-image: linear-gradient(-225deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100%);
 }
 
@@ -68,6 +65,7 @@
         height: auto;
         align-items: center;
         flex-direction: column;
+        background-image: url("../../public/static/images/aboutbg4Vertical.jpeg");
     }
 
     .leftContainer {

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import aboutLayoutStyle from "./aboutLayout.module.css";
 
 const AboutLayout = () => {
@@ -24,7 +24,7 @@ const AboutLayout = () => {
         <div className={aboutLayoutStyle.aboutParent}>
             <div className={aboutLayoutStyle.leftContainer}>
                 <p className={aboutLayoutStyle.title}>About Us</p>
-                <p className={aboutLayoutStyle.content}>One Howl is a online delivery platform that helps you to order food online from top brands in India.One Howl is a online delivery platform that helps you to order food online from top brands in India.One Howl is a online delivery platform that helps you to order food online from top brands in India.One Howl is a online delivery platform that helps you to order food online from top brands in India.</p>
+                <p className={aboutLayoutStyle.content}>One Howl is a online delivery platform that helps you to order food online from top brands in India.One Howl is a online delivery platform that helps you to order food online from top brands in India.One Howl is a online delivery platform that helps you to order food online from top brands in India.One Howl is a online delivery platform that helps you to order food online from top brands in India.One Howl is a online delivery platform that helps you to order food online from top brands in India.One Howl is a online delivery platform that helps you to order food online from top brands in India.One Howl is a online delivery platform that helps you to order food online from top brands in India.One Howl is a online delivery platform that helps you to order food online from top brands in India.</p>
             </div>
             <div className={aboutLayoutStyle.rightContainer}>
                 <Image

@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import AboutLayout from '../components/aboutLayout/aboutLayout'
 import BrandsLayout from '../components/brandsLayout/brandsLayout'
-import HungryBannerLayout from '../components/hungryBannerLayout/hungryBannerLayout'
 import LandingLayout from '../components/landingLayout/landingLayout'
-import OurServicesLayout from '../components/ourServicesLayout/ourServicesLayout'
 import TitleBarLayout from '../components/titleBarLayout/titleBarLayout'
+import OurServicesLayout from '../components/ourServicesLayout/ourServicesLayout'
+import HungryBannerLayout from '../components/hungryBannerLayout/hungryBannerLayout'
 
 export default function Home() {
   return (
@@ -17,11 +17,9 @@ export default function Home() {
       <TitleBarLayout />
       <LandingLayout />
       <AboutLayout />
-      {/* <OurServicesLayout /> */}
       <HungryBannerLayout />
       <BrandsLayout />
-      {/* <AboutLayout /> */}
-      {/* <AboutLayout /> */}
+      <OurServicesLayout />
     </div>
   )
 }

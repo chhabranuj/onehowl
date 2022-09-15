@@ -1,0 +1,69 @@
+.ourServicesParent {
+    width: 100%;
+    display: flex;
+    padding: 15vh 0;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ourServicesTitle  {
+    margin: 0 0 4rem 0;
+    font-size: xxx-large;
+    color: rgb(57 62 64);
+    font-family: "Londrina Solid",Sans-serif;
+}
+
+.ourServicesParents {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ourServicesContainer {
+    width: 20%;
+    padding: 2%;
+    height: 40vh;
+    margin: 0 2%;
+    display: flex;
+    text-align: center;
+    border-radius: 6px;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.ourServicesContainerTitle{
+    color: white;
+    font-size: large;
+    font-weight: bold;
+}
+
+.ourServicesContent {
+    margin: 0;
+    color: white;
+    font-size: 0.8rem;
+    line-height: 20px;
+    font-family: "IBM Plex Sans",Arial,sans-serif;
+}
+
+@media screen and (max-width: 800px) {
+    .ourServicesParent {
+        padding: 10vh 0;
+    }
+
+    .ourServicesParents {
+        flex-direction: column;
+    }
+
+    .ourServicesContainer {
+        width: 90%;
+        height: 30vh;
+        padding: 0 10%;
+        margin: 1.5rem 0;
+        flex-direction: column;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    }
+}

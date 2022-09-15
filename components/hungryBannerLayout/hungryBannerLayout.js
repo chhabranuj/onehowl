@@ -7,7 +7,7 @@ const HungryBannerLayout = () => {
 
         <div className={hungryBannerLayoutStyle.bannerParent}>
             <div className={hungryBannerLayoutStyle.bannerStyle}>
-                <p className={hungryBannerLayoutStyle.title}>AREN'T<br/>YOU<br/>HUNGRY?</p>
+                <p className={hungryBannerLayoutStyle.title}>AREN'T &nbsp;YOU<br/>HUNGRY?</p>
                 <button className={landingLayoutStyle.orderNowButton}>Order Now</button>
             </div>
         </div> 
