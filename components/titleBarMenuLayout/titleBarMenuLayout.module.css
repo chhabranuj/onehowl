@@ -30,7 +30,7 @@
     margin: 0;
     width: 75%;
     border: none;
-    border-top: 0.5px solid #bbb;
+    border-top: 0.5px solid #ddd;
 }
 
 @media screen and (max-width: 1000px) {

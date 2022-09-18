@@ -13,7 +13,6 @@
 
 .titlePartOne {
     font-size: x-large;
-    font-family: 'Bitter', serif;
     color: rgba(0, 0, 0, 0.75);
     font-family: 'Londrina Solid', cursive;
 }
@@ -92,5 +91,9 @@
         padding: 0 5%;
         align-items: center;
         justify-content: space-between;
+    }
+
+    .menuIcons {
+        font-size: large;
     }
 }

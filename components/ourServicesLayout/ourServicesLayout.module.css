@@ -1,9 +1,9 @@
 .ourServicesParent {
     width: 100%;
     display: flex;
-    padding: 15vh 0;
     align-items: center;
     flex-direction: column;
+    padding: 15vh 0 20vh 0;
     justify-content: center;
 }
 
@@ -14,9 +14,10 @@
     font-family: "Londrina Solid",Sans-serif;
 }
 
-.ourServicesParents {
+.ourServicesChild {
     width: 100%;
     display: flex;
+    color: white;
     align-items: center;
     justify-content: center;
 }
@@ -27,6 +28,7 @@
     height: 40vh;
     margin: 0 2%;
     display: flex;
+    color: white;
     text-align: center;
     border-radius: 6px;
     align-items: center;
@@ -35,15 +37,17 @@
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-.ourServicesContainerTitle{
-    color: white;
+.ourServicesMobileContainer {
+    display: none;
+}
+
+.ourServicesContainerTitle {
     font-size: large;
     font-weight: bold;
 }
 
 .ourServicesContent {
     margin: 0;
-    color: white;
     font-size: 0.8rem;
     line-height: 20px;
     font-family: "IBM Plex Sans",Arial,sans-serif;
@@ -54,16 +58,26 @@
         padding: 10vh 0;
     }
 
-    .ourServicesParents {
+    .ourServicesChild {
         flex-direction: column;
     }
 
     .ourServicesContainer {
+        display: none;
+    }
+
+    .ourServicesMobileContainer {
         width: 90%;
         height: 30vh;
+        display: flex;
+        color: white;
         padding: 0 10%;
         margin: 1.5rem 0;
+        text-align: center;
+        border-radius: 6px;
+        align-items: center;
         flex-direction: column;
+        justify-content: center;
         box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     }
 }

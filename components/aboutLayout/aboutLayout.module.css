@@ -65,7 +65,8 @@
         height: auto;
         align-items: center;
         flex-direction: column;
-        background-image: url("../../public/static/images/aboutbg4Vertical.jpeg");
+        /* background-image: url("../../public/static/images/aboutbg4Vertical.jpeg"); */
+        background-image: url("../../public/static/images/brandsMobileVertical.png");
     }
 
     .leftContainer {

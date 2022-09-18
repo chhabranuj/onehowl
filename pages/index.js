@@ -1,10 +1,13 @@
-import Head from 'next/head'
-import AboutLayout from '../components/aboutLayout/aboutLayout'
-import BrandsLayout from '../components/brandsLayout/brandsLayout'
-import LandingLayout from '../components/landingLayout/landingLayout'
-import TitleBarLayout from '../components/titleBarLayout/titleBarLayout'
-import OurServicesLayout from '../components/ourServicesLayout/ourServicesLayout'
-import HungryBannerLayout from '../components/hungryBannerLayout/hungryBannerLayout'
+import Head from 'next/head';
+import AboutLayout from '../components/aboutLayout/aboutLayout';
+import BrandsLayout from '../components/brandsLayout/brandsLayout';
+import FooterLayout from '../components/footerLayout/footerLayout';
+import LandingLayout from '../components/landingLayout/landingLayout';
+import TitleBarLayout from '../components/titleBarLayout/titleBarLayout';
+import NewsletterLayout from '../components/newsletterLayout/newsletterLayout';
+import OurServicesLayout from '../components/ourServicesLayout/ourServicesLayout';
+import HungryBannerLayout from '../components/hungryBannerLayout/hungryBannerLayout';
+import BrandMenuCardLayout from '../components/brandMenuCardLayout/brandMenuCardLayout';
 
 export default function Home() {
   return (
@@ -20,6 +23,9 @@ export default function Home() {
       <HungryBannerLayout />
       <BrandsLayout />
       <OurServicesLayout />
+      <NewsletterLayout />
+    <FooterLayout />
+    {/* <BrandMenuCardLayout /> */}
     </div>
   )
 }

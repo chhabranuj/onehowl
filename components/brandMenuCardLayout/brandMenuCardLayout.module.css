@@ -1,0 +1,79 @@
+.brandMenuCardParent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    width: 26%;
+    height: 50vh;
+}
+
+.leftContainer {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.rigthContainer {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    padding: 5px 10px;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.titleAndStarsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.itemTitle {
+    font-weight: bold;
+    font-size: medium;
+    font-family: inherit;
+    margin: 0;
+}
+
+.starsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+    padding: 3px;
+}
+
+.rating {
+    margin: 0 2px 0 0;
+}
+
+.addToCartButton {
+    outline: none;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.priceContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.price, .originalPrice{
+    font-weight: bold;
+    font-size: small;
+    font-family: inherit;
+    margin: 0;
+}
+
+.ingredients {
+    font-size: small;
+}
