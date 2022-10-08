@@ -1,12 +1,12 @@
 .brandsCardParent {
-    width: 25%;
+    width: 350px;
+    margin: 2rem;
     height: auto;
     display: flex;
     cursor: pointer;
-    margin: 2rem;
     border-radius: 1rem;
     align-items: center;
-    color: whitesmoke ;
+    color: whitesmoke;
     padding-bottom: 20px;
     flex-direction: column;
     justify-content: center;
@@ -40,7 +40,7 @@
 
 @media screen and (max-width: 1000px) {
     .brandsCardParent {
-        width: 40%;
+        width: 300px;
         margin: 1.3rem;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
@@ -48,7 +48,6 @@
 
 @media screen and (max-width: 650px) {
     .brandsCardParent {
-        width: 85%;
         margin: 2rem;
     }
 }

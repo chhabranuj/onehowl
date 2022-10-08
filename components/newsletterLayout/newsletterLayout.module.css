@@ -5,9 +5,9 @@
     color: white;
     align-items: center;
     background-size: cover;
-    justify-content: space-evenly;
     background-position: top;
     background-repeat: no-repeat;
+    justify-content: space-evenly;
     background-image: url("../../public/static/images/pizza.png");
 }
 

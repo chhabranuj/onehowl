@@ -1,12 +1,12 @@
+import { useState } from "react";
 import { FaUserAlt } from "react-icons/fa";
-import { useEffect, useState } from "react";
-import { BsFillCartFill } from "react-icons/bs";
 import { GiHamburger } from "react-icons/gi";
 import { IoMdHelpCircle } from "react-icons/io";
+import { BsFillCartFill } from "react-icons/bs";
 import titleBarLayoutStyle from "./titleBarLayout.module.css";
 import TitleBarMenuLayout from "../titleBarMenuLayout/titleBarMenuLayout";
 
-const TitleBarLayout = () => {
+const TitleBarLayout = (props) => {
     const brandsMenuContent = ["Mc Donald's", "Pizza Hut", "Starbucks", "Dunkin Donuts", "Burger King", "Kfc", "Domino's", "Subway", "Cafe Coffee Day"];
     const [brandsMenu, setBrandsMenu] = useState(false);
 
@@ -15,7 +15,7 @@ const TitleBarLayout = () => {
     }
 
     return (
-        <div className={titleBarLayoutStyle.titleBarParent}>
+        <div className={titleBarLayoutStyle.titleBarParent} style={{boxShadow: `${props.boxShadow}`}}>
             {/* For big screens */}
             <div className={titleBarLayoutStyle.bigScreenContainer}>
                 <p className={titleBarLayoutStyle.title}><span className={titleBarLayoutStyle.titlePartOne}>one</span><span className={titleBarLayoutStyle.titlePartTwo}>Howl</span></p>

@@ -88,12 +88,12 @@
 
 .footerCopyright {
     display: flex;
+    color: white;
+    margin-top: 5px;
+    font-size: small;
+    margin-bottom: 1rem;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: small;
-    margin-top: 5px;
-    margin-bottom: 1rem;
 }
 
 @media screen and (max-width: 800px) {
