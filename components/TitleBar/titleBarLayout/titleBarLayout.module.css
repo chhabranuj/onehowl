@@ -9,10 +9,11 @@
     color: white;
     position: fixed;
     background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
 }
 
 .titlePartOne {
+    cursor: pointer;
     font-size: x-large;
     color: rgba(0, 0, 0, 0.75);
     font-family: 'Londrina Solid', cursive;
@@ -23,6 +24,7 @@
 }
 
 .titlePartTwo {
+    cursor: pointer;
     font-size: xx-large;
     color: rgb(255, 111, 111);
     font-family: 'Londrina Solid', cursive;
@@ -58,6 +60,15 @@
 
 .titleBarMenuContent:hover {
     color: rgb(255, 111, 111);
+}
+
+.brandsToggle {
+    display: none;
+}
+
+.brandsParent:hover .brandsToggle {
+    color: rgb(255, 111, 111);
+    display: inline-block;
 }
 
 /* For small screens */

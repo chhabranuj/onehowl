@@ -1,18 +1,17 @@
 import Head from "next/head";
 import clientPromise from "../../lib/mongodb";
-import BrandMenuLayout from "../../components/brandMenuLayout/brandMenuLayout";
-import TitleBarLayout from "../../components/titleBarLayout/titleBarLayout";
+import Layout from "../../components/layout/layout";
+import BrandMenuLayout from "../../components/BrandsMenu/brandMenuLayout/brandMenuLayout";
 
 const MenuLayout = ({posts}) => {
 
     return (
-        <div>
+        <Layout>
             <Head>
                 <title>MenuLayout</title>
             </Head>
-            <TitleBarLayout />
             <BrandMenuLayout data={posts} />
-        </div>
+        </Layout>
     );
 }
 

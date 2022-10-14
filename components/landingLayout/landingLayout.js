@@ -1,10 +1,9 @@
+import { Link } from "react-scroll";
 import { useEffect, useState } from "react";
 import landingLayoutStyle from "./landingLayout.module.css";
 
 const LandingLayout = () => {
-
     const images = ["/static/images/landingImage1.jpg", "/static/images/landingImage2.jpg"];
-
     const [activeImage, setActiveImage] = useState(images[0]);
 
     useEffect(() => {
@@ -79,7 +78,9 @@ const LandingLayout = () => {
                             </div>
                         </div>
                     </div>
-                    <button className={landingLayoutStyle.orderNowButton}>Order Now</button>
+                    <button className={landingLayoutStyle.orderNowButton}>
+                        <Link  to="orderLayout" smooth={true}>Order Now</Link>
+                    </button>
                 </div>
         </div>
     );

@@ -7,16 +7,12 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import brandMenuCardLayoutStyle from "./brandMenuCardLayout.module.css";
 
 const BrandMenuCardLayout = (props) => {
-
     const [quantity, setQuantity] = useState(0);
+    const [cartData, setCartData] = useState([]);
     const bgColor = ["#F2D7D5", "#FADBD8", "#EBDEF0", "#E8DAEF", "#E8DAEF", "#D4E6F1", "#D6EAF8", "#D1F2EB", "#D0ECE7", "#D4EFDF", "#D5F5E3", "#FCF3CF", "#FDEBD0", "#FAE5D3", "#F6DDCC"];
 
     const randomBg = () => {
         return bgColor[Math.floor((Math.random() * 15) + 0)]
-    }
-    
-    const roundOffPrice = (price) => {
-        return Math.round(price);
     }
 
     const handleAddRemoveItem = () => {
@@ -63,14 +59,14 @@ const BrandMenuCardLayout = (props) => {
                 }
                 <div className={brandMenuCardLayoutStyle.addToCartAndPriceContainer}>
                     <div className={brandMenuCardLayoutStyle.priceContainer}>
-                        <p className={brandMenuCardLayoutStyle.price}>Now at ₹{roundOffPrice((100-props.data.discount)*props.data.realPrice*0.01)}</p>
-                        <p className={brandMenuCardLayoutStyle.originalPrice}><span style={{textDecoration: "line-through"}}>₹{props.data.realPrice}</span>&nbsp;({props.data.discount}% off)</p>
+                        <p className={brandMenuCardLayoutStyle.price}>Now at ₹{Math.round((100-props.data.discount)*props.data.realPrice*0.01)}</p>
+                        <p className={brandMenuCardLayoutStyle.originalPrice}><span style={{textDecoration: "line-through"}}>₹{props.data.realPrice}</span>&nbsp;({props.data.discount}% Off)</p>
                     </div>
                     {
                         quantity==0?
                             <button className={brandMenuCardLayoutStyle.addToCartButton} onClick={handleAddRemoveItem}>
                                 <AiOutlineShoppingCart style={{fontSize: "medium"}}/>
-                                &nbsp;ADD TO CART
+                                &nbsp;&nbsp;ADD TO CART
                             </button>:
                             <div className={brandMenuCardLayoutStyle.addRemoveConatiner}>
                                 <IoMdRemoveCircle style={{fontSize: "xx-large", color: "rgb(255,111,111)"}} onClick={handleRemoveItem} />

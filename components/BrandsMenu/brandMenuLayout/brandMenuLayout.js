@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import brandMenuLayoutStyle from "./brandMenuLayout.module.css";
-import brandsLayoutStyle from "../brandsLayout/brandsLayout.module.css";
 import BrandMenuCardLayout from "../brandMenuCardLayout/brandMenuCardLayout";
+import CheckoutFooterLayout from "../../checkoutFooterLayout/checkoutFooterLayout";
 
 const BrandMenuLayout = (props) => {
     let tempData = {};
@@ -76,6 +76,7 @@ const BrandMenuLayout = (props) => {
                     })
                 }
             </div>
+            <CheckoutFooterLayout />
         </div>
     );
 }

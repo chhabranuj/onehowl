@@ -30,7 +30,7 @@ const BrandsLayout = (props) => {
     // }
 
     return (
-        <div className={brandsLayoutStyle.brandsParent}>
+        <div className={brandsLayoutStyle.brandsParent} id="orderLayout">
             <p className={brandsLayoutStyle.title}>Brands</p>
             <input placeholder="Search with brand name..." className={brandsLayoutStyle.searchBar} />
             <div style={{width: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>

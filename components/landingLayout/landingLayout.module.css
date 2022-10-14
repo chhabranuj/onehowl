@@ -56,6 +56,10 @@
     font-weight: bold;
     padding: 1rem 2rem;
     border-radius: 50px;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.orderNowButton:hover {
     background-color: rgb(255, 111, 111);
 }
 

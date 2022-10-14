@@ -113,6 +113,7 @@
     border: none;
     outline: none;
     display: flex;
+    cursor: pointer;
     font-weight: bold;
     font-size: x-small;
     padding: 10px 15px;

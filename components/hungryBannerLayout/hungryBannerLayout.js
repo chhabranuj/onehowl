@@ -1,3 +1,4 @@
+import { Link } from "react-scroll";
 import hungryBannerLayoutStyle from "./hungryBannerLayout.module.css";
 import landingLayoutStyle from "../landingLayout/landingLayout.module.css";
 
@@ -8,7 +9,9 @@ const HungryBannerLayout = () => {
         <div className={hungryBannerLayoutStyle.bannerParent}>
             <div className={hungryBannerLayoutStyle.bannerStyle}>
                 <p className={hungryBannerLayoutStyle.title}>AREN'T &nbsp;YOU<br/>HUNGRY?</p>
-                <button className={landingLayoutStyle.orderNowButton}>Order Now</button>
+                <button className={landingLayoutStyle.orderNowButton}>
+                    <Link  to="orderLayout" smooth={true}>Order Now</Link>
+                </button>
             </div>
         </div> 
     );
