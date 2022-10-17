@@ -9,32 +9,6 @@
     background-color: #fefefe;
 }
 
-.companyBackgroundParent {
-    width: 100%;
-    height: 75vh;
-    margin-top: 12vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    /* background-image: url("../../public/static/mcdBg2.png"); */
-}
-
-.companyBackground {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    /* background-color: rgba(0,0,0,0.6); */
-}
-
-.companyBackgroundText {
-    font-size: 3rem;
-    color: #fefefe;
-    text-align: center;
-    margin-bottom: 8rem;
-}
-
 .searchAndToggleContainer {
     width: 100%;
     height: 15vh;
@@ -179,6 +153,7 @@
     }
     .searchBar {
         width: 50%;
+        padding-left: 20px;
     }
 
     .switch {
@@ -211,4 +186,11 @@
         }
     }
 }
+
+@media screen and (max-height: 700px) {
+    .searchAndToggleContainer {
+        height: 25vh;
+    }
+}
+
 

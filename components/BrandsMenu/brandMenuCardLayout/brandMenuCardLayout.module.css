@@ -133,9 +133,14 @@
 }
 
 .quantity {
+    display: flex;
+    width: 1.8rem;
     margin: 0 5px;
-    padding: 5px 12px;
+    height: 1.8rem;
+    font-size: medium;
     border-radius: 50%;
+    align-items: center;
+    justify-content: center;
     background-color: #fefefe;
 }
 
@@ -218,6 +223,6 @@
 
 @media screen and (max-height: 700px) {
     .brandMenuCardParent {
-        height: 80vh;
+        height: 60vh;
     }
 }

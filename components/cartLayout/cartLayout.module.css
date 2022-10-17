@@ -1,0 +1,46 @@
+.cartParent {
+    width: 100%;
+    display: flex;
+    min-height: 88vh;
+    margin-top: 12vh;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.stepsDisplay {
+    font-size: x-large;
+}
+
+.cartMapParent {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mapSteps {
+    display: flex;
+    font-size: larger;
+    align-items: center;
+    justify-content: center;
+}
+
+.stepTitle {
+    margin: 0;
+    margin-left: 5px;
+}
+
+.stepsDivider {
+    width: 20%;
+    height: 1px;
+    border: none;
+    margin: 0 10px;
+    background-color: #ccc;
+}
+
+@media screen and (max-width: 700px) {
+    .stepsDivider {
+        width: 10%;
+    }
+}

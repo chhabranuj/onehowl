@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import clientPromise from '../lib/mongodb';
+import Layout from '../components/layout/layout';
 import AboutLayout from '../components/aboutLayout/aboutLayout';
 import FooterLayout from '../components/footerLayout/footerLayout';
 import LandingLayout from '../components/landingLayout/landingLayout';
@@ -7,7 +8,7 @@ import BrandsLayout from '../components/Brands/brandsLayout/brandsLayout';
 import NewsletterLayout from '../components/newsletterLayout/newsletterLayout';
 import OurServicesLayout from '../components/ourServicesLayout/ourServicesLayout';
 import HungryBannerLayout from '../components/hungryBannerLayout/hungryBannerLayout';
-import Layout from '../components/layout/layout';
+import CheckoutFooterLayout from '../components/checkoutFooterLayout/checkoutFooterLayout';
 
 const Home = ({posts}) => {
   return (
@@ -24,6 +25,7 @@ const Home = ({posts}) => {
       <OurServicesLayout />
       <NewsletterLayout />
       <FooterLayout />
+      <CheckoutFooterLayout />
     </Layout>
   )
 }

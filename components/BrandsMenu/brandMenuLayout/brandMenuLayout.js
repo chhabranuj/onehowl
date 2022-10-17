@@ -22,7 +22,7 @@ const BrandMenuLayout = (props) => {
 
     const filteredData = (products) => {
         for(let item in products) {
-            tempData[item] = products[item].filter(itemData => (!itemData.isVeg && vegToggle.current)? false: true && itemData.title.toLowerCase().includes(searchInput.current));
+            tempData[item] = products[item].filter(itemData => (!itemData.isVeg && vegToggle.current)? false: true && itemData.title.toLowerCase().includes(searchInput.current.toLowerCase()));
             if(!tempData[item].length) {
                 delete(tempData[item]);
             }
@@ -33,11 +33,6 @@ const BrandMenuLayout = (props) => {
     
     return (
         <div className={brandMenuLayoutStyle.menuParent}>
-            {/* <div className={brandMenuLayoutStyle.companyBackgroundParent} {{backgroundImage: `url(${props.data.brandImage})`}}>
-                <div className={brandMenuLayoutStyle.companyBackground}>
-                    <p className={brandMenuLayoutStyle.companyBackgroundText}>Get <span style={{fontSize: "6rem"}}>5%</span> Off on all products.</p>
-                </div>
-            </div> */}
             <div className={brandMenuLayoutStyle.searchAndToggleContainer}>
                 <input placeholder="Search with Item Name..." className={brandMenuLayoutStyle.searchBar} onChange={handleProductsearch} />
                 <div className={brandMenuLayoutStyle.toggleContainer}>

@@ -1,14 +1,16 @@
 import Image from "next/image";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { AiFillStar } from "react-icons/ai";
 import { IoMdAddCircle } from "react-icons/io";
 import { IoMdRemoveCircle } from "react-icons/io";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { addItem, removeItem } from "../../store/reducers/cartReducer";
 import brandMenuCardLayoutStyle from "./brandMenuCardLayout.module.css";
 
 const BrandMenuCardLayout = (props) => {
+    const dispatch = useDispatch();
     const [quantity, setQuantity] = useState(0);
-    const [cartData, setCartData] = useState([]);
     const bgColor = ["#F2D7D5", "#FADBD8", "#EBDEF0", "#E8DAEF", "#E8DAEF", "#D4E6F1", "#D6EAF8", "#D1F2EB", "#D0ECE7", "#D4EFDF", "#D5F5E3", "#FCF3CF", "#FDEBD0", "#FAE5D3", "#F6DDCC"];
 
     const randomBg = () => {
@@ -17,14 +19,17 @@ const BrandMenuCardLayout = (props) => {
 
     const handleAddRemoveItem = () => {
         setQuantity(1);
+        dispatch(addItem({id: props.data.id, realPrice: props.data.realPrice, discount: props.data.discount, quantity: 1}));
     }
 
     const handleAddItem = () => {
-        setQuantity(++quantity);
+        dispatch(addItem({id: props.data.id}));
+        setQuantity(quantity + 1);
     }
 
     const handleRemoveItem = () => {
-        setQuantity(--quantity);
+        dispatch(removeItem({id: props.data.id}));
+        setQuantity(quantity - 1);
     }
 
     return (

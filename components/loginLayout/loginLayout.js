@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { signIn, useSession } from "next-auth/react";
@@ -7,6 +8,7 @@ import ButtonLayout from "../Attributes/buttonLayout/buttonLayout";
 import inputLayoutStyle from "../Attributes/inputLayout/inputLayout.module.css";
 
 const LoginLayout = () => {
+    const router = useRouter();
     const {data: session} = useSession();
     const [title, setTitle] = useState("Sign In");
     const [onSignUp, setOnSignUp] = useState(false);
@@ -32,7 +34,7 @@ const LoginLayout = () => {
     useEffect(() => {})
 
     const navigateToMainPage = () => {
-        window.location.href = "/";
+        router.push("/");
     }
 
     const handleFirstName = (value) => {

@@ -10,7 +10,7 @@ const Login = () => {
             </Head>
             <LoginLayout />
         </div>
-    )
+    );
 }
 
 export default Login;
