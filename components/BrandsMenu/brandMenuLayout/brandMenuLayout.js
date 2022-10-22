@@ -1,4 +1,6 @@
 import { useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import { cartSelector } from "../../store/reducers/cartReducer";
 import brandMenuLayoutStyle from "./brandMenuLayout.module.css";
 import BrandMenuCardLayout from "../brandMenuCardLayout/brandMenuCardLayout";
 import CheckoutFooterLayout from "../../checkoutFooterLayout/checkoutFooterLayout";
@@ -7,6 +9,7 @@ const BrandMenuLayout = (props) => {
     let tempData = {};
     const searchInput = useRef("");
     const vegToggle = useRef(false);
+    const cart = useSelector(cartSelector);
     const [notFound, setNotFound] = useState(false);
     const [products, setProducts] = useState(props.data.productData);
     
@@ -64,7 +67,7 @@ const BrandMenuLayout = (props) => {
                                     </div>
                                 }
                                 <div className={brandMenuLayoutStyle.itemContainer}>
-                                    {products[item].map((itemData, itemIndex) => <BrandMenuCardLayout key={itemIndex} data={itemData} type={item} />)}
+                                    {products[item].map((itemData, itemIndex) => <BrandMenuCardLayout key={itemIndex} data={itemData} type={item} cartData={cart} />)}
                                 </div>
                             </div>
                         );

@@ -22,8 +22,8 @@ const Home = ({posts}) => {
       <AboutLayout />
       <HungryBannerLayout />
       <BrandsLayout brandsData={posts} />
-      <OurServicesLayout />
       <NewsletterLayout />
+      <OurServicesLayout />
       <FooterLayout />
       <CheckoutFooterLayout />
     </Layout>

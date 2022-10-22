@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 import { IoMdAddCircle } from "react-icons/io";
 import { IoMdRemoveCircle } from "react-icons/io";
@@ -13,13 +13,21 @@ const BrandMenuCardLayout = (props) => {
     const [quantity, setQuantity] = useState(0);
     const bgColor = ["#F2D7D5", "#FADBD8", "#EBDEF0", "#E8DAEF", "#E8DAEF", "#D4E6F1", "#D6EAF8", "#D1F2EB", "#D0ECE7", "#D4EFDF", "#D5F5E3", "#FCF3CF", "#FDEBD0", "#FAE5D3", "#F6DDCC"];
 
+    useEffect(() => {
+        props.cartData.map(item => {
+            if(item.id == props.data.id) {
+                setQuantity(item.quantity);
+            }
+        })
+    })
+
     const randomBg = () => {
         return bgColor[Math.floor((Math.random() * 15) + 0)]
     }
 
     const handleAddRemoveItem = () => {
         setQuantity(1);
-        dispatch(addItem({id: props.data.id, realPrice: props.data.realPrice, discount: props.data.discount, quantity: 1}));
+        dispatch(addItem({id: props.data.id, name: props.data.title, image: props.data.image, realPrice: props.data.realPrice, discount: props.data.discount, quantity: 1}));
     }
 
     const handleAddItem = () => {
@@ -77,7 +85,7 @@ const BrandMenuCardLayout = (props) => {
                                 <IoMdRemoveCircle style={{fontSize: "xx-large", color: "rgb(255,111,111)"}} onClick={handleRemoveItem} />
                                 <p className={brandMenuCardLayoutStyle.quantity}>{quantity}</p>
                                 <IoMdAddCircle style={{fontSize: "xx-large", color: "rgb(255,111,111)"}} onClick={handleAddItem} />
-                        </div>
+                            </div>
                     }
                 </div>
             </div>

@@ -3,15 +3,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 15vh 0 20vh 0;
     justify-content: center;
-}
-
-.ourServicesTitle  {
-    margin: 0 0 4rem 0;
-    font-size: xxx-large;
-    color: rgb(57 62 64);
-    font-family: "Londrina Solid",Sans-serif;
 }
 
 .ourServicesChild {
@@ -23,61 +15,56 @@
 }
 
 .ourServicesContainer {
-    width: 20%;
+    width: 25%;
     padding: 2%;
-    height: 40vh;
+    height: 20vh;
     margin: 0 2%;
     display: flex;
     color: white;
     text-align: center;
-    border-radius: 6px;
+    border-radius: 20px;
     align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-}
-
-.ourServicesMobileContainer {
-    display: none;
+    background-color: #f4f6fa;
+    border: 1px solid #3bb77e;
+    justify-content: space-between;
 }
 
 .ourServicesContainerTitle {
+    color: #253d4e;
     font-size: large;
     font-weight: bold;
 }
 
 .ourServicesContent {
     margin: 0;
+    color: #7e7e7e;
     font-size: 0.8rem;
     line-height: 20px;
     font-family: "IBM Plex Sans",Arial,sans-serif;
 }
 
+@media screen and (max-width: 1100px) {
+    .ourServicesChild {
+        flex-wrap: wrap;
+    }
+
+    .ourServicesContainer {
+        width: 40%;
+        margin-bottom: 1rem;
+        justify-content: space-around;
+    }
+}
+
 @media screen and (max-width: 800px) {
-    .ourServicesParent {
-        padding: 10vh 0;
+    .ourServicesContainer {
+        width: 90%;
+        height: 20vh;
+        margin: 2% 0;
+        padding: 5%;
+        justify-content: space-evenly;
     }
 
     .ourServicesChild {
         flex-direction: column;
-    }
-
-    .ourServicesContainer {
-        display: none;
-    }
-
-    .ourServicesMobileContainer {
-        width: 90%;
-        height: 30vh;
-        display: flex;
-        color: white;
-        padding: 0 10%;
-        margin: 1.5rem 0;
-        text-align: center;
-        border-radius: 6px;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     }
 }

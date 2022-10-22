@@ -1,9 +1,8 @@
-import { Link } from "react-scroll";
 import { useEffect, useState } from "react";
 import landingLayoutStyle from "./landingLayout.module.css";
 
 const LandingLayout = () => {
-    const images = ["/static/images/landingImage1.jpg", "/static/images/landingImage2.jpg"];
+    const images = ["/static/bg.png", "/static/bg2.png"];
     const [activeImage, setActiveImage] = useState(images[0]);
 
     useEffect(() => {
@@ -20,8 +19,8 @@ const LandingLayout = () => {
     }, [])
 
     return (
-        <div style={{"backgroundImage": `url(${activeImage})`}} className={landingLayoutStyle.landingParentContainer}>
-                <div className={landingLayoutStyle.landing}>
+        <div  className={landingLayoutStyle.landingParentContainer}>
+                <div className={landingLayoutStyle.landing} style={{"backgroundImage": `url(${activeImage})`}}>
                     <div className={landingLayoutStyle.catchySlogan}>
                         <div>
                             <div>
@@ -71,19 +70,71 @@ const LandingLayout = () => {
                             </div>
                             <div>
                                 <span style={{"--i":"32"}}>&nbsp;&nbsp;C</span>
-                                <span style={{"--i":"33"}}>H</span>
+                                <span style={{"--i":"33"}}>h</span>
                                 <span style={{"--i":"34"}}>A</span>
                                 <span style={{"--i":"35"}}>I</span>
                                 <span style={{"--i":"36"}}>R</span>
                             </div>
                         </div>
                     </div>
-                    <button className={landingLayoutStyle.orderNowButton}>
-                        <Link  to="orderLayout" smooth={true}>Order Now</Link>
-                    </button>
                 </div>
         </div>
     );
 }
 
 export default LandingLayout;
+
+{/* <div>
+                            <div>
+                                <span style={{"--i":"1"}}>T</span>
+                                <span style={{"--i":"2"}}>a</span>
+                                <span style={{"--i":"3"}}>s</span>
+                                <span style={{"--i":"4"}}>t</span>
+                                <span style={{"--i":"5"}}>e</span>
+                            </div>
+                            <div>
+                                <span style={{"--i":"6"}}>&nbsp;&nbsp;T</span>
+                                <span style={{"--i":"7"}}>h</span>
+                                <span style={{"--i":"8"}}>e</span>
+                            </div>
+                            <div>
+                                <span style={{"--i":"9"}}>&nbsp;&nbsp;W</span>
+                                <span style={{"--i":"10"}}>o</span>
+                                <span style={{"--i":"11"}}>r</span>
+                                <span style={{"--i":"12"}}>l</span>
+                                <span style={{"--i":"13"}}>d</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                <span style={{"--i":"14"}}>&nbsp;&nbsp;W</span>
+                                <span style={{"--i":"15"}}>i</span>
+                                <span style={{"--i":"16"}}>t</span>
+                                <span style={{"--i":"17"}}>h</span>
+                                <span style={{"--i":"18"}}>o</span>
+                                <span style={{"--i":"19"}}>u</span>
+                                <span style={{"--i":"20"}}>t</span>
+                            </div>
+                            <div>
+                                <span style={{"--i":"21"}}>&nbsp;&nbsp;L</span>
+                                <span style={{"--i":"22"}}>e</span>
+                                <span style={{"--i":"23"}}>a</span>
+                                <span style={{"--i":"24"}}>v</span>
+                                <span style={{"--i":"25"}}>i</span>
+                                <span style={{"--i":"26"}}>n</span>
+                                <span style={{"--i":"27"}}>g</span>
+                            </div>
+                            <div>
+                                <span style={{"--i":"28"}}>&nbsp;&nbsp;Y</span>
+                                <span style={{"--i":"29"}}>o</span>
+                                <span style={{"--i":"30"}}>u</span>
+                                <span style={{"--i":"31"}}>r</span>
+                            </div>
+                            <div>
+                                <span style={{"--i":"32"}}>&nbsp;&nbsp;C</span>
+                                <span style={{"--i":"33"}}>h</span>
+                                <span style={{"--i":"34"}}>a</span>
+                                <span style={{"--i":"35"}}>i</span>
+                                <span style={{"--i":"36"}}>r</span>
+                            </div>
+                        </div> */}

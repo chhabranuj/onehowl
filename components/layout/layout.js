@@ -1,6 +1,6 @@
 import Head from "next/head";
 import layoutStyle from "./layout.module.css";
-import TitleBarLayout from "../TitleBar/titleBarLayout/titleBarLayout";
+import TitleBarLayout from "../titleBarLayout/titleBarLayout";
 
 const Layout = ({ children }) => {
     return (

@@ -51,7 +51,7 @@ const FooterLayout = () => {
         <div className={footerLayoutStyle.footerParent}>
             <div className={footerLayoutStyle.footerParentContainer}>
                 <div className={footerLayoutStyle.footerContainer}>
-                    <p className={footerLayoutStyle.footerMainTitle}><span style={{fontSize: "x-large"}}>one</span><span style={{color: "rgb(255,111,111)"}}>Howl</span></p>
+                    <p className={footerLayoutStyle.footerMainTitle}>oneHowl</p>
                     <p className={footerLayoutStyle.containerDescription}>One Howl is a online delivery platform that helps you to order food online from top brands in India.One Howl is a online delivery platform that helps you to order food online from top brands in India.</p>
                 </div>
                 <div className={footerLayoutStyle.footerUsefulLinksAndPartnersContainer}>
