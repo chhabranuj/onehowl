@@ -1,14 +1,10 @@
 import Head from 'next/head';
 import clientPromise from '../lib/mongodb';
 import Layout from '../components/layout/layout';
-import AboutLayout from '../components/aboutLayout/aboutLayout';
-import FooterLayout from '../components/footerLayout/footerLayout';
-import LandingLayout from '../components/landingLayout/landingLayout';
-import BrandsLayout from '../components/Brands/brandsLayout/brandsLayout';
-import NewsletterLayout from '../components/newsletterLayout/newsletterLayout';
-import OurServicesLayout from '../components/ourServicesLayout/ourServicesLayout';
-import HungryBannerLayout from '../components/hungryBannerLayout/hungryBannerLayout';
+import LandingLayout from "../components/landingLayout/landingLayout";
+import ProductsLayout from '../components/Products/productsLayout/productsLayout';
 import CheckoutFooterLayout from '../components/checkoutFooterLayout/checkoutFooterLayout';
+import FeaturedCategoriesLayout from '../components/featuredCategoriesLayout/featuredCategoiresLayout';
 
 const Home = ({posts}) => {
   return (
@@ -19,12 +15,8 @@ const Home = ({posts}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <LandingLayout />
-      <AboutLayout />
-      <HungryBannerLayout />
-      <BrandsLayout brandsData={posts} />
-      <NewsletterLayout />
-      <OurServicesLayout />
-      <FooterLayout />
+      <FeaturedCategoriesLayout data={posts} />
+      <ProductsLayout data={posts} />
       <CheckoutFooterLayout />
     </Layout>
   )
@@ -33,8 +25,8 @@ const Home = ({posts}) => {
 export const getStaticProps = async () => {
   const client = await clientPromise;
   const database = client.db(process.env.MONGO_DB);
-  const brandsCollection = database.collection("brandsCollection");
-  const result = await brandsCollection.find({}).toArray();
+  const productCollection = database.collection("productCollection");
+  const result = await productCollection.find({}).toArray();
   return {
     props: {
       posts: result

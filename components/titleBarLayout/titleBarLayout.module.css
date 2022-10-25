@@ -37,7 +37,6 @@
     width: 100%;
     height: 15vh;
     display: flex;
-    padding: 20px 0;
     align-items: center;
     justify-content: space-evenly;
     border-bottom: 1px solid #ececec;
@@ -49,24 +48,6 @@
     text-align: center;
     font-size: xxx-large;
     font-family: 'Londrina Solid';
-}
-
-.categoriesButton {
-    border: none;
-    display: flex;
-    color: white;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 10px 15px;
-    border-radius: 5px;
-    align-items: center;
-    justify-content: center;
-    background-color: #3bb77e;
-}
-
-.serviceIcon {
-    font-size: 1.5rem;
 }
 
 .categoriesMenu {
@@ -94,6 +75,10 @@
     border: 1px solid #ececec;
     justify-content: space-evenly;
     font-family: 'Quicksand', sans-serif;
+}
+
+.categoriesMenuContent:hover {
+    border: 1px solid #FDC040;
 }
 
 .categoriesMenuContentQuantity {
@@ -255,5 +240,14 @@
 
     .extraServiceTitle {
         margin: 0;
+    }
+}
+
+@media screen and (max-height: 700px) {
+    .titleBarContainer {
+        height: 30vh;
+    }
+    .searchAndExtraServicesContainer {
+        margin-top: 34vh;
     }
 }

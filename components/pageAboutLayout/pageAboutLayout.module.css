@@ -1,0 +1,46 @@
+.yourCartParent {
+    width: 90%;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    flex-direction: column;
+    background-size: cover;
+    justify-content: center;
+    background-position: initial;
+    background-repeat: no-repeat;
+    background-image: url("../../public/static/cart.png");
+}
+
+.yourCartTitle {
+    margin: 0;
+    color: #253D4E;
+    font-weight: 700;
+    font-size: xxx-large;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.yourCartContent {
+    color: #253D4E;
+    font-size: large;
+    font-weight: 700;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.yourCartTimeline {
+    margin: 0;
+    color: grey;
+    font-size: small;
+    font-weight: 700;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.from {
+    color: green;
+    cursor: pointer;
+}
+
+.from:hover {
+    color: #FDC040;
+}

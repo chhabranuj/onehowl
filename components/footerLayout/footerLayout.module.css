@@ -13,7 +13,7 @@
 .footerParentContainer {
     display: flex;
     align-items: center;
-    margin: 4rem 4rem 2rem 4rem;
+    margin: 2rem 4rem;
     justify-content: space-evenly;
 }
 

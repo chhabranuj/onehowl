@@ -1,3 +1,923 @@
+veg: [
+    {
+        "id": "dalTadka",
+        image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/veg/dalTadka.avif",
+        title: "Dal Tadka",
+        rating: "4.5",
+        realPrice: "120",
+        discount: "5",
+        isVeg: true
+    },
+    {
+        id: "vegTadka",
+        image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/veg/vegTadka.avif",
+        title: "Veg Tadka",
+        rating: "4.2",
+        realPrice: "140",
+        discount: "5",
+        isVeg: true
+    },
+    {
+        id: "dalFry",
+        image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/veg/dalFry.avif",
+        title: "Dal Fry",
+        rating: "3.9",
+        realPrice: "130",
+        discount: "5",
+        isVeg: true
+    },
+    {
+        id: "dalAmritsari",
+        image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/veg/dalAmritsari.avif",
+        title: "Dal Amritsari",
+        rating: "4.4",
+        realPrice: "120",
+        discount: "5",
+        isVeg: true
+    },
+    {
+        id: "dalMakhni",
+        image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/veg/dalMakhani.avif",
+        title: "Dal Makhani",
+        rating: "4.8",
+        realPrice: "160",
+        discount: "5",
+        isVeg: true
+    },
+    {
+        id: "chanaMasala",
+        image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/veg/chanaMasala.avif",
+        title: "Chana Masala",
+        rating: "4.1",
+        realPrice: "150",
+        discount: "5",
+        isVeg: true
+    },
+    {
+        id: "kadaiPaneer",
+        image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/veg/kadaiPaneer.jpeg",
+        title: "Kadai Paneer",
+        rating: "4.5",
+        realPrice: "200",
+        discount: "5",
+        isVeg: true
+    },
+    {
+        id: "shahiPaneer",
+        image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/veg/shahiPaneer.avif",
+        title: "Shahi Paneer",
+        rating: "4.9",
+        realPrice: "180",
+        discount: "5",
+        isVeg: true
+    },
+    {
+        id: "paneerButterMasala",
+        image: "/https://onehowl-bucket.s3.ap-south-1.amazonaws.com/veg/paneerButterMasala.avif",
+        title: "Paneer Butter Masala",
+        rating: "4.6",
+        realPrice: "240",
+        discount: "5",
+        isVeg: true
+    },
+    {
+        id: "paneerMakhni",
+        image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/veg/paneerMakhni.avif",
+        title: "Paneer Makhni",
+        rating: "4.2",
+        realPrice: "220",
+        discount: "5",
+        isVeg: true
+    },
+    {
+        id: "alooGobhi",
+        image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/veg/alooGhobi.jpeg",
+        title: "Aloo Gobhi",
+        rating: "4.5",
+        realPrice: "120",
+        discount: "5",
+        isVeg: true
+    },
+    {
+        id: "Bhindi Masala",
+        image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/veg/bhindiMasala.jpeg",
+        title: "Bhindi Masala",
+        rating: "4.2",
+        realPrice: "130",
+        discount: "5",
+        isVeg: true
+    },
+    {
+        id: "alooMatar",
+        image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/veg/alooMatar.avif",
+        title: "Aloo Matar",
+        rating: "3.9",
+        realPrice: "120",
+        discount: "5",
+        isVeg: true
+    },
+    {
+        id: "mixVeg",
+        image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/veg/mixVeg.avif",
+        title: "Mix veg",
+        rating: "4.3",
+        realPrice: "150",
+        discount: "5",
+        isVeg: true
+    },
+    {
+        id: "saag",
+        image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/veg/saag.avif",
+        title: "Saag",
+        rating: "4.7",
+        realPrice: "150",
+        discount: "5",
+        isVeg: true
+    },
+    {
+        id: "mashroomMasala",
+        image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/veg/mashroomMasala.jpeg",
+        title: "Mushroom Masala",
+        rating: "4.5",
+        realPrice: "180",
+        discount: "5",
+        isVeg: true
+    }
+]
+
+drinks: [
+    {
+        id: "water",
+               image: "/https://onehowl-bucket.s3.ap-south-1.amazonaws.com/drinks/water.jpeg",
+              title: "Water",
+               rating: "4.1",
+                realPrice: "40",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "tea",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/drinks/tea.jpeg",
+              title: "Tea",
+               rating: "4.7",
+                realPrice: "60",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "coffee",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/drinks/coffee.jpeg",
+              title: "Coffe",
+               rating: "4.7",
+                realPrice: "60",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "plainLassi",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/drinks/lassi.jpeg",
+              title: "Plain Lassi",
+               rating: "4.4",
+                realPrice: "70",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "mangoLassi",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/drinks/mangoLassi.jpeg",
+              title: "Mango Lassi",
+               rating: "4.5",
+                realPrice: "90",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "coke",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/drinks/coke.webp",
+              title: "Coke",
+               rating: "4.5",
+                realPrice: "80",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "frooti",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/drinks/frooti.jpeg",
+              title: "Frooti",
+               rating: "4.5",
+                realPrice: "80",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "iceTea",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/drinks/iceTea.jpeg",
+              title: "Ice Tea",
+               rating: "4.8",
+                realPrice: "100",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "redBull",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/drinks/redBull.jpeg",
+              title: "Red Bull",
+               rating: "4.7",
+                realPrice: "120",
+                discount: "5",
+                isVeg: true
+    },
+]
+
+desserts: [
+    {
+        id: "gulabJamun",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/desserts/gulabJamun.avif",
+              title: "Gulab Jamun",
+               rating: "4.5",
+                realPrice: "70",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "rasgulla",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/desserts/rasgulla.avif",
+              title: "Rasgulla",
+               rating: "4.4",
+                realPrice: "70",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "rajbhog",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/desserts/rajbhog.webp",
+              title: "Rajbhog",
+               rating: "4.4",
+                realPrice: "70",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "rasmalai",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/desserts/rasmalai.avif",
+              title: "Rasmalai",
+               rating: "4.6",
+                realPrice: "70",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "jalebi",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/desserts/jalebi.jpeg",
+              title: "Jalebi",
+               rating: "4.5",
+                realPrice: "100",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "gajarKaHalwa",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/desserts/gajarKaHalwa.avif",
+              title: "Gajar ka Halwa",
+               rating: "4.8",
+                realPrice: "130",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "moongDalHalwa",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/desserts/moongDalHalwa.avif",
+              title: "Moong Dal Halwa",
+               rating: "4.7",
+                realPrice: "150",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "vanillaIceCream",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/desserts/vanilla.avif",
+              title: "Vanilla Ice Cream",
+               rating: "4.2",
+                realPrice: "80",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "strawberryIceCream",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/desserts/strawberry.jpeg",
+              title: "Strawberry Ice Cream",
+               rating: "4.2",
+                realPrice: "80",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "butterScotchIceCream",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/desserts/butterScotch.webp",
+              title: "Butter Scotch Ice Cream",
+               rating: "4.4",
+                realPrice: "100",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "chocolateIceCream",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/desserts/chocolate.jpeg",
+              title: "Chocolate Ice Cream",
+               rating: "4.7",
+                realPrice: "120",
+                discount: "5",
+                isVeg: true
+    },
+]
+
+chinese: [
+    {
+        id: "chilliPotato",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/chinese/chilliPotato.avif",
+              title: "Chilli Potato",
+               rating: "4.9",
+                realPrice: "120",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "honeyChilliPotato",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/chinese/honeyChilliPotato.jpeg",
+              title: "Honey Chilli Potato",
+               rating: "4.6",
+                realPrice: "160",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "dryManchurian",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/chinese/dryManchurian.avif",
+              title: "Dry Manchurian",
+               rating: "4.3",
+                realPrice: "140",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "gravyManchurian",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/chinese/gravyManchurain.avif",
+              title: "Gravy Manchurian",
+               rating: "4.4",
+                realPrice: "160",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "chilliPaneer",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/chinese/chilliPaneer.jpeg",
+              title: "Chilli Paneer",
+               rating: "4.7",
+                realPrice: "200",
+                discount: "5",
+                isVeg: true
+    },
+    {	
+
+        id: "momos",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/chinese/momos.avif",
+              title: "Momos",
+               rating: "4.6",
+                realPrice: "150",
+                discount: "5",
+                isVeg: true
+    },
+    {
+
+        id: "springRoll",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/chinese/springRoll.webp",
+              title: "Spring Roll",
+               rating: "4.1",
+                realPrice: "120",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "vegChowmein",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/chinese/vegChowmein.avif",
+              title: "Veg Chowmein",
+               rating: "4.2",
+                realPrice: "100",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "chilliGarliChowmein",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/chinese/chilliGarlicChowmein.avif",
+              title: "Chilli Garlic Chowmein",
+               rating: "4.3",
+                realPrice: "130",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "singaporeChowmein",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/chinese/singapuriChowmein.avif",
+              title: "Singapore Chowmein",
+               rating: "4.6",
+                realPrice: "160",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "eggChowmein",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/chinese/eggChowmein.avif",
+              title: "Egg Chowmein",
+               rating: "4.3",
+                realPrice: "140",
+                discount: "5",
+                isVeg: false
+    },
+    {
+        id: "chickenChowmein",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/chinese/chickenChowmein.avif",
+              title: "Chicken Chowmein",
+               rating: "4.6",
+                realPrice: "180",
+                discount: "5",
+                isVeg: false
+    }
+]
+
+southIndian: [
+    {
+        id: "plainDosa",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/southIndian/plainDosa.avif",
+              title: "Plain Dosa",
+               rating: "4.2",
+                realPrice: "90",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "masalaDosa",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/southIndian/masalaDosa.avif",
+              title: "Masala Dosa",
+               rating: "4.8",
+                realPrice: "130",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "onionMasalaDosa",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/southIndian/onionDosa.avif",
+              title: "Onion Masala Dosa",
+               rating: "4.6",
+                realPrice: "150",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "vegMasalaDosa",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/southIndian/vegDosa.avif",
+              title: "Veg Masala Dosa",
+               rating: "4.2",
+                realPrice: "140",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "paneerDosa",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/southIndian/paneerDosa.jpeg",
+              title: "Paneer Dosa",
+               rating: "4.4",
+                realPrice: "150",
+                discount: "5",
+                isVeg: true
+    },
+    {
+
+        id: "ravaMasalaDosa",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/southIndian/rawaMasalaDosa.avif",
+              title: "Rava Masala Dosa",
+               rating: "4.9",
+                realPrice: "180",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "plainUttapam",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/southIndian/plainUttapam.avif",
+              title: "Plain Uttapam",
+               rating: "3.9",
+                realPrice: "100",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "onionUttapam",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/southIndian/onionUttapam.avif",
+              title: "Onion Uttapam",
+               rating: "4.0",
+                realPrice: "120",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "vegUttapam",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/southIndian/vegUttapam.avif",
+              title: "Veg Uttapam",
+               rating: "4.3",
+                realPrice: "150",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "paneerUttapam",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/southIndian/paneerUttapam.avif",
+              title: "Paneer Uttapam",
+               rating: "4.6",
+                realPrice: "180",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "idleSambar",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/southIndian/idleSambar.avif",
+              title: "Idle Sambar",
+               rating: "4.5",
+                realPrice: "80",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "sambarVada",
+               image: "/https://onehowl-bucket.s3.ap-south-1.amazonaws.com/southIndian/sambarVada.avif",
+              title: "Samabar Vada",
+               rating: "4.5",
+                realPrice: "80",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "sambar",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/southIndian/sambar.jpeg",
+              title: "Samabar",
+               rating: "4.1",
+                realPrice: "40",
+                discount: "5",
+                isVeg: true
+    },
+]
+
+rice: [
+    {
+        id: "plainRice",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/rice/plainRice.avif",
+              title: "plain Rice",
+               rating: "4.3",
+                realPrice: "100",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "jeeraRice",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/rice/jeeraRice.avif",
+              title: "Jeera Rice",
+               rating: "4.6",
+                realPrice: "120",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "saffronRice",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/rice/safronRice.webp",
+              title: "Saffron Rice",
+               rating: "4.4",
+                realPrice: "150",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "greenPeasPulao",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/rice/greenPeasPulao.avif",
+              title: "Green Peas Pulao",
+               rating: "4.1",
+                realPrice: "180",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "vegPulao",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/rice/vegPulao.avif",
+              title: "Veg Pulao",
+               rating: "4.7",
+                realPrice: "200",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "vegFriedRice",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/rice/friedRice.avif",
+              title: "Veg Fried Rice",
+               rating: "4.3",
+                realPrice: "160",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "nonVegFriedRice",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/rice/nonVegFriedRice.jpeg",
+              title: "Non-Veg Fried Rice",
+               rating: "4.1",
+                realPrice: "200",
+                discount: "5",
+                isVeg: true
+    },
+    {
+        id: "eggBiryani",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/rice/eggBiryani.avif",
+              title: "Egg Biryani",
+               rating: "4.6",
+                realPrice: "220",
+                discount: "5",
+                isVeg: false
+    },
+    {
+        id: "chickenBiryani",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/rice/chickenBiryani.avif",
+              title: "Chicken Biryani",
+               rating: "4.6",
+                realPrice: "220",
+                discount: "5",
+                isVeg: false
+    },
+    {
+        id: "muttonBiryani",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/rice/muttonBiryani.avif",
+              title: "Mutton Biryani",
+               rating: "4.9",
+                realPrice: "250",
+                discount: "5",
+                isVeg: false
+    },
+    {
+        id: "hydrabadiBiryani",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/rice/hydrabadiBiryani.avif",
+              title: "Hyderabadi Biryani",
+               rating: "4.8",
+                realPrice: "290",
+                discount: "5",
+                isVeg: false
+    },
+]
+
+breads: [
+{
+    id: "tawaRoti",
+           image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/breads/tawaRoti.avif",
+          title: "Tawa Roti",
+           rating: "4.1",
+            realPrice: "8",
+            discount: "5",
+            isVeg: true
+},
+{
+    id: "tandooriRoti",
+           image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/breads/tandooriRoti.avif",
+          title: "Tandoori Roti",
+           rating: "4.7",
+            realPrice: "12",
+            discount: "5",
+            isVeg: true
+},
+{
+    id: "tandooriButterRoti",
+           image: "/mcDonalds/veg1.png",
+          title: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/breads/tandooriButterRoti.avif",
+           rating: "4.3",
+            realPrice: "10",
+            discount: "5",
+            isVeg: true
+},
+{
+    id: "missiRoti",
+           image: "/https://onehowl-bucket.s3.ap-south-1.amazonaws.com/breads/missiRoti.avif",
+          title: "Missi Roti",
+           rating: "3.9",
+            realPrice: "30",
+            discount: "5",
+            isVeg: true
+},
+{
+    id: "lachchaPrantha",
+           image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/breads/lachchaParantha.avif",
+          title: "Lachcha Parantha",
+           rating: "4.4",
+            realPrice: "25",
+            discount: "5",
+            isVeg: true
+},
+{
+    id: "alooParantya",
+           image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/breads/alooParantha.avif",
+          title: "Aloo Parantha",
+           rating: "4.2",
+            realPrice: "30",
+            discount: "5",
+            isVeg: true
+},
+{
+    id: "paneerParantha",
+           image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/breads/paneerParantha.avif",
+          title: "Paneer Parantha",
+           rating: "4.6",
+            realPrice: "45",
+            discount: "5",
+            isVeg: true
+},
+{
+    id: "plainNaan",
+           image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/breads/plainNaan.avif",
+          title: "Plain Naan",
+           rating: "4.5",
+            realPrice: "40",
+            discount: "5",
+            isVeg: true
+},
+{
+    id: "butterNaan",
+           image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/breads/butterNaan.avif",
+          title: "Butter Naan",
+           rating: "4.9",
+            realPrice: "55",
+            discount: "5",
+            isVeg: true
+},
+{
+    id: "garlicNaan",
+           image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/breads/garlicNaan.avif",
+          title: "Garlic Naan",
+           rating: "4.6",
+            realPrice: "65",
+            discount: "5",
+            isVeg: true
+},	
+{
+    id: "alooNaan",
+           image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/breads/alooNaan.avif",
+          title: "Aloo Naan",
+           rating: "4.3",
+            realPrice: "65",
+            discount: "5",
+            isVeg: true
+},	
+{
+    id: "paneerNaan",
+           image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/breads/paneerNaan.avif",
+          title: "Paneer Naan",
+           rating: "4.5",
+            realPrice: "70",
+            discount: "5",
+            isVeg: true
+},
+{
+    id: "churChurNaan",
+        image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/breads/churChurNaan.jpeg",
+        title: "Chur Chur Naan",
+        rating: "4.2",
+        realPrice: "75",
+        discount: "5",
+        isVeg: true
+},
+{
+    id: "cheeseNaan",
+        image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/breads/cheeseNaan.avif",
+        title: "Cheese Naan",
+        rating: "4.7",
+        realPrice: "85",
+        discount: "5",
+        isVeg: true
+}
+]
+
+nonVeg: [
+    {
+        id: "butterChicken",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/nonVeg/butterChicken.avif",
+              title: "Butter Chicken",
+               rating: "4.7",
+                realPrice: "280",
+                discount: "5",
+                isVeg: false
+    },
+    {
+        id: "chickenTikka",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/nonVeg/chickenTikka.avif",
+              title: "Chicken Tikka",
+               rating: "4.2",
+                realPrice: "300",
+                discount: "5",
+                isVeg: false
+    },
+    {
+        id: "chickenYakhni",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/nonVeg/chickenYakhni.avif",
+              title: "Chicken Yakhni",
+               rating: "4.3",
+                realPrice: "290",
+                discount: "5",
+                isVeg: false
+    },
+    {
+        id: "chickenKorma",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/nonVeg/chickenKorma.avif",
+              title: "Chicken Korma",
+               rating: "4.0",
+                realPrice: "260",
+                discount: "5",
+                isVeg: false
+    },
+    {
+        id: "kadaiChicken",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/nonVeg/kadaiChicken.avif",
+              title: "Kadai Chicken",
+               rating: "4.4",
+                realPrice: "320",
+                discount: "5",
+                isVeg: false
+    },
+    {
+        id: "chickenLababdar",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/nonVeg/chickenLababdar.avif",
+              title: "Chicken Lababdar",
+               rating: "4.8",
+                realPrice: "350",
+                discount: "5",
+                isVeg: false
+    },
+    {
+        id: "chickenDoPyaza",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/nonVeg/chickenDoPyaza.jpeg",
+              title: "Chicken Do Pyazar",
+               rating: "4.5",
+                realPrice: "320",
+                discount: "5",
+                isVeg: false
+    },
+    {
+        id: "hariyaliChicken",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/nonVeg/haryaliChicken.webp",
+              title: "Hariyali Chicken",
+               rating: "4.6",
+                realPrice: "300",
+                discount: "5",
+                isVeg: false
+    },
+    {
+        id: "eggCurry",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/nonVeg/eggCurry.avif",
+              title: "Egg Curry",
+               rating: "4.3",
+                realPrice: "180",
+                discount: "5",
+                isVeg: false
+    },
+    {
+        id: "eggBhurji",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/nonVeg/eggBhurji.avif",
+              title: "Egg Bhurji",
+               rating: "4.0",
+                realPrice: "200",
+                discount: "5",
+                isVeg: false
+    },
+    {
+        id: "muttonKebab",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/nonVeg/muttonKebab.avif",
+              title: "Mutton Kebab",
+               rating: "4.1",
+                realPrice: "240",
+                discount: "5",
+                isVeg: false
+    },
+    {
+        id: "muttonJosh",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/nonVeg/muttonJosh.avif",
+              title: "Mutton Josh",
+               rating: "4.6",
+                realPrice: "290",
+                discount: "5",
+                isVeg: false
+    },
+    {
+        id: "muttonCurry",
+               image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/nonVeg/muttonCurry.avif",
+              title: "Mutton Curry",
+               rating: "4.7",
+                realPrice: "340",
+                discount: "5",
+                isVeg: false
+    },
+]
+
+
+
 // _id: {type: String},
 // brandName: {type: String},
 // brandAbout: {type: String},
@@ -22,7 +942,7 @@
 //     {
 //         logo: "/static/logos/kfcLogo.svg",
 //         name: "Kfc",
-//         bgColor: "#9b2e35",
+//         bgColor: "#9b2e35"
 //         content: "One Howl is a online delivery platform that helps you to order food online from top brands in India. We provide more than 10 international brands like Mc Donald's, Pizza Hut, Starbucks and many more."
 //     },
 //     {

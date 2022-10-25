@@ -70,7 +70,7 @@ const LandingLayout = () => {
                             </div>
                             <div>
                                 <span style={{"--i":"32"}}>&nbsp;&nbsp;C</span>
-                                <span style={{"--i":"33"}}>h</span>
+                                <span style={{"--i":"33"}}>H</span>
                                 <span style={{"--i":"34"}}>A</span>
                                 <span style={{"--i":"35"}}>I</span>
                                 <span style={{"--i":"36"}}>R</span>

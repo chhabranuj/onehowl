@@ -6,9 +6,9 @@ const ButtonLayout = (props) => {
 
     return (
         <button className="button" onClick={handleClick}>
-            {props.leftButtonIcon}&nbsp;
+            {props.leftButtonIcon}&nbsp;&nbsp;
             {props.buttonText}
-            &nbsp;{props.rightButtonIcon}
+            &nbsp;&nbsp;{props.rightButtonIcon}
             <style jsx>{`
                 .button {
                     color: white;
@@ -21,6 +21,7 @@ const ButtonLayout = (props) => {
                     align-items: center;
                     justify-content: center;
                     width: ${props.buttonWidth};
+                    font-size: ${props.fontSize};
                     transition: all 300ms linear 0s;
                     padding: ${props.buttonPadding};
                     background-color: ${props.buttonBgColor};

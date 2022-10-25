@@ -6,6 +6,7 @@ import { IoMdAddCircle } from "react-icons/io";
 import { IoMdRemoveCircle } from "react-icons/io";
 import cartLayoutStyle from "./cartLayout.module.css";
 import { useDispatch, useSelector } from "react-redux";
+import PageAboutLayout from "../../pageAboutLayout/pageAboutLayout";
 import ButtonLayout from "../../Attributes/buttonLayout/buttonLayout";
 import { addItem, removeItem, cartSelector } from "../../store/reducers/cartReducer";
 import CartLayoutTableContent from "../cartLayoutTableContent/cartLayoutTableContent";
@@ -32,11 +33,7 @@ const CartLayout = () => {
 
     return (
         <div className={cartLayoutStyle.cartParent}>
-            <div className={cartLayoutStyle.yourCartParent}>
-                <p className={cartLayoutStyle.yorCartTitle}>Your Cart</p>
-                <p className={cartLayoutStyle.yourCartContent}>A fresh kind of fast food for a new generation.</p>
-                <p className={cartLayoutStyle.yourCartTimeline}><span className={cartLayoutStyle.from} onClick={() => router.push("/")}>Home &#8594;</span> Cart</p>
-            </div>
+            <PageAboutLayout title="Your Cart" path="Cart" />
             {
                 !isCartEmpty?
                     <table className={cartLayoutStyle.cartTable} cellSpacing="0">
@@ -53,14 +50,14 @@ const CartLayout = () => {
                             {
                                 cart.map((item, index) => {
                                     return (
-                                        <CartLayoutTableContent data={item} />
+                                        <CartLayoutTableContent data={item} key={index} />
                                     );
                                 })
                             }
                         </tbody>
                     </table>:
                     <div className={cartLayoutStyle.emptyCartContainer}>
-                        <p className={cartLayoutStyle.emptyCartContent} style={{margin: "0"}}>It Looks like you didn't add any item in cart.</p>
+                        <p className={cartLayoutStyle.emptyCartContent} style={{margin: "0"}}>It looks like you didn't add any item in cart.</p>
                         <p className={cartLayoutStyle.emptyCartContent}>Why don't we find something for you?</p>
                         <ButtonLayout buttonText="HOME" buttonWidth="auto" buttonPadding="10px 20px" buttonBgColor="#3BB77E" buttonBgHoverColor="#FDC040" leftButtonIcon={<BiArrowBack />} handleButtonClick={navigateTo} />
                     </div>
@@ -70,6 +67,3 @@ const CartLayout = () => {
 }
 
 export default CartLayout;
-
-// onClick={handleRemoveItem(item.id)}
-// onClick={handleAddItem(item.id)}

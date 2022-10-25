@@ -9,6 +9,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import titleBarLayoutStyle from "./titleBarLayout.module.css";
 import { cartSelector } from "../store/reducers/cartReducer";
 import { GiHamburger, GiFullPizza, GiSandwich, GiDrinkMe } from "react-icons/gi";
+import ButtonLayout from "../Attributes/buttonLayout/buttonLayout";
 
 const TitleBarLayout = (props) => {
     const [menuToggle, setMenuToggle] = useState(false);
@@ -67,10 +68,7 @@ const TitleBarLayout = (props) => {
                 <div className={titleBarLayoutStyle.titleBarContainer}>
                     <p className={titleBarLayoutStyle.title}>oneHowl</p>
                     <div className={titleBarLayoutStyle.categoriesContainer}>
-                        <button className={titleBarLayoutStyle.categoriesButton} onClick={handleMenuToggle}>
-                            <BiCategoryAlt className={titleBarLayoutStyle.serviceIcon} />&nbsp;
-                            Browse All Categories
-                        </button>
+                        <ButtonLayout buttonText="Browse All Categories" buttonWidth="auto" buttonPadding="10px 20px" buttonBgColor="#3BB77E" buttonBgHoverColor="#FDC040" leftButtonIcon={<BiCategoryAlt />} handleButtonClick={handleMenuToggle} />
                         {
                             menuToggle &&
                                 <div className={titleBarLayoutStyle.categoriesMenu}>

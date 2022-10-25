@@ -33,6 +33,7 @@
     color: #253d4e;
     font-size: large;
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .ourServicesContent {
@@ -66,5 +67,11 @@
 
     .ourServicesChild {
         flex-direction: column;
+    }
+}
+
+@media screen and (max-height: 500px) {
+    .ourServicesContainer {
+        height: 30vh
     }
 }
