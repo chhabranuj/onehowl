@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { signIn, useSession } from "next-auth/react";
 import loginLayoutStyle from "./loginLayout.module.css";
@@ -8,9 +8,11 @@ import ButtonLayout from "../Attributes/buttonLayout/buttonLayout";
 import inputLayoutStyle from "../Attributes/inputLayout/inputLayout.module.css";
 
 const LoginLayout = () => {
+    const bg = ["/static/bg.png", "/static/bg2.png"];
     const router = useRouter();
     const {data: session} = useSession();
     const [title, setTitle] = useState("Sign In");
+    const [bgImage, setBgImage] = useState(bg[1]);
     const [onSignUp, setOnSignUp] = useState(false);
     const [navigateTo, setNavigateTo] = useState("Sign Up");
     const [proceedError, setProceedError] = useState(false);
@@ -30,8 +32,6 @@ const LoginLayout = () => {
         pinCode: "",
         phoneNumber: "",
     });
-
-    useEffect(() => {})
 
     const navigateToMainPage = () => {
         router.push("/");
@@ -165,6 +165,9 @@ const LoginLayout = () => {
     const handleProceedButton = () => {
         if(!inputData.firstName || !inputData.lastName || !inputData.address || !inputData.city || !inputData.pinCode || errors.pinCode || !inputData.phoneNumber || errors.phoneNumber) {
             setProceedError(true);
+            setTimeout(() => {
+                setProceedError(false);
+            }, 2000);
         }
         else {
             signIn("google");
@@ -172,6 +175,7 @@ const LoginLayout = () => {
     }
 
     const toggleLogin = () => {
+        setBgImage(title == "Sign In"? bg[0]: bg[1])
         setTitle(title == "Sign In"? "Sign Up": "Sign In");
         setNavigateTo(navigateTo == "Sign In"? "Sign Up": "Sign In");
         setOnSignUp(!onSignUp);
@@ -180,7 +184,7 @@ const LoginLayout = () => {
 
 
     return (
-        <div className={loginLayoutStyle.loginParent}>
+        <div className={loginLayoutStyle.loginParent} style={{backgroundImage: `url(${bgImage})`}}>
             <div className={loginLayoutStyle.loginChild}>
                 <div className={loginLayoutStyle.backButtonContainer} onClick={navigateToMainPage}>
                     <BsArrowLeft className={loginLayoutStyle.backButton}/>
@@ -226,7 +230,7 @@ const LoginLayout = () => {
                                 <ButtonLayout buttonText="Proceed" buttonWidth="60%" buttonPadding="10px" buttonBgColor="rgb(57 62 64)" buttonBgHoverColor="black" handleButtonClick={handleProceedButton} />
                             </div>
                     }
-                    <p className={loginLayoutStyle.subHeading} style={{fontSize: "small"}}>Don't have an account. <span style={{fontWeight: "bold", textDecoration: "underline", cursor: "pointer"}} onClick={toggleLogin}>{navigateTo}</span>.</p>
+                    <p className={loginLayoutStyle.subHeading} style={{fontSize: "small"}}>Don't have an account. <span style={{fontWeight: "bold", textDecoration: "underline", cursor: "pointer", color: "#3bb77e"}} onClick={toggleLogin}>{navigateTo}</span>.</p>
                 </div>
                 {
                     proceedError &&

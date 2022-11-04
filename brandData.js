@@ -6,7 +6,13 @@ veg: [
         rating: "4.5",
         realPrice: "120",
         discount: "5",
-        isVeg: true
+        isVeg: true,
+        info: {
+            about: "Dal refers to lentils. Tadka means tempering (infusing fat, typically oil or ghee, with spices and aromatics). This involves heating oil or ghee, adding spices like cumin seeds, dried red chili peppers, and curry leaves to infuse flavors into the oil.",
+            course: "Main",
+            servingTemperature: "Hot",
+            mainIngredient: "Pigeon Pea"
+        }
     },
     {
         id: "vegTadka",
@@ -15,7 +21,13 @@ veg: [
         rating: "4.2",
         realPrice: "140",
         discount: "5",
-        isVeg: true
+        isVeg: true,
+        info: {
+            about: "Veg Tadka is one of the most popular lentil dish served in Indian restaurants. Basically, veg tadka is cooked lentils which are tempered with oil or ghee fried spices & herbs.",
+            course: "Main",
+            servingTemperature: "Hot",
+            mainIngredient: "Red Lentils"
+        }
     },
     {
         id: "dalFry",
@@ -24,7 +36,13 @@ veg: [
         rating: "3.9",
         realPrice: "130",
         discount: "5",
-        isVeg: true
+        isVeg: true,
+        info: {
+            about: "Dal Fry is a popular Indian lentil dish made with toor dal (yellow split pigeon peas), onion, tomatoes, ginger, garlic, herbs, and spices. It is nutritious, delicious, easy to make, and comfort food!",
+            course: "Main",
+            servingTemperature: "Hot",
+            mainIngredient: "Split Pigeon Peas"
+        }
     },
     {
         id: "dalAmritsari",
@@ -33,7 +51,13 @@ veg: [
         rating: "4.4",
         realPrice: "120",
         discount: "5",
-        isVeg: true
+        isVeg: true,
+        info: {
+            about: "Amritsari Dal recipe is an authentic winter food among the people of Punjab. The Dal is made with a blend of Black Urad Dal and Channa Dal which is cooked in a pressure cooker. Then the dal is tempered with onions, ginger, garlic and flavoured with authentic spices.",
+            course: "Main",
+            servingTemperature: "Hot",
+            mainIngredient: "Black & Chickpea Lentils"
+        }
     },
     {
         id: "dalMakhni",
@@ -42,7 +66,13 @@ veg: [
         rating: "4.8",
         realPrice: "160",
         discount: "5",
-        isVeg: true
+        isVeg: true,
+        info: {
+            about: "Dal makhani is a dish originating in New Delhi, India. A relatively modern variation of traditional lentil dishes, it is made with urad dal and other pulses, and includes butter and cream.",
+            course: "Main",
+            servingTemperature: "Hot",
+            mainIngredient: "Black & Other Lentils"
+        }
     },
     {
         id: "chanaMasala",
@@ -51,7 +81,13 @@ veg: [
         rating: "4.1",
         realPrice: "150",
         discount: "5",
-        isVeg: true
+        isVeg: true,
+        info: {
+            about: "Chana Masala is the name for the larger and lighter coloured chickpea commonly found in the West. Chana masala is fairly dry and spicy with a sour citrus note (the flavor usually comes from coriander and onion).",
+            course: "Main",
+            servingTemperature: "Hot",
+            mainIngredient: "Chickpeas"
+        }
     },
     {
         id: "kadaiPaneer",
@@ -60,7 +96,13 @@ veg: [
         rating: "4.5",
         realPrice: "200",
         discount: "5",
-        isVeg: true
+        isVeg: true,
+        info: {
+            about: "Cottage cheese (paneer/chhena) and bell peppers (Shimla Mirch);are sauteed in a tangy tomato sauce with Kadahi masala to prepare this modern Indian restaurant delicacy.",
+            course: "Main",
+            servingTemperature: "Hot",
+            mainIngredient: "Cottage Cheese"
+        }
     },
     {
         id: "shahiPaneer",
@@ -69,7 +111,13 @@ veg: [
         rating: "4.9",
         realPrice: "180",
         discount: "5",
-        isVeg: true
+        isVeg: true,
+        info: {
+            about: "Shahi paneer is a preparation of paneer, native to the Indian subcontinent, consisting of a thick gravy of cream, tomatoes and Indian spices.",
+            course: "Main",
+            servingTemperature: "Hot",
+            mainIngredient: "Cottage Cheese"
+        }
     },
     {
         id: "paneerButterMasala",
@@ -78,7 +126,13 @@ veg: [
         rating: "4.6",
         realPrice: "240",
         discount: "5",
-        isVeg: true
+        isVeg: true,
+        info: {
+            about: "Paneer Butter Masala is a slightly sweet Indian dish of paneer, originating in Delhi, in which the gravy is prepared usually with butter (makhan), tomatoes and cashews.",
+            course: "Main",
+            servingTemperature: "Hot",
+            mainIngredient: "Cottage Cheese"
+        }
     },
     {
         id: "paneerMakhni",
@@ -87,7 +141,13 @@ veg: [
         rating: "4.2",
         realPrice: "220",
         discount: "5",
-        isVeg: true
+        isVeg: true,
+        info: {
+            about: "Paneer Makhni is a slightly sweet Indian dish of paneer, originating in Delhi, in which the gravy is prepared usually with butter (makhan - hence called makhni), tomatoes and cashews.",
+            course: "Main",
+            servingTemperature: "Hot",
+            mainIngredient: "Cottage Cheese & Butter"
+        }
     },
     {
         id: "alooGobhi",
@@ -96,7 +156,13 @@ veg: [
         rating: "4.5",
         realPrice: "120",
         discount: "5",
-        isVeg: true
+        isVeg: true,
+        info: {
+            about: "Aloo Gobhi is a vegetarian dish made with potatoes (aloo), cauliflower (gobhi), and Indian spices. It is yellowish in colour due to the use of turmeric, and occasionally contains black cumin and curry leaves. ",
+            course: "Main",
+            servingTemperature: "Hot",
+            mainIngredient: "Potatoes & Cauliflower"
+        }
     },
     {
         id: "Bhindi Masala",
@@ -105,7 +171,13 @@ veg: [
         rating: "4.2",
         realPrice: "130",
         discount: "5",
-        isVeg: true
+        isVeg: true,
+        info: {
+            about: "Bhindi masala or Bharwan bhindi is stir fried okra (ladies' finger) that is slit and stuffed with spice mix such as garam masala and other locally available ground spices.",
+            course: "Main",
+            servingTemperature: "Hot",
+            mainIngredient: "Ladyfinger"
+        }
     },
     {
         id: "alooMatar",
@@ -114,7 +186,13 @@ veg: [
         rating: "3.9",
         realPrice: "120",
         discount: "5",
-        isVeg: true
+        isVeg: true,
+        info: {
+            about: "Aloo mutter is a vegetarian North Indian dishwhich is made from potatoes (Aloo) and peas (mattar) in a mildly spiced creamy tomato based gravy. It is a vegetarian dish.",
+            course: "Main",
+            servingTemperature: "Hot",
+            mainIngredient: "Potatoes & Peas"
+        }
     },
     {
         id: "mixVeg",
@@ -123,7 +201,13 @@ veg: [
         rating: "4.3",
         realPrice: "150",
         discount: "5",
-        isVeg: true
+        isVeg: true,
+        info: {
+            about: "Mix veg is made by cooking a mixture of vegetables together in a traditional Indian onion-tomato gravy. The dish is characterized by multiple flavors due to the addition of many vegetables which also makes it quite nutritious.",
+            course: "Main",
+            servingTemperature: "Hot",
+            mainIngredient: "Potatoes, Carrot, Cauliflower, Cottage Cheese etc."
+        }
     },
     {
         id: "saag",
@@ -132,7 +216,13 @@ veg: [
         rating: "4.7",
         realPrice: "150",
         discount: "5",
-        isVeg: true
+        isVeg: true,
+        info: {
+            about: "Sarson ka saag is a popular vegetarian dish from the northern region of the Indian subcontinent. It is made from mustard greens (sarson) and spices such as ginger and garlic.",
+            course: "Main",
+            servingTemperature: "Hot",
+            mainIngredient: "Mustard Leaves"
+        }
     },
     {
         id: "mashroomMasala",
@@ -141,7 +231,13 @@ veg: [
         rating: "4.5",
         realPrice: "180",
         discount: "5",
-        isVeg: true
+        isVeg: true,
+        info: {
+            about: "Mushroom Masala is a delicious Punjabi style one-pot mushroom Curry made with white button mushrooms in a spiced onion-tomato gravy.",
+            course: "Main",
+            servingTemperature: "Hot",
+            mainIngredient: "Toadstool"
+        }
     }
 ]
 

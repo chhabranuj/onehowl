@@ -1,7 +1,8 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Layout from "../../components/layout/layout";
-import SpecificProductsLayout from "../../components/Products/specificProductsLayout/specificProductsLayout";
+import SpecificCategoriesLayout from "../../components/Categories/specificCategoriesLayout/specificCategoriesLayout";
+
 
 const Category = () => {
     const router = useRouter();
@@ -11,7 +12,7 @@ const Category = () => {
             <Head>
                 <title>Category | OneHowl</title>
             </Head>
-            <SpecificProductsLayout title={router.query.title} data={router.query.data} />
+            <SpecificCategoriesLayout categoryId={router.query.categoryId} />
         </Layout>
     );
 }
@@ -21,22 +22,32 @@ export const getStaticPaths = async () => {
         paths: [
             {
                 params: { 
-                    category: "burgers"
+                    category: "veg"
                 } 
             },
             {
                 params: { 
-                    category: "fries"
+                    category: "nonVeg"
                 } 
             },
             {
                 params: { 
-                    category: "nuggets"
+                    category: "Rice"
                 } 
             },
             {
                 params: { 
-                    category: "combo"
+                    category: "Chinese"
+                } 
+            },
+            {
+                params: { 
+                    category: "SouthIndian"
+                } 
+            },
+            {
+                params: { 
+                    category: "Breads"
                 } 
             },
             {
@@ -46,7 +57,7 @@ export const getStaticPaths = async () => {
             },
             {
                 params: { 
-                    category: "drinks"
+                    category: "Drinks"
                 } 
             },
         ],
@@ -56,9 +67,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = () => {
     return {
-        props: {
-
-        }
+        props: {}
     }
 }
 

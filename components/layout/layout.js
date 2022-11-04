@@ -5,7 +5,8 @@ import TitleBarLayout from "../titleBarLayout/titleBarLayout";
 import NewsletterLayout from "../newsletterLayout/newsletterLayout";
 import OurServicesLayout from "../ourServicesLayout/ourServicesLayout";
 
-const Layout = ({ children }) => {
+const Layout = (props) => {
+
     return (
         <div>
             <Head>
@@ -16,8 +17,8 @@ const Layout = ({ children }) => {
                 />
                 <title>OneHowl</title>
             </Head>
-            <TitleBarLayout />
-            <main>{children}</main>
+            <TitleBarLayout/>
+            <main>{props.children}</main>
             <NewsletterLayout />
             <OurServicesLayout />
             <FooterLayout />

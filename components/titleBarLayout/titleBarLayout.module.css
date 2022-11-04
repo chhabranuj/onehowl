@@ -57,11 +57,11 @@
     flex-wrap: wrap;
     padding: 10px 0;
     margin-top: 10px;
-    border-radius: 5px;
     align-items: center;
+    border-radius: 1rem;
     justify-content: center;
     background-color: white;
-    border: 1px solid #3bb77e;
+    border: 0.3px solid #3bb77e;
 }
 
 .categoriesMenuContent {
@@ -73,12 +73,21 @@
     border-radius: 5px;
     align-items: center;
     border: 1px solid #ececec;
+    transition: all .3s ease 0s;
     justify-content: space-evenly;
     font-family: 'Quicksand', sans-serif;
 }
 
 .categoriesMenuContent:hover {
-    border: 1px solid #FDC040;
+    border: 1px solid #3bb77e;
+}
+
+.categoriesMenuContentTitle {
+    margin: 0.6rem 0;
+}
+
+.categoriesMenuContent:hover .categoriesMenuContentTitle{
+    color: #3bb77e;
 }
 
 .categoriesMenuContentQuantity {
@@ -116,6 +125,20 @@
 
 .serviceTitle:hover {
     color: #3bb77e;
+}
+
+.cartQuantity {
+    margin: 0;
+    display: flex;
+    width: 1.2rem;
+    color: white;
+    height: 1.2rem;
+    font-size: x-small;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: green;
 }
 
 .searchAndExtraServicesContainer {

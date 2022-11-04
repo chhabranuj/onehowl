@@ -1,59 +1,31 @@
-import { useState } from "react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import { BiCategoryAlt } from "react-icons/bi";
 import { AiOutlineUser } from "react-icons/ai";
 import { MdOutlineCelebration } from "react-icons/md";
 import { IoMdHelpCircleOutline } from "react-icons/io";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import titleBarLayoutStyle from "./titleBarLayout.module.css";
 import { cartSelector } from "../store/reducers/cartReducer";
-import { GiHamburger, GiFullPizza, GiSandwich, GiDrinkMe } from "react-icons/gi";
+import titleBarLayoutStyle from "./titleBarLayout.module.css";
 import ButtonLayout from "../Attributes/buttonLayout/buttonLayout";
+import { productSelector } from "../store/reducers/productReducer";
 
-const TitleBarLayout = (props) => {
+const TitleBarLayout = () => {
+    const router = useRouter();
+    const cart = useSelector(cartSelector);
+    const productData = useSelector(productSelector);
     const [menuToggle, setMenuToggle] = useState(false);
+    const [totalQuantity, setTotalQuantity] = useState(0);
     const extraServices = ["Home", "About", "Deals", "Orders", "Privacy Policy", "Contact"];
-    const services = [
-        {
-            title: "Offers",
-            icon: <MdOutlineCelebration className={titleBarLayoutStyle.serviceIcon} />
-        },
-        {
-            title: "Help",
-            icon: <IoMdHelpCircleOutline className={titleBarLayoutStyle.serviceIcon} />
-        },
-        {
-            title: "Cart",
-            icon: <AiOutlineShoppingCart className={titleBarLayoutStyle.serviceIcon}/>
-        },
-        {
-            title: "Account",
-            icon: <AiOutlineUser className={titleBarLayoutStyle.serviceIcon} />
-        }
-    ];
-    const categories = [
-        {
-            icon: <GiHamburger style={{color: "#3bb77e"}} />,
-            title: "Burgers",
-            types: "15"
-        },
-        {
-            icon: <GiFullPizza style={{color: "#3bb77e"}} />,
-            title: "Pizzas",
-            types: "13"
-        },
-        {
-            icon: <GiSandwich style={{color: "#3bb77e"}} />,
-            title: "Sandwiches",
-            types: "18"
-        },
-        {
-            icon: <GiDrinkMe style={{color: "#3bb77e"}} />,
-            title: "Drinks",
-            types: "16"
-        }
-    ];
+
+    useEffect(() => {
+        let tempTotalQuantity = 0;
+        cart.map(item => {
+            tempTotalQuantity = tempTotalQuantity + item.quantity;
+        })
+        setTotalQuantity(tempTotalQuantity);
+    })
 
     const handleMenuToggle = () => {
         setMenuToggle(!menuToggle);
@@ -73,12 +45,11 @@ const TitleBarLayout = (props) => {
                             menuToggle &&
                                 <div className={titleBarLayoutStyle.categoriesMenu}>
                                 {
-                                    categories.map((item, index) => {
+                                    productData.map((item, index) => {
                                         return(
                                             <div className={titleBarLayoutStyle.categoriesMenuContent} key={index}>
-                                                {item.icon}
-                                                <p style={{margin: "0.6rem 0"}}>{item.title}</p>
-                                                <p className={titleBarLayoutStyle.categoriesMenuContentQuantity}>{item.types}</p>
+                                                <p className={titleBarLayoutStyle.categoriesMenuContentTitle}>{item.category}</p>
+                                                <p className={titleBarLayoutStyle.categoriesMenuContentQuantity}>{item['items'].length}</p>
                                             </div>
                                         );
                                     })
@@ -87,16 +58,23 @@ const TitleBarLayout = (props) => {
                         }   
                     </div>
                     <div className={titleBarLayoutStyle.servicesContainer}>
-                        {
-                            services.map((item, index) => {
-                                return (
-                                    <div className={titleBarLayoutStyle.services} key={index}>
-                                        {item.icon}&nbsp;
-                                        <p className={titleBarLayoutStyle.serviceTitle}>{item.title}</p>
-                                    </div>
-                                );
-                            })
-                        }
+                        <div className={titleBarLayoutStyle.services}>
+                            <MdOutlineCelebration className={titleBarLayoutStyle.serviceIcon} />&nbsp;
+                            <p className={titleBarLayoutStyle.serviceTitle}>Offers</p>
+                        </div>
+                        <div className={titleBarLayoutStyle.services}>
+                            <IoMdHelpCircleOutline className={titleBarLayoutStyle.serviceIcon} />&nbsp;
+                            <p className={titleBarLayoutStyle.serviceTitle}>Help</p>
+                        </div>
+                        <div className={titleBarLayoutStyle.services}>
+                            <AiOutlineShoppingCart className={titleBarLayoutStyle.serviceIcon} />&nbsp;
+                            <p className={titleBarLayoutStyle.serviceTitle} onClick={() => router.push("/cart")}>Cart</p>
+                            {totalQuantity > 0 && <p className={titleBarLayoutStyle.cartQuantity}>{totalQuantity}</p>}
+                        </div>
+                        <div className={titleBarLayoutStyle.services}>
+                            <AiOutlineUser className={titleBarLayoutStyle.serviceIcon} />&nbsp;
+                            <p className={titleBarLayoutStyle.serviceTitle} onClick={() => router.push("/login")}>Account</p>
+                        </div>
                     </div>
                 </div>
             </div>

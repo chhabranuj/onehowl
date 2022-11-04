@@ -17,16 +17,8 @@ const CartLayoutTableContent = (props) => {
     }
 
     return (
-        <tr >
-            <td className={cartLayoutTableContentStyle.cartTableContent}>
-                <Image 
-                    src={`/static${props.data.image}`}
-                    alt="Item Image"
-                    width={60}
-                    height={60}
-                    layout="fixed"
-                />
-            </td>
+        <tr>
+            <td className={cartLayoutTableContentStyle.cartTableContent}></td>
             <td className={cartLayoutTableContentStyle.cartTableContent} style={{color: "#3BB77E"}}>{props.data.name}</td>
             <td className={cartLayoutTableContentStyle.cartTableContent}>₹{Math.round(props.data.realPrice * (100 - props.data.discount) * 0.01)}</td>
             <td className={cartLayoutTableContentStyle.cartTableContent}>

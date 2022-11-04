@@ -1,16 +1,29 @@
 .cartParent {
     width: 100%;
     display: flex;
-    margin-top: 3rem;
+    padding-top: 2rem;
+    align-items: center;
+    padding-bottom: 1rem;
+    flex-direction: column;
+    background-color: white;
+    justify-content: flex-start;
+}
+
+.cartChild {
+    width: 90%;
+    display: flex;
+    padding: 2rem;
+    border-radius: 1rem; 
+    margin-bottom: 1rem;
     align-items: center;
     flex-direction: column;
-    justify-content: flex-start;
-    background-color: white;
+    justify-content: center;
+    border: 1px solid #ececec;
+    box-shadow: 0 7px 29px 0 rgb(100 100 111 / 20%);
 }
 
 .cartTable {
-    width: 80%;
-    margin-top: 4rem;
+    width: 100%;
     font-family: 'Quicksand', sans-serif;
 }
 
@@ -23,10 +36,31 @@
     background-color: #dcf2e5;
 }
 
+.footerParent {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    justify-content: space-between;
+}
+
+.footerTotalPrice {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.totalTitle {
+    color: #253D4E;
+    font-size: small;
+    font-weight: 500;
+}
+
 .emptyCartContainer {
     width: 90%;
     display: flex;
-    margin-top: 5rem;
+    margin-top: 2rem;
     align-items: center;
     flex-direction: column;
     justify-content: center;
@@ -38,14 +72,9 @@
     font-family: 'Quicksand', sans-serif;
 }
 
-
-
 @media screen and (max-width: 700px) {
-    .stepsDivider {
-        width: 10%;
-    }
-
-    .cartTable {
+    .cartChild {
+        padding: 1rem;
         display: block;
         overflow: auto;
     }

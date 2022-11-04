@@ -1,0 +1,24 @@
+.specificCategoriesParent {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    justify-content: flex-start;
+    margin: 2rem 0;
+}
+
+.itemContainer {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.categoriesMenu {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
