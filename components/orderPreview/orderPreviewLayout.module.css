@@ -1,0 +1,50 @@
+.container {
+    width: 100%;
+    display: flex;
+    border-radius: 1rem;
+    padding: 1.5rem 2.5rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    border: 1px solid #ececec;
+    font-family: 'Quicksand', sans-serif;
+    box-shadow: 0 7px 29px 0 rgb(100 100 111 / 20%);
+}
+
+.title {
+    width: 100%;
+    margin-top: 0;
+    color: #253d4e;
+    font-weight: bold;
+    font-size: x-large;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #ececec;
+}
+
+.productTable {
+    width: 100%;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.tableTitle {
+    font-size: 1rem;
+    color: #253D4E;
+    text-align: left;
+    font-weight: 600;
+    padding: 0.8rem 1.2rem;
+    background-color: #dcf2e5;
+}
+
+.tableContent {
+    font-weight: 500;
+    color: #7E7E7E;
+    padding: 0.8rem 1.2rem;
+    border-bottom: 1px solid #ececec;
+}
+
+.totalTitle {
+    color: #253d4e;
+    font-weight: bold;
+    padding: 0.8rem 1.2rem;
+    border-top: 1px solid #ececec;
+}

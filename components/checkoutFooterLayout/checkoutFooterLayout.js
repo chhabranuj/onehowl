@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { useEffect, useState} from "react";
 import { BsArrowRight } from "react-icons/bs";
+import LoaderLayout from "../loaderLayout/loaderLayout";
 import { cartSelector } from "../store/reducers/cartReducer";
 import ButtonLayout from "../Attributes/buttonLayout/buttonLayout";
 import checkoutFooterLayoutStyle from "./checkoutFooterLayout.module.css";
@@ -11,6 +12,7 @@ const CheckoutFooterLayout = () => {
     const cart = useSelector(cartSelector);
     const [totalItems, setTotalItems] = useState(0);
     const [totalPrice, setTotalPrice] = useState(0);
+    const [showLoader, setShowLoader] = useState(false);
     const [totalDiscount, setTotalDiscount] = useState(0);
 
     useEffect(() => {
@@ -27,6 +29,7 @@ const CheckoutFooterLayout = () => {
     })
 
     const navigateToCart = () => {
+        setShowLoader(true);
         router.push("/cart");
     }
 
@@ -44,6 +47,7 @@ const CheckoutFooterLayout = () => {
                         <ButtonLayout buttonText="CHECKOUT" buttonWidth="auto" buttonPadding="10px 20px" buttonBgColor="#3BB77E" buttonBgHoverColor="#FDC040" rightButtonIcon={<BsArrowRight />} handleButtonClick={navigateToCart} />
                     </div>
             }
+            {showLoader && <LoaderLayout title="Please wait. Your cart is getting ready." />}
         </div>
     );
 }

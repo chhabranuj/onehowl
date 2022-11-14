@@ -10,6 +10,7 @@ import { cartSelector } from "../store/reducers/cartReducer";
 import titleBarLayoutStyle from "./titleBarLayout.module.css";
 import ButtonLayout from "../Attributes/buttonLayout/buttonLayout";
 import { productSelector } from "../store/reducers/productReducer";
+import { signOut } from "next-auth/react";
 
 const TitleBarLayout = () => {
     const router = useRouter();
@@ -58,7 +59,7 @@ const TitleBarLayout = () => {
                         }   
                     </div>
                     <div className={titleBarLayoutStyle.servicesContainer}>
-                        <div className={titleBarLayoutStyle.services}>
+                        <div className={titleBarLayoutStyle.services} onClick={() => signOut()}>
                             <MdOutlineCelebration className={titleBarLayoutStyle.serviceIcon} />&nbsp;
                             <p className={titleBarLayoutStyle.serviceTitle}>Offers</p>
                         </div>
@@ -73,7 +74,7 @@ const TitleBarLayout = () => {
                         </div>
                         <div className={titleBarLayoutStyle.services}>
                             <AiOutlineUser className={titleBarLayoutStyle.serviceIcon} />&nbsp;
-                            <p className={titleBarLayoutStyle.serviceTitle} onClick={() => router.push("/login")}>Account</p>
+                            <p className={titleBarLayoutStyle.serviceTitle} onClick={() => {router.push("/login");}}>Account</p>
                         </div>
                     </div>
                 </div>

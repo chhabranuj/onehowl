@@ -11,7 +11,6 @@ import CartLayoutTableContent from "../cartLayoutTableContent/cartLayoutTableCon
 const CartLayout = () => {
     const router = useRouter();
     const cart = useSelector(cartSelector);
-    const [tableWidth, setTableWidth] = useState(0)
     const [totalPrice, setTotalPrice] = useState(0);
     const [isCartEmpty, setIsCartEmpty] = useState (false);
 
@@ -20,9 +19,8 @@ const CartLayout = () => {
         let tempTotalPrice = 0;
         cart.map(item => {
             tempTotalPrice = tempTotalPrice + (Math.floor(item.realPrice * (100 - item.discount) * 0.01) * item.quantity);
-        })
+        });
         setTotalPrice(tempTotalPrice);
-        setTableWidth(document.getElementById("table").offsetWidth);
     })
 
     const handleSaveCart = () => {}
@@ -41,32 +39,32 @@ const CartLayout = () => {
             {
                 !isCartEmpty?
                     <div className={cartLayoutStyle.cartChild}>
-                        <table id="table" className={cartLayoutStyle.cartTable} cellSpacing="0">
-                            <thead>
-                                <tr>
-                                    <th className={cartLayoutStyle.cartTableTitle} style={{borderRadius: "1.2rem 0 0 1.2rem"}}></th>
-                                    <th className={cartLayoutStyle.cartTableTitle}>Product</th>
-                                    <th className={cartLayoutStyle.cartTableTitle}>Price</th>
-                                    <th className={cartLayoutStyle.cartTableTitle}>Quantity</th>
-                                    <th className={cartLayoutStyle.cartTableTitle} style={{borderRadius: "0 1.2rem 1.2rem 0"}}>Subtotal</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    cart.map((item, index) => {
-                                        return (
-                                            <CartLayoutTableContent data={item} key={index} />
-                                        );
-                                    })
-                                }
-                            </tbody>
-                        </table>
-                        <div style={{width: `${tableWidth}px`}} className={cartLayoutStyle.footerParent}>
+                        <div className={cartLayoutStyle.tableContainer}>
+                            <table id="table" className={cartLayoutStyle.cartTable} cellSpacing="0">
+                                <thead>
+                                    <tr>
+                                        <th className={cartLayoutStyle.cartTableTitle} style={{borderRadius: "1.2rem 0 0 1.2rem"}}></th>
+                                        <th className={cartLayoutStyle.cartTableTitle}>Product</th>
+                                        <th className={cartLayoutStyle.cartTableTitle}>Price</th>
+                                        <th className={cartLayoutStyle.cartTableTitle}>Quantity</th>
+                                        <th className={cartLayoutStyle.cartTableTitle} style={{borderRadius: "0 1.2rem 1.2rem 0"}}>Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        cart.map((item, index) => {
+                                            return (
+                                                <CartLayoutTableContent data={item} key={index} />
+                                            );
+                                        })
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <p style={{width: "100%", textAlign: "center"}} className={cartLayoutStyle.totalTitleMobile}><span style={{fontWeight: "bold"}}>Total Price:- </span>&nbsp;₹{totalPrice}</p>
+                        <div className={cartLayoutStyle.footerParent}>
                             <ButtonLayout buttonText="SAVE CART" buttonWidth="auto" buttonPadding="0.75rem 1rem" buttonBgColor="#3BB77E" buttonBgHoverColor="#FDC040" handleButtonClick={handleSaveCart} />
-                            <div className={cartLayoutStyle.footerTotalPrice}>
-                                <p style={{margin: "0", fontWeight: "bold"}} className={cartLayoutStyle.totalTitle}>Total Price:-</p>
-                                <p style={{margin: "0"}} className={cartLayoutStyle.totalTitle}>&nbsp;₹{totalPrice}</p>
-                            </div>
+                            <p style={{margin: "0"}} className={cartLayoutStyle.totalTitle}><span style={{fontWeight: "bold"}}>Total Price:- </span>&nbsp;₹{totalPrice}</p>
                             <ButtonLayout buttonText="PROCEED&nbsp;&nbsp;&#8594;" buttonWidth="auto" buttonPadding="0.75rem 1rem" buttonBgColor="#3BB77E" buttonBgHoverColor="#FDC040" handleButtonClick={navigateToAddress} />
                         </div>
                     </div>:

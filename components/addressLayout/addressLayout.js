@@ -1,26 +1,29 @@
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { BsArrowRight } from "react-icons/bs";
 import { indianStates } from "../utils/indianStates";
 import addressLayoutStyle from "./addressLayout.module.css";
 import { cartSelector } from "../store/reducers/cartReducer";
+import OrderPreview from "../orderPreview/orderPreviewLayout";
 import InputLayout from "../Attributes/inputLayout/inputLayout";
 import PageAboutLayout from "../pageAboutLayout/pageAboutLayout";
 import ButtonLayout from "../Attributes/buttonLayout/buttonLayout";
 import inputLayoutStyle from "../Attributes/inputLayout/inputLayout.module.css";
+import { userSelector } from "../store/reducers/userReducer";
 
 const AddressLayout = () => {
     const router = useRouter();
     const cart = useSelector(cartSelector);
+    const user = useSelector(userSelector);
     const [states, setStates] = useState(false);
-    const [totalPrice, setTotalPrice] = useState(0);
     const [newAddress, setNewAddress] = useState(false);
     const [addressTitle, setAddressTitle] = useState("Your Address");
     const [addressData, setAddressData] = useState({
-        address: "",
-        state: "",
-        city: "",
-        pinCode: ""
+        address: user.address,
+        state: user.state,
+        city: user.city,
+        pinCode: user.pinCode
     });
     const [tempAddressData, setTempAddressData] = useState({
         tempAddress: "",
@@ -40,12 +43,6 @@ const AddressLayout = () => {
         if(cart.length == 0) {
             router.push("/");
         }
-
-        let tempTotalPrice = 0;
-        cart.map(item => {
-            tempTotalPrice = tempTotalPrice + (Math.floor(item.realPrice * (100 - item.discount) * 0.01) * item.quantity);
-        })
-        setTotalPrice(tempTotalPrice);
     })
 
     const togggleNewAddress = () => {
@@ -65,11 +62,15 @@ const AddressLayout = () => {
     }
 
     const navigateToOrderConfirmed = () => {
+        setNewAddress(false);
         if(addressData.state != "Delhi") {
             setErrors({
                 ...errors,
                 serveError: true
             });
+        }
+        else {
+            router.push("/confirmOrder");
         }
     }
 
@@ -152,7 +153,7 @@ const AddressLayout = () => {
                 ...errors,
                 saveError: false
             });
-            togggleNewAddress(false);
+            setNewAddress(false);
             setAddressData({
                 address: tempAddressData.tempAddress,
                 state: tempAddressData.tempState,
@@ -168,33 +169,7 @@ const AddressLayout = () => {
             <PageAboutLayout title="Address" path={<span><span style={{color: "rgb(119, 164, 100)"}}>Cart &#8658;&nbsp;</span> <span>Address</span></span> } />
             <div className={addressLayoutStyle.addressChild}>
                 <div className={addressLayoutStyle.containerParent}>
-                    <div className={addressLayoutStyle.container}>
-                        <p className={addressLayoutStyle.title}>Your Order</p>
-                        <table className={addressLayoutStyle.productTable} cellSpacing="0">
-                            <thead>
-                                <tr>
-                                    <th style={{borderRadius: "1rem 0 0 1rem", width: "80%"}} className={addressLayoutStyle.tableTitle}>Product</th>
-                                    <th style={{borderRadius: " 0 1rem 1rem 0", width: "20%"}} className={addressLayoutStyle.tableTitle}>Subtotal</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                    {
-                                        cart.map((item, index) => {
-                                            return (
-                                                <tr key={index}>
-                                                    <td style={{color: "#3bb77e", fontWeight: "bold"}} className={addressLayoutStyle.tableContent}>{item.name}<br /><span style={{fontSize: "small", color: "grey"}}>X {item.quantity}</span></td>
-                                                    <td className={addressLayoutStyle.tableContent}>₹{Math.floor(item.realPrice * (100 - item.discount) * 0.01) * item.quantity}</td>
-                                                </tr>
-                                            );
-                                        })
-                                    }
-                                    <tr>
-                                        <td className={addressLayoutStyle.totalTitle}>Total</td>
-                                        <td style={{color: "grey", fontWeight: "500"}} className={addressLayoutStyle.totalTitle}>₹{totalPrice}</td>
-                                    </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <OrderPreview />
                 </div>
                 <div className={addressLayoutStyle.containerParent}>
                     <div className={addressLayoutStyle.container}>
@@ -206,7 +181,7 @@ const AddressLayout = () => {
                     </div>
                     <div className={addressLayoutStyle.newAddressOrProceedButtonParent}>
                         <ButtonLayout buttonText="Enter New Address" buttonWidth="60%" buttonPadding="1rem 0" buttonBgColor="#3BB77E" buttonBgHoverColor="#FDC040" handleButtonClick={togggleNewAddress} />
-                        <ButtonLayout buttonText="Place Order" buttonWidth="30%" buttonPadding="1rem 0" buttonBgColor="#3BB77E" buttonBgHoverColor="#FDC040" handleButtonClick={navigateToOrderConfirmed} />
+                        <ButtonLayout buttonText="Proceed" buttonWidth="30%" buttonPadding="1rem 0" buttonBgColor="#3BB77E" buttonBgHoverColor="#FDC040" rightButtonIcon={<BsArrowRight />} handleButtonClick={navigateToOrderConfirmed} />
                     </div>
                     {
                         errors.serveError &&

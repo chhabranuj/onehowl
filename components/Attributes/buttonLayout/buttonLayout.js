@@ -17,8 +17,8 @@ const ButtonLayout = (props) => {
                     outline: none;
                     cursor: pointer;
                     margin: 0.8rem 0;
-                    border-radius: 5px;
                     align-items: center;
+                    border-radius: 0.3rem;
                     justify-content: center;
                     width: ${props.buttonWidth};
                     font-size: ${props.fontSize};

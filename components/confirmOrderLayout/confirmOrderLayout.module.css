@@ -1,0 +1,54 @@
+.confirmOrderParent {
+    width: 100%;
+    display: flex;
+    padding: 2rem 0;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.orderDetails {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.couponButtonContainer {
+    width: 100%;
+    display: flex;
+    margin: 1rem 0;
+    padding: 0 1rem;
+    align-items: center;
+    border-radius: 0.5rem;
+    justify-content: flex-start;
+    background-color: #F4F6FA;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+.couponTitle {
+    margin: 0;
+    padding: 1rem 0;
+    color: #253D4E;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-left: 1rem;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.couponButtonText {
+    cursor: pointer;
+    color: #3bb77e;
+    transition: all .3s ease 0s;
+}
+
+.couponButtonText:hover {
+    color: #FDC040;
+}
+
+.couponContainer {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}

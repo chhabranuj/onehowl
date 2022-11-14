@@ -20,7 +20,7 @@ const CartLayoutTableContent = (props) => {
         <tr>
             <td className={cartLayoutTableContentStyle.cartTableContent}></td>
             <td className={cartLayoutTableContentStyle.cartTableContent} style={{color: "#3BB77E"}}>{props.data.name}</td>
-            <td className={cartLayoutTableContentStyle.cartTableContent}>₹{Math.round(props.data.realPrice * (100 - props.data.discount) * 0.01)}</td>
+            <td className={cartLayoutTableContentStyle.cartTableContent}>₹{Math.floor(props.data.realPrice * (100 - props.data.discount) * 0.01)}</td>
             <td className={cartLayoutTableContentStyle.cartTableContent}>
                 <div className={cartLayoutTableContentStyle.addRemoveConatiner}>
                     <IoMdRemoveCircle style={{fontSize: "x-large", color: "rgb(255,111,111)", cursor: "pointer"}} onClick={handleRemoveItem} />
@@ -28,7 +28,7 @@ const CartLayoutTableContent = (props) => {
                     <IoMdAddCircle style={{fontSize: "x-large", color: "#3BB77E", cursor: "pointer"}} onClick={handleAddItem} />
                 </div>
             </td>
-            <td className={cartLayoutTableContentStyle.cartTableContent}>₹{(Math.round(props.data.realPrice * (100 - props.data.discount) * 0.01) * props.data.quantity)}</td>
+            <td className={cartLayoutTableContentStyle.cartTableContent}>₹{(Math.floor(props.data.realPrice * (100 - props.data.discount) * 0.01) * props.data.quantity)}</td>
         </tr>
     );
 }
