@@ -68,6 +68,7 @@
 .serveErrorTitle {
     margin: 0;
     color: white;
+    text-align: center;
 }
 
 .stateParent {
@@ -151,5 +152,9 @@
     .containerParent {
         width: 90%;
         margin-bottom: 2rem;
+    }
+
+    .serveErrorTitle {
+        margin: 0 0.2rem;
     }
 }

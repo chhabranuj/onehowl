@@ -3,20 +3,22 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { indianStates } from "../utils/indianStates";
+import LoaderLayout from "../loaderLayout/loaderLayout";
 import addressLayoutStyle from "./addressLayout.module.css";
 import { cartSelector } from "../store/reducers/cartReducer";
+import { userSelector } from "../store/reducers/userReducer";
 import OrderPreview from "../orderPreview/orderPreviewLayout";
 import InputLayout from "../Attributes/inputLayout/inputLayout";
 import PageAboutLayout from "../pageAboutLayout/pageAboutLayout";
 import ButtonLayout from "../Attributes/buttonLayout/buttonLayout";
 import inputLayoutStyle from "../Attributes/inputLayout/inputLayout.module.css";
-import { userSelector } from "../store/reducers/userReducer";
 
 const AddressLayout = () => {
     const router = useRouter();
     const cart = useSelector(cartSelector);
     const user = useSelector(userSelector);
     const [states, setStates] = useState(false);
+    const [showLoader, setShowLoader] = useState(false);
     const [newAddress, setNewAddress] = useState(false);
     const [addressTitle, setAddressTitle] = useState("Your Address");
     const [addressData, setAddressData] = useState({
@@ -70,7 +72,11 @@ const AddressLayout = () => {
             });
         }
         else {
-            router.push("/confirmOrder");
+            setShowLoader(true);
+            router.push({
+                pathname: "/confirmOrder",
+                query: {addressData: JSON.stringify(addressData)}
+            }, "/confirmOrder");
         }
     }
 
@@ -236,6 +242,7 @@ const AddressLayout = () => {
                     }
                 </div>
             </div>
+            {showLoader && <LoaderLayout title="Please Wait. While we get your summary." />}
         </div>
     );
 }

@@ -2,18 +2,23 @@ import Head from 'next/head';
 import { useEffect } from 'react';
 import { useDispatch} from 'react-redux';
 import clientPromise from '../lib/mongodb';
+import { useSession } from "next-auth/react";
 import Layout from '../components/layout/layout';
+import { addUser } from '../components/store/reducers/userReducer';
 import LandingLayout from "../components/landingLayout/landingLayout";
 import { addData } from '../components/store/reducers/productReducer';
 import CategoriesLayout from '../components/Categories/categoriesLayout/categoriesLayout';
 import CheckoutFooterLayout from '../components/checkoutFooterLayout/checkoutFooterLayout';
 import FeaturedCategoriesLayout from '../components/FeaturedCategories/featuredCategoriesLayout/featuredCategoiresLayout';
 
-const Home = ({posts}) => {
+const Home = (props) => {
   const dispatch = useDispatch();
+  const {data: session} = useSession();
 
   useEffect(() => {
-    dispatch(addData({data: JSON.parse(posts)}));
+    dispatch(addData({data: JSON.parse(props.products)}));
+    console.log(props.userResult);
+    // dispatch(addUser({data: JSON.parse(props.userResult)}));
   })
 
   return (
@@ -24,8 +29,8 @@ const Home = ({posts}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <LandingLayout />
-      <FeaturedCategoriesLayout data={posts} title="Featured Categories" titleId="fc" />
-      <CategoriesLayout data={posts} titleId="fc" />
+      <FeaturedCategoriesLayout data={props.products} title="Featured Categories" titleId="fc" />
+      <CategoriesLayout data={props.products} titleId="fc" />
       <CheckoutFooterLayout />
     </Layout>
   )
@@ -35,10 +40,13 @@ export const getStaticProps = async () => {
   const client = await clientPromise;
   const database = client.db(process.env.MONGO_DB);
   const productCollection = database.collection("productCollection");
-  const result = await productCollection.find({}).toArray();
+  const userCollection = database.collection("userCollection");
+  const productResult = await productCollection.find({}).toArray();
+  const userResult = await productCollection.findOne({_id: "anujchhabra1901@gmail.com"});
   return {
     props: {
-      posts: JSON.stringify(result)
+      products: JSON.stringify(productResult),
+      user: JSON.stringify(userResult)
     }
   }
 }

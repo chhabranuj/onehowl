@@ -7,7 +7,7 @@ const AddUserModel = async (req, res) => {
         const database = client.db(process.env.MONGO_DB);
         const userCollection = database.collection("userCollection");
         const data = new UserModel(req.body);
-        const user = await userCollection.findOne({"_id": data._id});
+        const user = await userCollection.findOne({_id: data._id});
         if(user) {
             res.send({user, userExist: true, error: false})
         }

@@ -11,10 +11,7 @@
 }
 
 .titleBarFixedContainer {
-    top: 0;
-    z-index: 1;
     width: 100%;
-    position: fixed;
     background-color: white;
 }
 
@@ -42,17 +39,34 @@
     border-bottom: 1px solid #ececec;
 }
 
+.titleAndIconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .title {
     margin: 0;
     color: #3bb77e;
+    cursor: pointer;
     text-align: center;
     font-size: xxx-large;
     font-family: 'Londrina Solid';
 }
 
+.titleIcon {
+    color: #3bb77e;
+    font-size: 3.5rem;
+    margin-left: 0.5rem;
+}
+
+.menuButton:hover + .categoriesMenu {
+    display: flex;
+}
+
 .categoriesMenu {
     width: 30%;
-    display: flex;
+    display: none;
     position: fixed;
     flex-wrap: wrap;
     padding: 10px 0;
@@ -141,71 +155,6 @@
     background-color: green;
 }
 
-.searchAndExtraServicesContainer {
-    width: 100%;
-    display: flex;
-    padding: 20px 0;
-    margin-top: 19vh;
-    align-items: center;
-    justify-content: space-around;
-    border-bottom: 1px solid #ececec;
-}
-
-.searchInputContainer {
-    display: flex;
-    margin: 0 20px;
-    border-radius: 5px;
-    align-items: center;
-    width: calc(40% - 20px);
-    padding: 5px 5px 5px 10px; 
-    border: 2px solid #bce3c9;
-    justify-content: space-between;
-}
-
-.searchInput {
-    width: 70%;
-    border: none;
-    outline: none;
-    font-family: 'Quicksand', sans-serif;
-}
-
-.searchButton {
-    border: none;
-    color: white;
-    cursor: pointer;
-    padding: 8px 12px;
-    border-radius: 5px;
-    background-color: #3bb77e;
-    font-family: 'Quicksand', sans-serif;
-}
-
-.extraServicesContainerBigScreen {
-    width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.extraServicesContainerSmallScreen {
-    display: none;
-}
-
-.extraServiceTitle {
-    cursor: pointer;
-    color: #253d4e;
-    font-weight: bold;
-}
-
-.extraServiceTitle:hover {
-    color: #3bb77e;
-}
-
-@media screen and (max-width: 1250px) {
-    .categoriesMenu {
-        width: 40%;
-    }
-}
-
 @media screen and (max-width: 1250px) {
     .categoriesMenu {
         width: 50%;
@@ -222,6 +171,10 @@
         font-size: xx-large;
     }
 
+    .titleIcon {
+        font-size: xx-large;
+    }
+
     .categoriesMenu {
         width: 60%;
         flex-direction: column;
@@ -234,43 +187,10 @@
     .categoriesButton {
         margin: 5px 0;
     }
-
-    .searchInputContainer {
-        width: 90%;
-        margin-bottom: 15px;
-    }
-
-    .servicesContainer {
-        width: 90%;
-    }
-
-    .searchAndExtraServicesContainer {
-        margin-top: 22vh;
-        flex-direction: column;
-    }
-
-    .extraServicesContainerBigScreen {
-        display: none;
-    }
-
-    .extraServicesContainerSmallScreen {
-        width: 90%;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .extraServiceTitle {
-        margin: 0;
-    }
 }
 
 @media screen and (max-height: 700px) {
     .titleBarContainer {
         height: 30vh;
-    }
-    .searchAndExtraServicesContainer {
-        margin-top: 34vh;
     }
 }

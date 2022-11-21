@@ -1,15 +1,18 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { emptyCart } from "../store/reducers/cartReducer";
 import { cartSelector } from "../store/reducers/cartReducer";
 import PageAboutLayout from "../pageAboutLayout/pageAboutLayout";
+import ButtonLayout from "../Attributes/buttonLayout/buttonLayout";
 import { productSelector } from "../store/reducers/productReducer";
 import orderSummaryLayoutStyle from "./orderSummaryLayout.module.css";
 import FeaturedCategoriesLayout from "../FeaturedCategories/featuredCategoriesLayout/featuredCategoiresLayout";
-import ButtonLayout from "../Attributes/buttonLayout/buttonLayout";
 
 const OrderSummaryLayout = (props) => {
     const router = useRouter();
+    const dispatch = useDispatch();
     const cart = useSelector(cartSelector);
     const products = useSelector(productSelector);
 
@@ -17,6 +20,7 @@ const OrderSummaryLayout = (props) => {
         if(cart.length == 0) {
             router.push("/");
         }
+        dispatch(emptyCart({data: []}));
     })
 
     const navigateToHome = () => {}
@@ -38,9 +42,6 @@ const OrderSummaryLayout = (props) => {
                 <p className={orderSummaryLayoutStyle.additionalInfoContent}>Payment Method: <br /><span style={{color: "#3bb77e", fontWeight: "bold", letterSpacing: "0.1rem"}}>Cash on delivery</span></p>
                 <p className={orderSummaryLayoutStyle.additionalInfoContent}>Date: <br /><span style={{color: "#3bb77e", fontWeight: "bold", letterSpacing: "0.1rem"}}>{currentDate()}</span></p>
                 <p className={orderSummaryLayoutStyle.additionalInfoContent} style={{borderRight: "none"}}>Total: <br /><span style={{color: "#3bb77e", fontWeight: "bold", letterSpacing: "0.1rem"}}>₹{props.priceToPay}</span></p>
-            </div>
-            <div style={{width: "90%", marginTop: "3rem"}}>
-                <FeaturedCategoriesLayout data={products} title="Lets Shop More" />
             </div>
         </div>
     );

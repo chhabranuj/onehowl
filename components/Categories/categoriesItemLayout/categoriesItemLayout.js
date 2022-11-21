@@ -4,18 +4,30 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import ButtonLayout from "../../Attributes/buttonLayout/buttonLayout";
-import { addItem, cartSelector } from "../../store/reducers/cartReducer";
 import categoriesItemLayoutStyle from "./categoriesItemLayout.module.css";
+import { addItem, deleteItem, cartSelector } from "../../store/reducers/cartReducer";
 
 const CategoriesItemLayout = (props) => {
     const router = useRouter();
     const dispatch = useDispatch();
     const cart = useSelector(cartSelector);
     const [productId, setProductId] = useState("");
+    const [addDeleteButton, setAddDeleteButton] = useState({
+        title: "Add",
+        bgColor: "#3BB77E"
+    });
 
     useEffect(() => {
         setProductId(props.data.id);
-    })
+        cart.map(item => {
+            if(item.id == props.data.id) {
+                setAddDeleteButton({
+                    title: "Remove",
+                    bgColor: "#E74C3C"
+                });
+            }
+        })
+    }, [])
 
     const navigateToProductDetails = () => {
         cart.map(item => {
@@ -40,6 +52,17 @@ const CategoriesItemLayout = (props) => {
         })
         if(!productInCart) {
             dispatch(addItem({id: productId, name: props.data.title, image: props.data.image, realPrice: props.data.realPrice, discount: props.data.discount, quantity: 1}));
+            setAddDeleteButton({
+                title: "Remove",
+                bgColor: "#E74C3C"
+            });
+        }
+        else {
+            dispatch(deleteItem({id: productId}));
+            setAddDeleteButton({
+                title: "Add",
+                bgColor: "#3bb77e"
+            });
         }
     }
 
@@ -76,7 +99,7 @@ const CategoriesItemLayout = (props) => {
                         <p className={categoriesItemLayoutStyle.price}>Now At ₹{Math.floor((100-props.data.discount)*props.data.realPrice*0.01)}</p>
                         <p className={categoriesItemLayoutStyle.discount}><span style={{textDecoration: "line-through"}}>₹{props.data.realPrice}</span> ({props.data.discount}% Off)</p>
                     </div>
-                    <ButtonLayout buttonText="Add" buttonWidth="auto" buttonPadding="10px 20px" buttonBgColor="#3BB77E" buttonBgHoverColor="#FDC040" leftButtonIcon={<AiOutlineShoppingCart style={{maginRight: "5px"}} />} handleButtonClick={addToCart} />
+                    <ButtonLayout buttonText={addDeleteButton.title} buttonWidth="auto" buttonPadding="10px 20px" buttonBgColor={addDeleteButton.bgColor} buttonBgHoverColor="#FDC040" leftButtonIcon={<AiOutlineShoppingCart style={{maginRight: "5px"}} />} handleButtonClick={addToCart} />
                 </div>
             </div>
         </div>

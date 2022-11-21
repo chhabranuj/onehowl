@@ -1,8 +1,11 @@
+import axios from "axios";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 import { BsArrowLeft } from "react-icons/bs";
 import cartLayoutStyle from "./cartLayout.module.css";
+import LoaderLayout from "../../loaderLayout/loaderLayout";
 import { cartSelector } from "../../store/reducers/cartReducer";
 import PageAboutLayout from "../../pageAboutLayout/pageAboutLayout";
 import ButtonLayout from "../../Attributes/buttonLayout/buttonLayout";
@@ -10,27 +13,49 @@ import CartLayoutTableContent from "../cartLayoutTableContent/cartLayoutTableCon
 
 const CartLayout = () => {
     const router = useRouter();
+    const {data: session} = useSession();
     const cart = useSelector(cartSelector);
+    const [orderData, setOrderData] = useState([]);
     const [totalPrice, setTotalPrice] = useState(0);
     const [isCartEmpty, setIsCartEmpty] = useState (false);
+    const [showProceedLoader, setShowProceedLoader] = useState(false);
+    const [showSaveCartLoader, setShowSaveCartLoader] = useState(false);
 
     useEffect(() => {
-        cartEmpty();
+        cart.length? setIsCartEmpty(false): setIsCartEmpty(true);
         let tempTotalPrice = 0;
+        const cartItems = [];
         cart.map(item => {
+            const orderItem = {};
+            orderItem.name = item.name;
+            orderItem.quantity = item.quantity;
+            cartItems.push(orderItem);
             tempTotalPrice = tempTotalPrice + (Math.floor(item.realPrice * (100 - item.discount) * 0.01) * item.quantity);
         });
+        setOrderData(cartItems);
         setTotalPrice(tempTotalPrice);
-    })
+    }, [])
 
-    const handleSaveCart = () => {}
-
-    const navigateToAddress = () => {
-        router.push("/address");
+    const handleSaveCart = () => {
+        setShowSaveCartLoader(true);
+        const body = {
+            _id: session.user.email,
+            cart : orderData
+        }
+        axios.post("api/updateCart", body)
+            .then((response) => {
+                if(response.data.result) {
+                    setShowSaveCartLoader(false);
+                }
+                else {
+                    console.log("Error occured!!!");
+                }
+            })
     }
 
-    const cartEmpty = () => {
-        cart.length? setIsCartEmpty(false): setIsCartEmpty(true);
+    const navigateToAddress = () => {
+        setShowProceedLoader(true);
+        router.push("/address");
     }
 
     return (
@@ -74,6 +99,8 @@ const CartLayout = () => {
                         <ButtonLayout buttonText="HOME" buttonWidth="auto" buttonPadding="10px 20px" buttonBgColor="#3BB77E" buttonBgHoverColor="#FDC040" leftButtonIcon={<BsArrowLeft />} handleButtonClick={() => router.push("/")} />
                     </div>
             }
+            {showProceedLoader && <LoaderLayout title="Please Wait. Getting your address." />}
+            {showSaveCartLoader && <LoaderLayout title="Please Wait. Saving your cart." />}
         </div>
     );
 }

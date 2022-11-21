@@ -11,7 +11,7 @@ const OrderSummary = () => {
             <Head>
                 <title>Summary</title>
             </Head>
-            <OrderSummaryLayout priceToPay={router.query.priceToPay} />
+            <OrderSummaryLayout priceToPay={router.query.priceToPay} data={router.query.data} />
         </Layout>
     );
 }
