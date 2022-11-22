@@ -7,9 +7,9 @@ import { useSession } from "next-auth/react";
 import { MdLocalOffer } from "react-icons/md";
 import LoaderLayout from "../loaderLayout/loaderLayout";
 import { cartSelector } from "../store/reducers/cartReducer";
-import OrderPreview from "../orderPreview/orderPreviewLayout";
 import PageAboutLayout from "../pageAboutLayout/pageAboutLayout";
 import ButtonLayout from "../Attributes/buttonLayout/buttonLayout";
+import OrderPreview from "../orderPreviewLayout/orderPreviewLayout";
 import confirmOrderLayoutStyle from "./confirmOrderLayout.module.css";
 import addressLayoutStyle from "../addressLayout/addressLayout.module.css";
 import inputLayoutStyle from "../Attributes/inputLayout/inputLayout.module.css";
@@ -44,8 +44,8 @@ const ConfirmOrderLayout = (props) => {
         }
         setCoupons(JSON.parse(props.data));
         setAddressData(JSON.parse(props.addressData));
-        let tempTotalPrice = 0;
         let tempDiscount = 0;
+        let tempTotalPrice = 0;
         let tempDeliveryCharges = 0;
         const cartItems = [];
         cart.map(item => {
@@ -90,7 +90,9 @@ const ConfirmOrderLayout = (props) => {
                 date: new Date(),
                 items: orderData,
                 totalPrice: priceSummary.priceToPay,
-                offer: couponApplied.coupon? couponApplied.coupon: "No Coupon Applied"
+                image: cart[0]["image"],
+                couponDiscount: priceSummary.offer,
+                coupon: couponApplied.coupon? couponApplied.coupon: "No Coupon Applied"
             }
         }
         axios.post("/api/addOrderData", body)
@@ -155,7 +157,7 @@ const ConfirmOrderLayout = (props) => {
                                 <div className={confirmOrderLayoutStyle.couponContainerDiv}>
                                     {
                                         coupons.map((item, index) => {
-                                            if(item.minimumOrder <= priceSummary.priceToPay) {
+                                            if(item.minimumOrder <= priceSummary.totalPrice) {
                                                 return (
                                                     <div className={confirmOrderLayoutStyle.couponContainer} key={index}>
                                                         <div className={confirmOrderLayoutStyle.couponDiv} onClick={() => setCouponApplied({coupon: item.couponCode, discount: item.discount, minOrder: item.minimumOrder, isApplied: true})}>

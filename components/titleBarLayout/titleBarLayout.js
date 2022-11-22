@@ -58,11 +58,11 @@ const TitleBarLayout = () => {
                     </div>
                     </div>
                     <div className={titleBarLayoutStyle.servicesContainer}>
-                        <div className={titleBarLayoutStyle.services} onClick={() => signOut()}>
+                        <div className={titleBarLayoutStyle.services} onClick={() => router.push("/previousOrders")}>
                             <GoPackage className={titleBarLayoutStyle.serviceIcon} />&nbsp;
                             <p className={titleBarLayoutStyle.serviceTitle}>Orders</p>
                         </div>
-                        <div className={titleBarLayoutStyle.services}>
+                        <div className={titleBarLayoutStyle.services} onClick={() => signOut()}>
                             <IoMdHelpCircleOutline className={titleBarLayoutStyle.serviceIcon} />&nbsp;
                             <p className={titleBarLayoutStyle.serviceTitle}>Help</p>
                         </div>

@@ -22,7 +22,7 @@ const CartLayout = () => {
     const [showSaveCartLoader, setShowSaveCartLoader] = useState(false);
 
     useEffect(() => {
-        cart.length? setIsCartEmpty(false): setIsCartEmpty(true);
+        cartEmpty();
         let tempTotalPrice = 0;
         const cartItems = [];
         cart.map(item => {
@@ -58,9 +58,13 @@ const CartLayout = () => {
         router.push("/address");
     }
 
+    const cartEmpty = () => {
+        cart.length? setIsCartEmpty(false): setIsCartEmpty(true);
+    }
+
     return (
         <div className={cartLayoutStyle.cartParent}>
-            <PageAboutLayout title="Your Cart" path="Cart" />
+            <PageAboutLayout title="Your Cart" path={<span>Cart</span>}  />
             {
                 !isCartEmpty?
                     <div className={cartLayoutStyle.cartChild}>

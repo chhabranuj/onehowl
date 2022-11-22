@@ -7,10 +7,10 @@ import LoaderLayout from "../loaderLayout/loaderLayout";
 import addressLayoutStyle from "./addressLayout.module.css";
 import { cartSelector } from "../store/reducers/cartReducer";
 import { userSelector } from "../store/reducers/userReducer";
-import OrderPreview from "../orderPreview/orderPreviewLayout";
 import InputLayout from "../Attributes/inputLayout/inputLayout";
 import PageAboutLayout from "../pageAboutLayout/pageAboutLayout";
 import ButtonLayout from "../Attributes/buttonLayout/buttonLayout";
+import OrderPreview from "../orderPreviewLayout/orderPreviewLayout";
 import inputLayoutStyle from "../Attributes/inputLayout/inputLayout.module.css";
 
 const AddressLayout = () => {

@@ -17,9 +17,9 @@ const OrderSummaryLayout = (props) => {
     const products = useSelector(productSelector);
 
     useEffect(() => {
-        if(cart.length == 0) {
-            router.push("/");
-        }
+        // if(cart.length == 0) {
+        //     router.push("/");
+        // }
         dispatch(emptyCart({data: []}));
     })
 
