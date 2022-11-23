@@ -1,0 +1,17 @@
+.helpParent {
+    width: 100%;
+    display: flex;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.questionChild {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}

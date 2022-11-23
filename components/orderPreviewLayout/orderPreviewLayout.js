@@ -10,7 +10,7 @@ const OrderPreview = () => {
     useEffect(() => {
         let tempTotalPrice = 0;
         cart.map(item => {
-            tempTotalPrice = tempTotalPrice + (Math.floor(item.realPrice * (100 - item.discount) * 0.01) * item.quantity);
+            tempTotalPrice = tempTotalPrice + (Math.floor(item.realPrice) * item.quantity);
         })
         setTotalPrice(tempTotalPrice);
     })
@@ -31,7 +31,7 @@ const OrderPreview = () => {
                                 return (
                                     <tr key={index}>
                                         <td style={{color: "#3bb77e", fontWeight: "bold"}} className={orderPreviewLayoutStyle.tableContent}>{item.name}<br /><span style={{fontSize: "small", color: "grey"}}>X {item.quantity}</span></td>
-                                        <td className={orderPreviewLayoutStyle.tableContent}>₹{Math.floor(item.realPrice * (100 - item.discount) * 0.01) * item.quantity}</td>
+                                        <td className={orderPreviewLayoutStyle.tableContent}>₹{Math.floor(item.realPrice) * item.quantity}</td>
                                     </tr>
                                 );
                             })

@@ -2,13 +2,13 @@ import PageAboutLayout from "../pageAboutLayout/pageAboutLayout";
 import previousOrdersLayoutStyle from "./previousOrdersLayout.module.css";
 
 const PreviousOrdersLayout = (props) => {
-
+    
     return (
         <div className={previousOrdersLayoutStyle.previousOrdersParent}>
             <PageAboutLayout title="Your Orders" path={<span>Previous Orders</span>} />
             <div className={previousOrdersLayoutStyle.previousOrdersChild}>
                 {
-                    props.data.map((item, index) => {
+                    props.data.reverse().map((item, index) => {
                         return (
                             <div key={index} className={previousOrdersLayoutStyle.previousOrdersContainer}>
                                 <div className={previousOrdersLayoutStyle.orderImageTitleAndDeliveryStatus}>
@@ -34,7 +34,7 @@ const PreviousOrdersLayout = (props) => {
                                     {
                                         item.items.map((itemData, itemIndex) => {
                                             return (
-                                                <p key={itemIndex} style={{margin: "0 0 0.15rem 0"}} className={previousOrdersLayoutStyle.previousOrdersContainerContent}>&nbsp;{itemData.name} [{itemData.quantity} x ₹{itemData.price}] &nbsp;&nbsp;=>&nbsp;&nbsp; ₹{itemData.quantity* itemData.price}</p>
+                                                <p key={itemIndex} style={{margin: "0 0 0.15rem 0"}} className={previousOrdersLayoutStyle.previousOrdersContainerContent}>&nbsp;{itemData.name} [{itemData.quantity} x ₹{itemData.price}] &nbsp;&#8594;&nbsp; ₹{itemData.quantity* itemData.price}</p>
                                             )
                                         })
                                     }

@@ -18,8 +18,10 @@ const TitleBarLayout = () => {
     const router = useRouter();
     const cart = useSelector(cartSelector);
     const productData = useSelector(productSelector);
-    const [showLoader, setShowLoader] = useState(false);
     const [totalQuantity, setTotalQuantity] = useState(0);
+    // const [help]
+    const [showCartLoader, setShowCartLoader] = useState(false);
+    const [showPreviousOrdersLoader, setShowPreviousOrdersLoader] = useState(false);
 
     useEffect(() => {
         let tempTotalQuantity = 0;
@@ -58,17 +60,17 @@ const TitleBarLayout = () => {
                     </div>
                     </div>
                     <div className={titleBarLayoutStyle.servicesContainer}>
-                        <div className={titleBarLayoutStyle.services} onClick={() => router.push("/previousOrders")}>
+                        <div className={titleBarLayoutStyle.services} onClick={() => {setShowPreviousOrdersLoader(true), router.push("/previousOrders")}}>
                             <GoPackage className={titleBarLayoutStyle.serviceIcon} />&nbsp;
                             <p className={titleBarLayoutStyle.serviceTitle}>Orders</p>
                         </div>
-                        <div className={titleBarLayoutStyle.services} onClick={() => signOut()}>
+                        <div className={titleBarLayoutStyle.services} onClick={() => router.push("/help")}>
                             <IoMdHelpCircleOutline className={titleBarLayoutStyle.serviceIcon} />&nbsp;
                             <p className={titleBarLayoutStyle.serviceTitle}>Help</p>
                         </div>
                         <div className={titleBarLayoutStyle.services}>
                             <AiOutlineShoppingCart className={titleBarLayoutStyle.serviceIcon} />&nbsp;
-                            <p className={titleBarLayoutStyle.serviceTitle} onClick={() => {setShowLoader(true), router.push("/cart")}}>Cart</p>
+                            <p className={titleBarLayoutStyle.serviceTitle} onClick={() => {setShowCartLoader(true), router.push("/cart")}}>Cart</p>
                             {totalQuantity > 0 && <p className={titleBarLayoutStyle.cartQuantity}>{totalQuantity}</p>}
                         </div>
                         <div className={titleBarLayoutStyle.services}>
@@ -79,7 +81,8 @@ const TitleBarLayout = () => {
                 </div>
             </div>
             {/* LOADER */}
-            {showLoader && <LoaderLayout title="Please wait. Your cart is getting ready." />}
+            {showCartLoader && <LoaderLayout title="Please wait. Your cart is getting ready." />}
+            {showPreviousOrdersLoader && <LoaderLayout title="Please wait. getting your orders.." />}
         </div>
     );
 }

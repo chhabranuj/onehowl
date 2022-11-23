@@ -20,7 +20,7 @@ const OrderSummaryLayout = (props) => {
         // if(cart.length == 0) {
         //     router.push("/");
         // }
-        dispatch(emptyCart({data: []}));
+        // dispatch(emptyCart({data: []}));
     })
 
     const navigateToHome = () => {}
