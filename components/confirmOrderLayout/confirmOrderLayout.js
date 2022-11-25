@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
+import ReactConfetti from "react-confetti"; 
 import { useEffect, useState } from "react";
 import { FaTicketAlt } from "react-icons/fa";
 import { useSession } from "next-auth/react";
@@ -23,7 +24,13 @@ const ConfirmOrderLayout = (props) => {
     const [orderData, setOrderData] = useState([]);
     const [addressData, setAddressData] = useState({});
     const [showLoader, setShowLoader] = useState(false);
+    const [showConfetti, setShowConfetti] = useState(false);
     const [toggleCoupon, setToggleCoupon] = useState(false);
+    const [showTacLoader, setShowTacLoader] = useState(false);
+    const [offerCantAvailError, setOfferCantAvailError] = useState({
+        isError: false,
+        value: ""
+    });
     const [couponApplied, setCouponApplied] = useState({
         coupon: "",
         discount: "",
@@ -68,15 +75,47 @@ const ConfirmOrderLayout = (props) => {
         });
     }, [])
 
-    const handleCoupon = () => {
-        let tempOffer = 0;
-        tempOffer = Math.round(priceSummary.totalPrice * couponApplied.discount * 0.01);
-        setPriceSummary({
-            ...priceSummary,
-            offer: tempOffer,
-            priceToPay: priceSummary.totalPrice - priceSummary.discount + priceSummary.deliveryCharges - tempOffer
+    const toggleCouponContainer = () => {
+        setToggleCoupon(!toggleCoupon);
+        setOfferCantAvailError({
+            isError: false,
+            value: ""
+        });
+        setCouponApplied({
+            coupon: "Coupon Code...",
+            discount: "",
+            minOrder: "",
+            isApplied: false
         })
-        setToggleCoupon(false);
+    }
+
+    const handleCoupon = () => {
+        window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        if(couponApplied.coupon != "Coupon Code...") {
+            let tempOffer = 0;
+            tempOffer = Math.round(priceSummary.totalPrice * couponApplied.discount * 0.01);
+            setPriceSummary({
+                ...priceSummary,
+                offer: tempOffer,
+                priceToPay: priceSummary.totalPrice - priceSummary.discount + priceSummary.deliveryCharges - tempOffer
+            })
+            setToggleCoupon(false);
+            setShowConfetti(true);
+            setTimeout(() => {
+                setShowConfetti(false);
+            }, 5000);
+        }
+        else {
+            setToggleCoupon(false);
+        }
+    }
+
+    const naviagteToTermsAndCondition = () => {
+        setShowTacLoader(true);
+        router.push({
+            pathname: "/documentation/terms&Conditions",
+            query: {title: "Terms & Condition"}
+        }, "/documentation/terms&Conditions");
     }
 
     const navigateToOrderSummary = () => {
@@ -92,14 +131,14 @@ const ConfirmOrderLayout = (props) => {
                 totalPrice: priceSummary.priceToPay,
                 image: cart[0]["image"],
                 couponDiscount: priceSummary.offer,
-                coupon: couponApplied.coupon? couponApplied.coupon: "No Coupon Applied"
+                coupon: couponApplied.coupon != "Coupon Code..." && couponApplied.coupon? couponApplied.coupon: "No Coupon Applied"
             }
         }
         axios.post("/api/addOrderData", body)
             .then((response) => {
                 if(response.data.error) {
                     setShowLoader(false);
-                    window.alert("Something went wrong. Please try again.");
+                    console.log("Something went wrong. Please try again.");
                 }
                 else {
                     router.push({
@@ -141,7 +180,7 @@ const ConfirmOrderLayout = (props) => {
                     <div style={{padding: "0 0.5rem"}}>
                         <div className={confirmOrderLayoutStyle.couponButtonContainer}>
                             <FaTicketAlt style={{color: "#3bb77e", fontSize: "x-large"}}/>
-                            <p className={confirmOrderLayoutStyle.couponTitle}>Everything feels good with a discount. <span className={confirmOrderLayoutStyle.couponButtonText} onClick={() => setToggleCoupon(!toggleCoupon)}>Click here to apply for coupon.</span></p>
+                            <p className={confirmOrderLayoutStyle.couponTitle}>Everything feels good with a discount. <span className={confirmOrderLayoutStyle.couponButtonText} onClick={toggleCouponContainer}>Click here to apply for coupon.</span></p>
                         </div>
                     </div>
                     {
@@ -149,8 +188,11 @@ const ConfirmOrderLayout = (props) => {
                             <div className={addressLayoutStyle.container}>
                                 <p className={addressLayoutStyle.title} style={{marginBottom: "0.5rem"}}>Apply Coupon</p>
                                 <div className={confirmOrderLayoutStyle.couponParent}>
-                                    <div className={inputLayoutStyle.input} style={{padding: "0.2rem 0.8rem", width: "60%"}}>
-                                        {!couponApplied.isApplied? <p className={confirmOrderLayoutStyle.inputText}>Coupon Code...</p>: <p className={confirmOrderLayoutStyle.inputText} style={{color: "black"}}>{couponApplied.coupon}</p>}
+                                    <div className={confirmOrderLayoutStyle.couponInputAndErrorContainer}>
+                                        <div className={inputLayoutStyle.input} style={{padding: "0.2rem 0.8rem", width: "100%", marginTop: "0.6rem"}}>
+                                            {!couponApplied.isApplied || offerCantAvailError.isError? <p className={confirmOrderLayoutStyle.inputText}>Coupon Code...</p>: <p className={confirmOrderLayoutStyle.inputText} style={{color: "black"}}>{couponApplied.coupon}</p>}
+                                        </div>
+                                        {offerCantAvailError.isError && <p style={{fontSize: "small", margin: "0", color: "red", marginLeft: "0.3rem"}}>Sorry, offer can't avail on order less than ₹{offerCantAvailError.value}.</p>}
                                     </div>
                                     <ButtonLayout buttonText="Apply" buttonWidth="30%" buttonPadding="1rem 0 " buttonBgColor="#3BB77E" buttonBgHoverColor="#FDC040" handleButtonClick={handleCoupon} />
                                 </div>
@@ -160,22 +202,22 @@ const ConfirmOrderLayout = (props) => {
                                             if(item.minimumOrder <= priceSummary.totalPrice) {
                                                 return (
                                                     <div className={confirmOrderLayoutStyle.couponContainer} key={index}>
-                                                        <div className={confirmOrderLayoutStyle.couponDiv} onClick={() => setCouponApplied({coupon: item.couponCode, discount: item.discount, minOrder: item.minimumOrder, isApplied: true})}>
+                                                        <div className={confirmOrderLayoutStyle.couponDiv} onClick={() => {setCouponApplied({coupon: item.couponCode, discount: item.discount, minOrder: item.minimumOrder, isApplied: true}); setOfferCantAvailError({isError: false, value: ""})}}>
                                                             <MdLocalOffer style={{color: "#3bb77e"}} />
                                                             <p className={confirmOrderLayoutStyle.coupon}>{item.couponCode}</p>
                                                         </div>
-                                                        <p className={confirmOrderLayoutStyle.couponDetail}>{item.couponDetail} &nbsp;<span style={{color: "grey", fontSize: "smaller"}}>T&C apply</span></p>
+                                                        <p className={confirmOrderLayoutStyle.couponDetail}>{item.couponDetail} &nbsp;<span style={{color: "grey", fontSize: "smaller", cursor: "pointer"}} onClick={naviagteToTermsAndCondition}>T&C apply</span></p>
                                                     </div>
                                                 )
                                             }
                                             else {
                                                 return (
                                                     <div className={confirmOrderLayoutStyle.couponContainer} style={{backgroundColor: "#f9ebea"}} key={index}>
-                                                        <div className={confirmOrderLayoutStyle.couponDiv}>
+                                                        <div className={confirmOrderLayoutStyle.couponDiv} onClick={() => {setOfferCantAvailError({isError: true, value: item.minimumOrder})}}>
                                                             <MdLocalOffer style={{color: "#CD6155"}} />
                                                             <p className={confirmOrderLayoutStyle.coupon}>{item.couponCode}</p>
                                                         </div>
-                                                        <p className={confirmOrderLayoutStyle.couponDetail}>{item.couponDetail} &nbsp;<span style={{color: "grey", fontSize: "smaller"}}>T&C apply</span></p>
+                                                        <p className={confirmOrderLayoutStyle.couponDetail}>{item.couponDetail} &nbsp;<span style={{color: "grey", fontSize: "smaller"}} onClick={naviagteToTermsAndCondition}>T&C apply</span></p>
                                                     </div>
                                                 )
                                             }
@@ -193,6 +235,15 @@ const ConfirmOrderLayout = (props) => {
                 </div>
             </div>
             {showLoader && <LoaderLayout title="Please Wait. Confirming your order." />}
+            {showTacLoader && <LoaderLayout title="Please Wait. Loading Terms & Conditionse" />}
+            {showConfetti && <ReactConfetti recycle={false} numberOfPieces={800} tweenDuration={4800} />}
+            {
+                showConfetti &&
+                    <div className={confirmOrderLayoutStyle.couponAppliedContainer}>
+                        <FaTicketAlt style={{marginRight: "0.5rem"}}/>
+                        <p>Coupon Applied Successfully.</p>
+                    </div>
+            }
         </div>
     );
 }

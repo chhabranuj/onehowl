@@ -48,6 +48,9 @@ const AddressLayout = () => {
     })
 
     const togggleNewAddress = () => {
+        if(newAddress) {
+            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+        }
         setNewAddress(!newAddress);
         setStates(false);
         setTempAddressData({
@@ -155,6 +158,7 @@ const AddressLayout = () => {
             });
         }
         else {
+            window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
             setErrors({
                 ...errors,
                 saveError: false

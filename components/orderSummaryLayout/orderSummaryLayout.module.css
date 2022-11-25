@@ -38,6 +38,34 @@
     font-family: 'Quicksand', sans-serif;
 }
 
+.goToHomeContainer {
+    width: 90%;
+    display: flex;
+    padding-top: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.childContainer {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.summaryImage {
+    height: 30vh;
+}
+
+.homeContent {
+    margin: 0.5rem;
+    color: #FDC040;
+    text-align: center;
+    font-size: x-large;
+    font-family: 'Quicksand', sans-serif;
+}
+
 @media screen and (max-width: 700px) {
     .additionalInfoContainer {
         margin: 1rem;
@@ -51,5 +79,15 @@
         margin: 0.5rem 1rem;
         padding-left: 0.5rem;
         border-bottom: 1px dashed #d3ced2;
+    }
+
+    .goToHomeContainer {
+        padding-top: 0;
+        flex-direction: column;
+    }
+
+    .childContainer {
+        width: 90%;
+        margin-top: 2rem;
     }
 }

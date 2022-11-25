@@ -19,9 +19,22 @@ const TitleBarLayout = () => {
     const cart = useSelector(cartSelector);
     const productData = useSelector(productSelector);
     const [totalQuantity, setTotalQuantity] = useState(0);
-    // const [help]
+    const [showHelpLoader, setShowHelpLoader] = useState(false);
     const [showCartLoader, setShowCartLoader] = useState(false);
+    const [tagline, setTagline] = useState("");
     const [showPreviousOrdersLoader, setShowPreviousOrdersLoader] = useState(false);
+    const foodSlogans = [
+        "Good food within minutes.",
+        "The food of your choice.",
+        "Filling your tummy is what we care about.",
+        "We crossed the line of taste.",
+        "Made with love, savored with interest.",
+        "Wise food for wise people.",
+        "It’s fast, delicious, and fresh too.",
+        "Giving your hunger a brand new taste.",
+        "Get the best foods from the best chefs.",
+        "We care for your precious order."
+    ];
 
     useEffect(() => {
         let tempTotalQuantity = 0;
@@ -29,13 +42,14 @@ const TitleBarLayout = () => {
             tempTotalQuantity = tempTotalQuantity + item.quantity;
         })
         setTotalQuantity(tempTotalQuantity);
+        setTagline(foodSlogans[Math.floor(Math.random() * 10)])
     })
 
     return (
         <div className={titleBarLayoutStyle.titleBarParent}>
             <div className={titleBarLayoutStyle.titleBarFixedContainer}>
                 <div className={titleBarLayoutStyle.titleBarQuotesContainer}>
-                    <p className={titleBarLayoutStyle.titleBarQuotes}>A fresh kind of fast food for a new generation.</p>
+                    <p className={titleBarLayoutStyle.titleBarQuotes}>{tagline}</p>
                 </div>
                 <div className={titleBarLayoutStyle.titleBarContainer}>
                     <div className={titleBarLayoutStyle.titleAndIconContainer}>
@@ -60,17 +74,17 @@ const TitleBarLayout = () => {
                     </div>
                     </div>
                     <div className={titleBarLayoutStyle.servicesContainer}>
-                        <div className={titleBarLayoutStyle.services} onClick={() => {setShowPreviousOrdersLoader(true), router.push("/previousOrders")}}>
+                        <div className={titleBarLayoutStyle.services} onClick={() => {setShowPreviousOrdersLoader(true); router.push("/previousOrders")}}>
                             <GoPackage className={titleBarLayoutStyle.serviceIcon} />&nbsp;
                             <p className={titleBarLayoutStyle.serviceTitle}>Orders</p>
                         </div>
-                        <div className={titleBarLayoutStyle.services} onClick={() => router.push("/help")}>
+                        <div className={titleBarLayoutStyle.services} onClick={() => {setShowHelpLoader(true); router.push("/help")}}>
                             <IoMdHelpCircleOutline className={titleBarLayoutStyle.serviceIcon} />&nbsp;
                             <p className={titleBarLayoutStyle.serviceTitle}>Help</p>
                         </div>
                         <div className={titleBarLayoutStyle.services}>
                             <AiOutlineShoppingCart className={titleBarLayoutStyle.serviceIcon} />&nbsp;
-                            <p className={titleBarLayoutStyle.serviceTitle} onClick={() => {setShowCartLoader(true), router.push("/cart")}}>Cart</p>
+                            <p className={titleBarLayoutStyle.serviceTitle} onClick={() => {setShowCartLoader(true); router.push("/cart")}}>Cart</p>
                             {totalQuantity > 0 && <p className={titleBarLayoutStyle.cartQuantity}>{totalQuantity}</p>}
                         </div>
                         <div className={titleBarLayoutStyle.services}>
@@ -82,7 +96,8 @@ const TitleBarLayout = () => {
             </div>
             {/* LOADER */}
             {showCartLoader && <LoaderLayout title="Please wait. Your cart is getting ready." />}
-            {showPreviousOrdersLoader && <LoaderLayout title="Please wait. getting your orders.." />}
+            {showPreviousOrdersLoader && <LoaderLayout title="Please wait. Getting your orders." />}
+            {showHelpLoader && <LoaderLayout title="Please wait. Getting ready to help you." />}
         </div>
     );
 }

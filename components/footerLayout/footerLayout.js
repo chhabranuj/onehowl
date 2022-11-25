@@ -1,12 +1,30 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
 import { IoEarth } from "react-icons/io5";
 import { FaCopyright } from "react-icons/fa";
 import { IoLogoGithub } from "react-icons/io5";
 import { IoLogoLinkedin } from "react-icons/io5";
 import { IoLogoWhatsapp } from "react-icons/io5";
+import Loader from "../loaderLayout/loaderLayout";
 import footerLayoutStyle from "./footerLayout.module.css";
 
 const FooterLayout = () => {
-    const usefulLinks = ["Help/FAQ's", "Privacy Policy", "Terms & Conditions"];
+    const router = useRouter();
+    const [showLoader, setShowLoader] = useState();
+    const usefulLinks = [
+        {
+            title: "Help/FAQ's",
+            link: "/help"
+        },
+        {
+            title: "Privacy Policy",
+            link: "/documentation/privacyPolicy"
+        },
+        {
+            title: "Terms & Conditions",
+            link: "/documentation/terms&Conditions"
+        }
+    ];
     const ourPartners = [
         {
             icon: <IoEarth className={footerLayoutStyle.containerIcon} />,
@@ -60,7 +78,7 @@ const FooterLayout = () => {
                         {
                             usefulLinks.map((item, index) => {
                                 return(
-                                    <p key={index} className={footerLayoutStyle.containerContent}>{item}</p>
+                                    <p key={index} className={footerLayoutStyle.containerContent} onClick={() => {setShowLoader(true); router.push({pathname: item.link, query: {title: item.title}}, item.link); setShowLoader(false);}}>{item.title}</p>
                                 );
                             })
                         }
@@ -101,6 +119,7 @@ const FooterLayout = () => {
                 <FaCopyright />
                 <p style={{margin: "0"}}>&nbsp;2022 - OneHowl. All Rights Reserved.</p>
             </div>
+            {showLoader && <Loader title="Please Wait. " />}
         </div>
     );
 }

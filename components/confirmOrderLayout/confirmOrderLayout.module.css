@@ -49,8 +49,12 @@
 .couponParent {
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
+}
+
+.couponInputAndErrorContainer {
+    width: 60%;
 }
 
 .inputText {
@@ -115,8 +119,31 @@
     font-family: 'Quicksand', sans-serif;
 }
 
+.couponAppliedContainer {
+    bottom: 3%;
+    width: 30%;
+    display: flex;
+    color: white;
+    position: fixed;
+    align-items: center;
+    border-radius: 0.5rem;
+    justify-content: center;
+    background-color: #FDC040;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
 @media screen and (max-width: 1000px) {
     .couponContainer {
         width: 100%;
+    }
+
+    .couponAppliedContainer {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .couponAppliedContainer {
+        width: 80%;
     }
 }
