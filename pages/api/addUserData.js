@@ -12,7 +12,7 @@ const AddUserModel = async (req, res) => {
             res.send({user, userExist: true, error: false})
         }
         else {
-            if(data.state) {
+            if(data.info) {
                 userCollection.insertOne(data, (error, result) => {
                     if(error) {
                         console.log("Something went wrong!!");

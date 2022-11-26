@@ -1,7 +1,17 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
+import {useSession } from "next-auth/react";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem } from "../store/reducers/cartReducer";
 import landingLayoutStyle from "./landingLayout.module.css";
+import { productSelector } from "../store/reducers/productReducer";
+import { addUser, userSelector } from "../store/reducers/userReducer";
 
-const LandingLayout = () => {
+const LandingLayout = (props) => {
+    const dispatch = useDispatch();
+    const {data: session} = useSession();
+    const user = useSelector(userSelector);
+    const products = useSelector(productSelector);
     const images = ["/static/bg.png", "/static/bg2.png"];
     const [activeImage, setActiveImage] = useState(images[0]);
 
@@ -16,7 +26,26 @@ const LandingLayout = () => {
             }
             setActiveImage(images[count])
         }, 10000);
-    }, [])
+        console.log(session + user)
+        if(session && !user.firstName) {
+            const body = { data: session.user.email }
+            axios.post("/api/getUserData", body)
+            .then((response) => {
+                dispatch(addUser({data: response.data.result.info}));
+                response.data.result.cart.map(cartItem => {
+                    products.map(productData => {
+                        if(productData.category == cartItem.category) {
+                            productData.items.map(productItem => {
+                                if(productItem.id == cartItem.id) {
+                                    dispatch(addItem({id: productItem.id, name: productItem.title, realPrice: productItem.realPrice, discount: productItem.discount, category: productData.categoryId, quantity: cartItem.quantity}));
+                                }
+                            })
+                        }
+                    })
+                })
+            })
+        }
+    })
 
     return (
         <div  className={landingLayoutStyle.landingParentContainer}>

@@ -48,7 +48,7 @@ const TitleBarLayout = () => {
     return (
         <div className={titleBarLayoutStyle.titleBarParent}>
             <div className={titleBarLayoutStyle.titleBarFixedContainer}>
-                <div className={titleBarLayoutStyle.titleBarQuotesContainer}>
+                <div className={titleBarLayoutStyle.titleBarQuotesContainer} onClick={() => signOut()}>
                     <p className={titleBarLayoutStyle.titleBarQuotes}>{tagline}</p>
                 </div>
                 <div className={titleBarLayoutStyle.titleBarContainer}>

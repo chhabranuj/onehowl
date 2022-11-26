@@ -1,24 +1,21 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
-import { useDispatch} from 'react-redux';
 import clientPromise from '../lib/mongodb';
-import { useSession } from "next-auth/react";
 import Layout from '../components/layout/layout';
-import { addUser } from '../components/store/reducers/userReducer';
+import { useDispatch, useSelector} from 'react-redux';
 import LandingLayout from "../components/landingLayout/landingLayout";
 import { addData } from '../components/store/reducers/productReducer';
+import { userSelector } from '../components/store/reducers/userReducer';
 import CategoriesLayout from '../components/Categories/categoriesLayout/categoriesLayout';
 import CheckoutFooterLayout from '../components/checkoutFooterLayout/checkoutFooterLayout';
 import FeaturedCategoriesLayout from '../components/FeaturedCategories/featuredCategoriesLayout/featuredCategoiresLayout';
 
 const Home = (props) => {
   const dispatch = useDispatch();
-  const {data: session} = useSession();
+  const user = useSelector(userSelector);
 
   useEffect(() => {
     dispatch(addData({data: JSON.parse(props.products)}));
-    console.log(props.userResult);
-    // dispatch(addUser({data: JSON.parse(props.userResult)}));
   })
 
   return (
@@ -30,7 +27,7 @@ const Home = (props) => {
       </Head>
       <LandingLayout />
       <FeaturedCategoriesLayout data={props.products} title="Featured Categories" titleId="fc" />
-      <CategoriesLayout data={props.products} titleId="fc" />
+      {user.firstName && <CategoriesLayout data={props.products} titleId="fc" />}
       <CheckoutFooterLayout />
     </Layout>
   )
@@ -40,13 +37,10 @@ export const getStaticProps = async () => {
   const client = await clientPromise;
   const database = client.db(process.env.MONGO_DB);
   const productCollection = database.collection("productCollection");
-  const userCollection = database.collection("userCollection");
   const productResult = await productCollection.find({}).toArray();
-  const userResult = await productCollection.findOne({_id: "anujchhabra1901@gmail.com"});
   return {
     props: {
       products: JSON.stringify(productResult),
-      user: JSON.stringify(userResult)
     }
   }
 }

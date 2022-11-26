@@ -13,8 +13,8 @@ const ProductDetails = () => {
             <Head>
                 <title>ProductDetails</title>
             </Head>
-            <ProductDetailsLayout data={router.query.productData} />
-            <SpecificCategoriesLayout categoryId={router.query.categoryId} data={router.query.productData} display="none" />
+            <ProductDetailsLayout productId={router.query.productId} categoryId={router.query.categoryId} />
+            <SpecificCategoriesLayout productId={router.query.productId} categoryId={router.query.categoryId} display="none" />
             <CheckoutFooterLayout />
         </Layout>
     )

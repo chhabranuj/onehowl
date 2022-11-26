@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { IoMdAddCircle } from "react-icons/io";
 import { IoMdRemoveCircle } from "react-icons/io";

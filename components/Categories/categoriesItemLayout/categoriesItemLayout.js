@@ -30,17 +30,13 @@ const CategoriesItemLayout = (props) => {
     }, [])
 
     const navigateToProductDetails = () => {
-        cart.map(item => {
-            if(item.id == productId) {
-                router.push({
-                    pathname: "/productDetails",
-                    query: { 
-                        productData: JSON.stringify(props.data),
-                        categoryId: props.categoryId
-                    }
-                }, "/productDetails")
+        router.push({
+            pathname: "/productDetails",
+            query: { 
+                productId: props.data.id,
+                categoryId: props.categoryId
             }
-        })
+        }, "/productDetails")
     }
 
     const addToCart = () => {
@@ -51,7 +47,7 @@ const CategoriesItemLayout = (props) => {
             }
         })
         if(!productInCart) {
-            dispatch(addItem({id: productId, name: props.data.title, image: props.data.image, realPrice: props.data.realPrice, discount: props.data.discount, quantity: 1}));
+            dispatch(addItem({id: productId, name: props.data.title, realPrice: props.data.realPrice, discount: props.data.discount, category: props.categoryId, quantity: 1}));
             setAddDeleteButton({
                 title: "Remove",
                 bgColor: "#E74C3C"

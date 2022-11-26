@@ -9,8 +9,8 @@ import FeaturedCategoriesLayout from "../../FeaturedCategories/featuredCategorie
 
 const SpecificCategoriesLayout = (props) => {
     const router = useRouter();
-    const [productId, setProductId] = useState("");
-    const productData = useSelector(productSelector);
+    const products = useSelector(productSelector);
+    const [productData, setProductData] = useState([]);
     const [otherCategoriesData, setOtherCategoriesData] = useState([]);
 
     useEffect(() => {
@@ -18,14 +18,25 @@ const SpecificCategoriesLayout = (props) => {
             router.push("/");
         }
         else {
-            setProductId(props.data? JSON.parse(props.data).id: "");
-            let tempData = []
-            productData.map(item => {
-                if(item.category != props.categoryId) {
-                    tempData.push(item);
+            let tempData = [];
+            let tempCategories = [];
+            let tempId = props.productId;
+            products.map(productData => {
+                if(productData.category == props.categoryId) {
+                    productData.items.map(productItem => {
+                        if(productItem.id != tempId) {
+                            tempData.push(productItem);
+                        }
+                    })
+                }
+                else {
+                    tempCategories.push(productData);
                 }
             })
-            setOtherCategoriesData(tempData);
+            setProductData(tempData);
+            console.log(productData)
+            setOtherCategoriesData(tempCategories);
+            console.log(otherCategoriesData)
         }
     }, [])
 
@@ -33,25 +44,15 @@ const SpecificCategoriesLayout = (props) => {
     return (
         <div className={specificCategoriesLayoutStyle.specificCategoriesParent}>
             <PageAboutLayout title={props.categoryId} path="Category" display={props.display} />
-            {
-                productData.map((item, index) => {
-                    return (
-                        <div className={specificCategoriesLayoutStyle.itemContainer} key={index}>
-                            { 
-                                item.category == props.categoryId &&
-                                    item.items.map((itemData, itemIndex) => {
-                                        if(itemData.id != productId) {
-                                            return (
-                                                <CategoriesItemLayout key={itemIndex} data={itemData} categoryId={item.catgory} />
-                                            )
-                                        }
-                                    }     
-                                )
-                            }
-                        </div>
-                    );
-                })
-            }
+            <div className={specificCategoriesLayoutStyle.itemContainer}>
+                {
+                    productData.map((item, index) => {
+                        return (
+                            <CategoriesItemLayout key={index} data={item} categoryId={props.categoryId} />
+                        );
+                    })
+                }
+            </div>
             {otherCategoriesData.length && <FeaturedCategoriesLayout data={otherCategoriesData} title="Other Featured Categories" />}
         </div>
     );

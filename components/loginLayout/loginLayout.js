@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { indianStates } from "../utils/indianStates";
 import loginLayoutStyle from "./loginLayout.module.css";
-import { addUser } from "../store/reducers/userReducer";
 import LoaderLayout from "../loaderLayout/loaderLayout";
 import InputLayout from "../Attributes/inputLayout/inputLayout";
 import { getSession, signIn, useSession } from "next-auth/react";
+import { productSelector } from "../store/reducers/productReducer";
 import ButtonLayout from "../Attributes/buttonLayout/buttonLayout";
 import inputLayoutStyle from "../Attributes/inputLayout/inputLayout.module.css";
 
@@ -16,13 +16,13 @@ const LoginLayout = () => {
     const bg = ["/static/bg.png", "/static/bg2.png"];
 
     const router = useRouter();
-    const dispatch = useDispatch();
     const {data: session} = useSession();
     const [states, setStates] = useState(false);
     const [title, setTitle] = useState("Login");
-    const [showLoader, setShowLoader] = useState(false);
+    const products = useSelector(productSelector);
     const [bgImage, setBgImage] = useState(bg[1]);
     const [onSignUp, setOnSignUp] = useState(false);
+    const [showLoader, setShowLoader] = useState(false);
 
     const [proceedError, setProceedError] = useState(false);
     const [errors, setErrors] = useState({
@@ -44,6 +44,7 @@ const LoginLayout = () => {
     });
 
     useEffect(() => {
+        console.log(products)
         const addDataToMongo = async() => {
             const session = await getSession();
             if(session) {
@@ -54,7 +55,6 @@ const LoginLayout = () => {
                 axios.post("/api/addUserData", body)
                     .then((response) => {
                         if(response.data.userExist) {
-                            dispatch(addUser({data: response.data.user}));
                             router.push("/");
                         }
                         else {
@@ -218,13 +218,15 @@ const LoginLayout = () => {
             setShowLoader(true);
             const body = {
                 _id: session.user.email,
-                firstName: inputData.firstName,
-                lastName: inputData.lastName,
-                address: inputData.address,
-                state: inputData.state,
-                city: inputData.city,
-                pinCode: inputData.pinCode,
-                phoneNumber: inputData.phoneNumber,
+                info: {
+                    firstName: inputData.firstName,
+                    lastName: inputData.lastName,
+                    address: inputData.address,
+                    state: inputData.state,
+                    city: inputData.city,
+                    pinCode: inputData.pinCode,
+                    phoneNumber: inputData.phoneNumber,
+                },
                 cart: []
             }
             axios.post("/api/addUserData", body)
@@ -234,7 +236,6 @@ const LoginLayout = () => {
                         window.alert("Something went wrong. Please try again.")
                     }
                     else {
-                        dispatch(addUser({data: response.data.user}))
                         router.push("/");
                     }
                 })

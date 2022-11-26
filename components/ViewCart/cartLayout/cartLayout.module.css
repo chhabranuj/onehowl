@@ -63,21 +63,6 @@
     display: none;
 }
 
-.emptyCartContainer {
-    width: 90%;
-    display: flex;
-    margin-top: 2rem;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.emptyCartContent {
-    font-size: 1rem;
-    text-align: center;
-    font-family: 'Quicksand', sans-serif;
-}
-
 @media screen and (max-width: 700px) {
     .cartChild {
         padding: 1rem;

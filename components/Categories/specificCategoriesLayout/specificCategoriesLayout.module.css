@@ -1,11 +1,11 @@
 .specificCategoriesParent {
     width: 100%;
     display: flex;
+    margin: 2rem 0;
     align-items: center;
     flex-direction: column;
     background-color: white;
     justify-content: flex-start;
-    margin: 2rem 0;
 }
 
 .itemContainer {

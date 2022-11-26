@@ -126,7 +126,7 @@ const ConfirmOrderLayout = (props) => {
             orders: {
                 orderStatus: false,
                 address: wholeAddress,
-                date: new Date(),
+                date: new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate(),
                 items: orderData,
                 totalPrice: priceSummary.priceToPay,
                 image: cart[0]["image"],
