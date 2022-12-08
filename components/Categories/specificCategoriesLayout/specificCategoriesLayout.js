@@ -34,9 +34,7 @@ const SpecificCategoriesLayout = (props) => {
                 }
             })
             setProductData(tempData);
-            console.log(productData)
             setOtherCategoriesData(tempCategories);
-            console.log(otherCategoriesData)
         }
     }, [])
 

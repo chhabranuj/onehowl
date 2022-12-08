@@ -1,12 +1,7 @@
-import { useEffect } from "react";
 import PageAboutLayout from "../pageAboutLayout/pageAboutLayout";
 import documentationLayoutStyle from "./documentationLayout.module.css";
 
 const DocumentationLayout = (props) => {
-
-    useEffect(() => {
-        console.log(props.title)
-    })
 
     return (
         <div className={documentationLayoutStyle.documentationParent}>

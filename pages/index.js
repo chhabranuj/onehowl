@@ -1,18 +1,16 @@
 import Head from 'next/head';
 import { useEffect } from 'react';
+import { useDispatch} from 'react-redux';
 import clientPromise from '../lib/mongodb';
 import Layout from '../components/layout/layout';
-import { useDispatch, useSelector} from 'react-redux';
 import LandingLayout from "../components/landingLayout/landingLayout";
 import { addData } from '../components/store/reducers/productReducer';
-import { userSelector } from '../components/store/reducers/userReducer';
 import CategoriesLayout from '../components/Categories/categoriesLayout/categoriesLayout';
 import CheckoutFooterLayout from '../components/checkoutFooterLayout/checkoutFooterLayout';
 import FeaturedCategoriesLayout from '../components/FeaturedCategories/featuredCategoriesLayout/featuredCategoiresLayout';
 
 const Home = (props) => {
   const dispatch = useDispatch();
-  const user = useSelector(userSelector);
 
   useEffect(() => {
     dispatch(addData({data: JSON.parse(props.products)}));
@@ -27,7 +25,7 @@ const Home = (props) => {
       </Head>
       <LandingLayout />
       <FeaturedCategoriesLayout data={props.products} title="Featured Categories" titleId="fc" />
-      {user.firstName && <CategoriesLayout data={props.products} titleId="fc" />}
+      <CategoriesLayout data={props.products} titleId="fc" />
       <CheckoutFooterLayout />
     </Layout>
   )

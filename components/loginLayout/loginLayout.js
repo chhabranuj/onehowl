@@ -44,7 +44,6 @@ const LoginLayout = () => {
     });
 
     useEffect(() => {
-        console.log(products)
         const addDataToMongo = async() => {
             const session = await getSession();
             if(session) {
@@ -226,6 +225,7 @@ const LoginLayout = () => {
                     city: inputData.city,
                     pinCode: inputData.pinCode,
                     phoneNumber: inputData.phoneNumber,
+                    newsletterEmail: ""
                 },
                 cart: []
             }

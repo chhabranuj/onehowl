@@ -11,17 +11,16 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import LoaderLayout from "../loaderLayout/loaderLayout";
 import { cartSelector } from "../store/reducers/cartReducer";
 import titleBarLayoutStyle from "./titleBarLayout.module.css";
-import ButtonLayout from "../Attributes/buttonLayout/buttonLayout";
 import { productSelector } from "../store/reducers/productReducer";
 
 const TitleBarLayout = () => {
     const router = useRouter();
     const cart = useSelector(cartSelector);
+    const [tagline, setTagline] = useState("");
     const productData = useSelector(productSelector);
     const [totalQuantity, setTotalQuantity] = useState(0);
     const [showHelpLoader, setShowHelpLoader] = useState(false);
     const [showCartLoader, setShowCartLoader] = useState(false);
-    const [tagline, setTagline] = useState("");
     const [showPreviousOrdersLoader, setShowPreviousOrdersLoader] = useState(false);
     const foodSlogans = [
         "Good food within minutes.",
@@ -30,7 +29,7 @@ const TitleBarLayout = () => {
         "We crossed the line of taste.",
         "Made with love, savored with interest.",
         "Wise food for wise people.",
-        "It’s fast, delicious, and fresh too.",
+        "It's fast, delicious, and fresh too.",
         "Giving your hunger a brand new taste.",
         "Get the best foods from the best chefs.",
         "We care for your precious order."
@@ -57,14 +56,15 @@ const TitleBarLayout = () => {
                         <GiWolfHowl className={titleBarLayoutStyle.titleIcon} />
                     </div>
                     <div className={titleBarLayoutStyle.categoriesContainer}>
-                        <div className={titleBarLayoutStyle.menuButton}>
-                            <ButtonLayout buttonText="Browse All Categories" buttonWidth="auto" buttonPadding="10px 20px" buttonBgColor="#3BB77E" buttonBgHoverColor="#FDC040" leftButtonIcon={<BiCategoryAlt />} />
-                        </div>
+                        <button className={titleBarLayoutStyle.menuButton}>
+                            <BiCategoryAlt style={{marginRight: "0.3rem"}}/>
+                            Browse All Categories
+                        </button>
                         <div className={titleBarLayoutStyle.categoriesMenu}>
                         {
                             productData.map((item, index) => {
                                 return(
-                                    <div className={titleBarLayoutStyle.categoriesMenuContent} key={index}>
+                                    <div className={titleBarLayoutStyle.categoriesMenuContent} key={index} onClick={() => router.push({pathname: `/category/${item.category}`, query: { categoryId: item.category }}, `/category/${item.category}`)}>
                                         <p className={titleBarLayoutStyle.categoriesMenuContentTitle}>{item.category}</p>
                                         <p className={titleBarLayoutStyle.categoriesMenuContentQuantity}>{item['items'].length}</p>
                                     </div>

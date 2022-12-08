@@ -32,22 +32,22 @@ export const getStaticPaths = async () => {
             },
             {
                 params: { 
-                    category: "Rice"
+                    category: "rice"
                 } 
             },
             {
                 params: { 
-                    category: "Chinese"
+                    category: "chinese"
                 } 
             },
             {
                 params: { 
-                    category: "SouthIndian"
+                    category: "southIndian"
                 } 
             },
             {
                 params: { 
-                    category: "Breads"
+                    category: "breads"
                 } 
             },
             {
@@ -57,7 +57,7 @@ export const getStaticPaths = async () => {
             },
             {
                 params: { 
-                    category: "Drinks"
+                    category: "drinks"
                 } 
             },
         ],

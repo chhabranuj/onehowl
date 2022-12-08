@@ -26,7 +26,6 @@ const LandingLayout = (props) => {
             }
             setActiveImage(images[count])
         }, 10000);
-        console.log(session + user)
         if(session && !user.firstName) {
             const body = { data: session.user.email }
             axios.post("/api/getUserData", body)
