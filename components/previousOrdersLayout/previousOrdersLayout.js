@@ -1,7 +1,18 @@
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 import PageAboutLayout from "../pageAboutLayout/pageAboutLayout";
 import previousOrdersLayoutStyle from "./previousOrdersLayout.module.css";
 
 const PreviousOrdersLayout = (props) => {
+    const router = useRouter();
+    const {data: session} = useSession();
+
+    useEffect(() => {
+        if(!props.data || !session) {
+            router.push("/");
+        }
+    })
     
     return (
         <div className={previousOrdersLayoutStyle.previousOrdersParent}>

@@ -1513,7 +1513,7 @@ drinks: [
     {
         id: "coffee",
         image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/drinks/coffee.jpeg",
-        title: "Coffe",
+        title: "Coffee",
         rating: "4.7",
         realPrice: "60",
         discount: "5",
@@ -1592,7 +1592,7 @@ drinks: [
     },
     {
         id: "iceTea",
-        image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/drinks/iceTea.jpeg",
+        image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/drinks/iceTea.avif",
         title: "Ice Tea",
         rating: "4.8",
         realPrice: "100",

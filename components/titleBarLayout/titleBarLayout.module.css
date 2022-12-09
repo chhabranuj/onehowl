@@ -85,7 +85,7 @@
 
 .categoriesMenu {
     width: 30%;
-    z-index: 1000;
+    z-index: 1;
     display: none;
     position: fixed;
     flex-wrap: wrap;

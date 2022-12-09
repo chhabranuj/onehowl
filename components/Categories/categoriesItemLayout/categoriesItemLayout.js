@@ -3,6 +3,7 @@ import { GiStaryu } from "react-icons/gi";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import LoaderLayout from "../../loaderLayout/loaderLayout";
 import ButtonLayout from "../../Attributes/buttonLayout/buttonLayout";
 import categoriesItemLayoutStyle from "./categoriesItemLayout.module.css";
 import { addItem, deleteItem, cartSelector } from "../../store/reducers/cartReducer";
@@ -12,6 +13,7 @@ const CategoriesItemLayout = (props) => {
     const dispatch = useDispatch();
     const cart = useSelector(cartSelector);
     const [productId, setProductId] = useState("");
+    const [showLoader, setShowLoader] = useState(false);
     const [addDeleteButton, setAddDeleteButton] = useState({
         title: "Add",
         bgColor: "#3BB77E"
@@ -30,13 +32,15 @@ const CategoriesItemLayout = (props) => {
     }, [])
 
     const navigateToProductDetails = () => {
+        setShowLoader(true);
         router.push({
             pathname: "/productDetails",
             query: { 
                 productId: props.data.id,
                 categoryId: props.categoryId
             }
-        }, "/productDetails")
+        }, "/productDetails");
+        setShowLoader(false);
     }
 
     const addToCart = () => {
@@ -98,6 +102,8 @@ const CategoriesItemLayout = (props) => {
                     <ButtonLayout buttonText={addDeleteButton.title} buttonWidth="auto" buttonPadding="10px 20px" buttonBgColor={addDeleteButton.bgColor} buttonBgHoverColor="#FDC040" leftButtonIcon={<AiOutlineShoppingCart style={{maginRight: "5px"}} />} handleButtonClick={addToCart} />
                 </div>
             </div>
+            {/* LOADER */}
+            {showLoader && <LoaderLayout title="Please Wait. Getting Product Info." />}
         </div>
     );
 }

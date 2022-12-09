@@ -21,6 +21,7 @@ const TitleBarLayout = () => {
     const [totalQuantity, setTotalQuantity] = useState(0);
     const [showHelpLoader, setShowHelpLoader] = useState(false);
     const [showCartLoader, setShowCartLoader] = useState(false);
+    const [showCategoryLoader, setShowCategoryLoader] = useState(false);
     const [showPreviousOrdersLoader, setShowPreviousOrdersLoader] = useState(false);
     const foodSlogans = [
         "Good food within minutes.",
@@ -64,7 +65,7 @@ const TitleBarLayout = () => {
                         {
                             productData.map((item, index) => {
                                 return(
-                                    <div className={titleBarLayoutStyle.categoriesMenuContent} key={index} onClick={() => router.push({pathname: `/category/${item.category}`, query: { categoryId: item.category }}, `/category/${item.category}`)}>
+                                    <div className={titleBarLayoutStyle.categoriesMenuContent} key={index} onClick={() => {setShowCategoryLoader(true); router.push({pathname: `/category/${item.category}`, query: { categoryId: item.category }}, `/category/${item.category}`)}}>
                                         <p className={titleBarLayoutStyle.categoriesMenuContentTitle}>{item.category}</p>
                                         <p className={titleBarLayoutStyle.categoriesMenuContentQuantity}>{item['items'].length}</p>
                                     </div>
@@ -95,6 +96,7 @@ const TitleBarLayout = () => {
                 </div>
             </div>
             {/* LOADER */}
+            {showCategoryLoader && <LoaderLayout title="Please wait. Preparing the menu." />}
             {showCartLoader && <LoaderLayout title="Please wait. Your cart is getting ready." />}
             {showPreviousOrdersLoader && <LoaderLayout title="Please wait. Getting your orders." />}
             {showHelpLoader && <LoaderLayout title="Please wait. Getting ready to help you." />}
