@@ -41,6 +41,24 @@ const NewsletterLayout = () => {
         }
     }
 
+    const handleReSubscribe = () => {
+        if(session) {
+            const body = {
+                _id: session.user.email,
+                newsletterEmail: ""
+            }
+            axios.post("/api/addNewsletterEmail", body)
+                .then((response) => {
+                    if(!response.data.result) {
+                        setNewsletterEmailError(true);
+                    }
+                    else {
+                        dispatch(addUser({data: response.data.infoData}));
+                    }
+                })
+        }
+    }
+
     return (
         <div className={newsletterLayoutStyle.newsletterParent}>
             {
@@ -66,6 +84,7 @@ const NewsletterLayout = () => {
                         </div>
                         <img src="/static/newsletter.svg" className={newsletterLayoutStyle.newsletterChildImage} />
                     </div>
+                    <p className={newsletterLayoutStyle.reSubscribeButton} onClick={handleReSubscribe}>Re-Subscribe</p>
                 </div>
             }
         </div>

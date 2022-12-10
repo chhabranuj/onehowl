@@ -40,7 +40,9 @@ const CategoriesItemLayout = (props) => {
                 categoryId: props.categoryId
             }
         }, "/productDetails");
-        setShowLoader(false);
+        setInterval(() => {
+            setShowLoader(false);
+        }, 2000);
     }
 
     const addToCart = () => {

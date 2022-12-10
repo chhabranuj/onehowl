@@ -1481,7 +1481,7 @@ drinks: [
     {
         id: "water",
         image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/drinks/water.jpeg",
-        title: "Water",
+        title: "Water (Besleri)",
         rating: "4.1",
         realPrice: "40",
         discount: "5",

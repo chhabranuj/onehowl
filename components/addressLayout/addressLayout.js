@@ -20,6 +20,7 @@ const AddressLayout = () => {
     const [states, setStates] = useState(false);
     const [showLoader, setShowLoader] = useState(false);
     const [newAddress, setNewAddress] = useState(false);
+    const [showHomeLoader, setShowHomeLoader] = useState(false);
     const [addressTitle, setAddressTitle] = useState("Your Address");
     const [addressData, setAddressData] = useState({
         address: user.address,
@@ -43,6 +44,7 @@ const AddressLayout = () => {
 
     useEffect(() => {
         if(cart.length == 0) {
+            setShowHomeLoader(true);
             router.push("/");
         }
     })
@@ -247,6 +249,7 @@ const AddressLayout = () => {
                 </div>
             </div>
             {showLoader && <LoaderLayout title="Please Wait. While we get your summary." />}
+            {showHomeLoader && <LoaderLayout title="Loading the menu. Please wait." />}
         </div>
     );
 }

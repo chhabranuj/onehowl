@@ -30,6 +30,7 @@ const ConfirmOrderLayout = (props) => {
     const [showConfetti, setShowConfetti] = useState(false);
     const [toggleCoupon, setToggleCoupon] = useState(false);
     const [showTacLoader, setShowTacLoader] = useState(false);
+    const [showHomeLoader, setShowHomeLoader] = useState(false);
     const [offerCantAvailError, setOfferCantAvailError] = useState({
         isError: false,
         value: ""
@@ -50,32 +51,35 @@ const ConfirmOrderLayout = (props) => {
 
     useEffect(() => {
         if(cart.length == 0) {
+            setShowHomeLoader(true);
             router.push("/");
         }
-        setCoupons(JSON.parse(props.data));
-        setAddressData(JSON.parse(props.addressData));
-        let tempDiscount = 0;
-        let tempTotalPrice = 0;
-        let tempDeliveryCharges = 0;
-        const cartItems = [];
-        cart.map(item => {
-            const orderItem = {};
-            orderItem.name = item.name;
-            orderItem.quantity = item.quantity;
-            orderItem.price = item.realPrice;
-            cartItems.push(orderItem);
-            tempTotalPrice = tempTotalPrice + Math.floor(item.realPrice * item.quantity);
-            tempDiscount = tempDiscount + Math.round(item.realPrice * item.discount * 0.01 * item.quantity);
-        })
-        setOrderData(cartItems);
-        tempDeliveryCharges = Math.round(tempTotalPrice * DELIVERY_PERCENTAGE * 0.01);
-        setPriceSummary({
-            ...priceSummary,
-            totalPrice: tempTotalPrice,
-            discount: tempDiscount,
-            deliveryCharges: tempDeliveryCharges,
-            priceToPay: tempTotalPrice - tempDiscount + tempDeliveryCharges
-        });
+        else {
+            setCoupons(JSON.parse(props.data));
+            setAddressData(JSON.parse(props.addressData));
+            let tempDiscount = 0;
+            let tempTotalPrice = 0;
+            let tempDeliveryCharges = 0;
+            const cartItems = [];
+            cart.map(item => {
+                const orderItem = {};
+                orderItem.name = item.name;
+                orderItem.quantity = item.quantity;
+                orderItem.price = item.realPrice;
+                cartItems.push(orderItem);
+                tempTotalPrice = tempTotalPrice + Math.floor(item.realPrice * item.quantity);
+                tempDiscount = tempDiscount + Math.round(item.realPrice * item.discount * 0.01 * item.quantity);
+            })
+            setOrderData(cartItems);
+            tempDeliveryCharges = Math.round(tempTotalPrice * DELIVERY_PERCENTAGE * 0.01);
+            setPriceSummary({
+                ...priceSummary,
+                totalPrice: tempTotalPrice,
+                discount: tempDiscount,
+                deliveryCharges: tempDeliveryCharges,
+                priceToPay: tempTotalPrice - tempDiscount + tempDeliveryCharges
+            });
+        }
     }, [])
 
     const toggleCouponContainer = () => {
@@ -241,6 +245,7 @@ const ConfirmOrderLayout = (props) => {
             {showLoader && <LoaderLayout title="Please Wait. Confirming your order." />}
             {showTacLoader && <LoaderLayout title="Please Wait. Loading Terms & Conditionse" />}
             {showConfetti && <ReactConfetti recycle={false} numberOfPieces={800} tweenDuration={4800} />}
+            {showHomeLoader && <LoaderLayout title="Loading the menu. Please wait." />}
             {
                 showConfetti &&
                     <div className={confirmOrderLayoutStyle.couponAppliedContainer}>

@@ -1,28 +1,29 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { indianStates } from "../utils/indianStates";
 import loginLayoutStyle from "./loginLayout.module.css";
 import LoaderLayout from "../loaderLayout/loaderLayout";
 import InputLayout from "../Attributes/inputLayout/inputLayout";
-import { getSession, signIn, useSession } from "next-auth/react";
-import { productSelector } from "../store/reducers/productReducer";
+import { getSession, signIn, signOut, useSession } from "next-auth/react";
+import { addUser, userSelector } from "../store/reducers/userReducer";
 import ButtonLayout from "../Attributes/buttonLayout/buttonLayout";
 import inputLayoutStyle from "../Attributes/inputLayout/inputLayout.module.css";
 
 const LoginLayout = () => {
     const bg = ["/static/bg.png", "/static/bg2.png"];
-
     const router = useRouter();
+    const dispatch = useDispatch();
     const {data: session} = useSession();
+    const user = useSelector(userSelector);
     const [states, setStates] = useState(false);
     const [title, setTitle] = useState("Login");
-    const products = useSelector(productSelector);
     const [bgImage, setBgImage] = useState(bg[1]);
     const [onSignUp, setOnSignUp] = useState(false);
     const [showLoader, setShowLoader] = useState(false);
+    const [showUpdateLoader, setShowUpdateLoader] = useState(false);
 
     const [proceedError, setProceedError] = useState(false);
     const [errors, setErrors] = useState({
@@ -32,6 +33,7 @@ const LoginLayout = () => {
         city: false,
         pinCode: false,
         phoneNumber: false,
+        newsletterEmail: false,
     });
     const [inputData, setInputData] = useState({
         firstName: "",
@@ -41,12 +43,26 @@ const LoginLayout = () => {
         city: "",
         pinCode: "",
         phoneNumber: "",
+        newsletterEmail: ""
     });
 
     useEffect(() => {
         const addDataToMongo = async() => {
             const session = await getSession();
-            if(session) {
+            if(session && Object.keys(user).length != 0 ) {
+                toggleLogin();
+                setInputData({
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    address: user.address,
+                    state: user.state,
+                    city: user.city,
+                    pinCode: user.pinCode,
+                    phoneNumber: user.phoneNumber,
+                    newsletterEmail: user.newsletterEmail
+                });
+            }
+            if(session && Object.keys(user).length == 0 ) {
                 setShowLoader(true);
                 const body = {
                     _id: session.user.email,
@@ -72,6 +88,7 @@ const LoginLayout = () => {
     }, [])
 
     const navigateToMainPage = () => {
+        setShowLoader(true);
         router.push("/");
     }
 
@@ -206,6 +223,75 @@ const LoginLayout = () => {
         }
     }
 
+    const handleNewsletterEmail = (value) => {
+        setInputData({
+            ...inputData,
+            newsletterEmail: value
+        });
+        setProceedError(false);
+
+        if(value.split("@")[1] != "gmail.com") {
+            setErrors({
+                ...errors,
+                newsletterEmail: true
+            });
+        }
+        else {
+            setErrors({
+                ...errors,
+                newsletterEmail: false
+            });
+        }
+    }
+
+    const handleSignOutButton = () => {
+        signOut();
+        router.push("/");
+    }
+
+    const handleUpdateButton = () => {
+        if(!inputData.firstName || !inputData.lastName || !inputData.address || inputData.state == "Please enter your state." || !inputData.city || !inputData.pinCode || errors.pinCode || !inputData.phoneNumber || errors.phoneNumber || errors.newsletterEmail) {
+            setProceedError(true);
+            setTimeout(() => {
+                setProceedError(false);
+            }, 2000);
+        }
+        else {
+            if(user.firstName != inputData.firstName ||
+                user.lastName != inputData.lastName ||
+                user.address != inputData.address ||
+                user.state != inputData.state ||
+                user.city != inputData.city ||
+                user.pinCode != inputData.pinCode ||
+                user.phoneNumber != inputData.phoneNumber ||
+                user.newsletterEmail != inputData.newsletterEmail) {
+                    setShowUpdateLoader(true);
+                    const body = {
+                        _id: session.user.email,
+                        userData: inputData
+                    }
+                    axios.post("/api/updateUser", body)
+                        .then((response) => {
+                            if(!response.data.result) {
+                                setShowUpdateLoader(false);
+                                setProceedError(true);
+                                setTimeout(() => {
+                                    setProceedError(false);
+                                }, 2000);
+                            }
+                            else {
+                                dispatch(addUser({data: response.data.infoData}));
+                                setShowUpdateLoader(false);
+                                router.push("/");
+                            }
+                        })
+            }
+            else {
+                router.push("/");
+            }
+        }
+    }
+
     const handleProceedButton = () => {
         if(!inputData.firstName || !inputData.lastName || !inputData.address || inputData.state == "Please enter your state." || !inputData.city || !inputData.pinCode || errors.pinCode || !inputData.phoneNumber || errors.phoneNumber) {
             setProceedError(true);
@@ -267,15 +353,15 @@ const LoginLayout = () => {
                             </div>:
                             <div className={loginLayoutStyle.loginDetails}>
                                 <div className={loginLayoutStyle.inputContainer}>
-                                    <InputLayout placeholder="Please enter your first Name." value={session.user.name.split(" ")[0]? session.user.name.split(" ")[0]: ""} type="text" title="First Name" important="*" width="100%" getInputData={handleFirstName} />
+                                    <InputLayout placeholder="Please enter your first Name." value={inputData.firstName} type="text" title="First Name" important="*" width="100%" getInputData={handleFirstName} />
                                     {errors.firstName && <p className={loginLayoutStyle.error}>First name is incorrect.</p>}
                                 </div>
                                 <div className={loginLayoutStyle.inputContainer}>
-                                    <InputLayout placeholder="Please enter your last Name." value={session.user.name.split(" ")[1]? session.user.name.split(" ")[1]: ""} type="text" title="Last Name" important="*" width="100%" getInputData={handleLastName} />
+                                    <InputLayout placeholder="Please enter your last Name." value={inputData.lastName} type="text" title="Last Name" important="*" width="100%" getInputData={handleLastName} />
                                     {errors.lastName && <p className={loginLayoutStyle.error}>Last name is incorrect.</p>}
                                 </div>
                                 <div className={loginLayoutStyle.inputContainer}>
-                                    <InputLayout placeholder="Please enter your address." type="text" title="Address" important="*" width="100%" getInputData={handleAddress} />
+                                    <InputLayout placeholder="Please enter your address." value={inputData.address} type="text" title="Address" important="*" width="100%" getInputData={handleAddress} />
                                     {errors.address && <p className={loginLayoutStyle.error}>Address is incorrect.</p>}
                                 </div>
                                 <div className={loginLayoutStyle.stateParent}>
@@ -300,19 +386,33 @@ const LoginLayout = () => {
                                 </div>
                                 <div className={loginLayoutStyle.inputContainer} style={{flexDirection: "row"}}>
                                     <div style={{width: "100%"}}>
-                                        <InputLayout placeholder="Enter your city." type="text" title="City" important="*" width="90%" getInputData={handleCity} />
+                                        <InputLayout placeholder="Enter your city." value={inputData.city} type="text" title="City" important="*" width="90%" getInputData={handleCity} />
                                         {errors.city && <p className={loginLayoutStyle.error}>City is incorrect.</p>}
                                     </div>
                                     <div style={{width: "100%"}}>
-                                        <InputLayout placeholder="Enter your pin code." type="number" title="Pin Code" important="*" width="100%" getInputData={handlePinCode} />
+                                        <InputLayout placeholder="Enter your pin code." value={inputData.pinCode} type="number" title="Pin Code" important="*" width="100%" getInputData={handlePinCode} />
                                         {errors.pinCode &&<p className={loginLayoutStyle.error}>Pin Code is incorrect.</p>}
                                     </div>
                                 </div>
                                 <div className={loginLayoutStyle.inputContainer}>
-                                    <InputLayout placeholder="Please enter your phone number." type="number" title="Phone Number" important="*" width="100%" getInputData={handlePhoneNumber} />
+                                    <InputLayout placeholder="Please enter your phone number." value={inputData.phoneNumber} type="number" title="Phone Number" important="*" width="100%" getInputData={handlePhoneNumber} />
                                     {errors.phoneNumber && <p className={loginLayoutStyle.error}>Phone Number is incorrect.</p>}
                                 </div>
-                                <ButtonLayout buttonText="Proceed" buttonWidth="60%" buttonPadding="10px" buttonBgColor="rgb(57 62 64)" buttonBgHoverColor="#3bb77e" handleButtonClick={handleProceedButton} />
+                                {
+                                    user.newsletterEmail &&
+                                        <div className={loginLayoutStyle.inputContainer}>
+                                            <InputLayout placeholder="Please enter your Newsletter Email." value={inputData.newsletterEmail}  title="Newsletter Email" important="*" width="100%" getInputData={handleNewsletterEmail} />
+                                            {errors.newsletterEmail && <p className={loginLayoutStyle.error}>Newsletter Email is incorrect.</p>}
+                                        </div>
+                                }
+                                {
+                                    Object.keys(user).length != 0?
+                                        <div className={loginLayoutStyle.buttonContainer}>
+                                            <ButtonLayout buttonText="Sign Out" buttonWidth="40%" buttonPadding="10px" buttonBgColor="rgb(57 62 64)" buttonBgHoverColor="#CD6155" handleButtonClick={handleSignOutButton} />
+                                            <ButtonLayout buttonText="Update" buttonWidth="40%" buttonPadding="10px" buttonBgColor="rgb(57 62 64)" buttonBgHoverColor="#3bb77e" handleButtonClick={handleUpdateButton} />
+                                        </div>:
+                                        <ButtonLayout buttonText="Proceed" buttonWidth="40%" buttonPadding="10px" buttonBgColor="rgb(57 62 64)" buttonBgHoverColor="#3bb77e" handleButtonClick={handleProceedButton} />
+                                }
                             </div>
                     }
                 </div>
@@ -322,10 +422,13 @@ const LoginLayout = () => {
                             <p style={{color: "white", margin: "0", fontSize: "small"}}>Please fill the form properly.</p>
                         </div>
                 }
-                {showLoader && <LoaderLayout title="Please Wait." />}
+                {showLoader && <LoaderLayout title="Please Wait. Preparing the menu." />}
+                {showUpdateLoader && <LoaderLayout title="Please Wait. Updating your profile." />}
             </div>
         </div>
     );
 }
 
 export default LoginLayout;
+
+// session.user.name.split(" ")[0]? session.user.name.split(" ")[0]

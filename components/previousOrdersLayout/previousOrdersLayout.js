@@ -1,16 +1,33 @@
-import { useEffect } from "react";
+import moment from "moment";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
+import LoaderLayout from "../loaderLayout/loaderLayout";
 import PageAboutLayout from "../pageAboutLayout/pageAboutLayout";
 import previousOrdersLayoutStyle from "./previousOrdersLayout.module.css";
 
 const PreviousOrdersLayout = (props) => {
     const router = useRouter();
     const {data: session} = useSession();
+    const [orderData, setOrderData] = useState([]);
+    const [showHomeLoader, setShowHomeLoader] = useState(false);
 
     useEffect(() => {
         if(!props.data || !session) {
+            setShowHomeLoader(true);
             router.push("/");
+        }
+        else {
+            for(let i=0; i<props.data.length; i++) {
+                for (let j=0; j<props.data.length; j++) {
+                    if(moment(props.data[i].date).isAfter(moment(props.data[j].date))) {
+                        let temp = props.data[i];
+                        props.data[i] = props.data[j];
+                        props.data[j] = temp;
+                    }
+                }
+            }
+            setOrderData(props.data);
         }
     })
     
@@ -19,7 +36,7 @@ const PreviousOrdersLayout = (props) => {
             <PageAboutLayout title="Your Orders" path={<span>Previous Orders</span>} />
             <div className={previousOrdersLayoutStyle.previousOrdersChild}>
                 {
-                    props.data.reverse().map((item, index) => {
+                    orderData.map((item, index) => {
                         return (
                             <div key={index} className={previousOrdersLayoutStyle.previousOrdersContainer}>
                                 <div className={previousOrdersLayoutStyle.orderImageTitleAndDeliveryStatus}>
@@ -55,6 +72,7 @@ const PreviousOrdersLayout = (props) => {
                     })
                 }
             </div>
+            {showHomeLoader && <LoaderLayout title="Loading the menu. Please wait." />}
         </div>
     );
 }

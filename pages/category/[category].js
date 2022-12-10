@@ -22,42 +22,42 @@ export const getStaticPaths = async () => {
         paths: [
             {
                 params: { 
-                    category: "veg"
+                    category: "Veg"
                 } 
             },
             {
                 params: { 
-                    category: "nonVeg"
+                    category: "NonVeg"
                 } 
             },
             {
                 params: { 
-                    category: "rice"
+                    category: "Rice"
                 } 
             },
             {
                 params: { 
-                    category: "chinese"
+                    category: "Chinese"
                 } 
             },
             {
                 params: { 
-                    category: "southIndian"
+                    category: "SouthIndian"
                 } 
             },
             {
                 params: { 
-                    category: "breads"
+                    category: "Breads"
                 } 
             },
             {
                 params: { 
-                    category: "desserts"
+                    category: "Desserts"
                 } 
             },
             {
                 params: { 
-                    category: "drinks"
+                    category: "Drinks"
                 } 
             },
         ],

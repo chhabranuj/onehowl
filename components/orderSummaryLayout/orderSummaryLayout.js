@@ -1,28 +1,20 @@
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import Loader from "../loaderLayout/loaderLayout";
 import { HiArrowNarrowLeft } from "react-icons/hi";
-import { emptyCart } from "../store/reducers/cartReducer";
-import { cartSelector } from "../store/reducers/cartReducer";
+import LoaderLayout from "../loaderLayout/loaderLayout";
 import PageAboutLayout from "../pageAboutLayout/pageAboutLayout";
 import ButtonLayout from "../Attributes/buttonLayout/buttonLayout";
-import { productSelector } from "../store/reducers/productReducer";
 import orderSummaryLayoutStyle from "./orderSummaryLayout.module.css";
 
 const OrderSummaryLayout = (props) => {
     const router = useRouter();
-    const dispatch = useDispatch();
-    const cart = useSelector(cartSelector);
-    const products = useSelector(productSelector);
     const [showHomeLoader, setShowHomeLoader] = useState(false);
 
     useEffect(() => {
-        // if(cart.length == 0) {
-        //     router.push("/");
-        // }
-        // dispatch(emptyCart({data: []}));
+        if(!props.priceToPay) {
+            setShowHomeLoader(true);
+            router.push("/");
+        }
     })
 
     const navigateToHome = () => {
@@ -46,7 +38,7 @@ const OrderSummaryLayout = (props) => {
                 <p className={orderSummaryLayoutStyle.additionalInfoContent}>Order Number: <br /><span style={{color: "#3bb77e", fontWeight: "bold", letterSpacing: "0.1rem"}}>{Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000}</span></p>
                 <p className={orderSummaryLayoutStyle.additionalInfoContent}>Payment Method: <br /><span style={{color: "#3bb77e", fontWeight: "bold", letterSpacing: "0.1rem"}}>Cash on delivery</span></p>
                 <p className={orderSummaryLayoutStyle.additionalInfoContent}>Date: <br /><span style={{color: "#3bb77e", fontWeight: "bold", letterSpacing: "0.1rem"}}>{currentDate()}</span></p>
-                <p className={orderSummaryLayoutStyle.additionalInfoContent} style={{borderRight: "none"}}>Total: <br /><span style={{color: "#3bb77e", fontWeight: "bold", letterSpacing: "0.1rem"}}>₹{props.priceToPay}</span></p>
+                <p className={orderSummaryLayoutStyle.additionalInfoContent} style={{borderRight: "none"}}>Total: <br /><span style={{color: "#3bb77e", fontWeight: "bold", letterSpacing: "0.1rem"}}>₹{props.priceToPay? props.priceToPay:0}</span></p>
             </div>
             <div className={orderSummaryLayoutStyle.goToHomeContainer}>
                 <div className={orderSummaryLayoutStyle.childContainer}>
@@ -62,7 +54,7 @@ const OrderSummaryLayout = (props) => {
                     <ButtonLayout buttonText="Home" buttonWidth="80%" buttonPadding="1rem 0" buttonBgColor="#3BB77E" buttonBgHoverColor="#FDC040" leftButtonIcon={<HiArrowNarrowLeft />} handleButtonClick={navigateToHome} />
                 </div>
             </div>
-            {showHomeLoader && <Loader title="Loading the menu. Please wait." />}
+            {showHomeLoader && <LoaderLayout title="Loading the menu. Please wait." />}
         </div>
     );
 }

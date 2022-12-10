@@ -15,11 +15,15 @@ const CartLayout = () => {
     const {data: session} = useSession();
     const cart = useSelector(cartSelector);
     const [totalPrice, setTotalPrice] = useState(0);
+    const [loginError, setLoginError] = useState(false);
+    const [showHomeLoader, setShowHomeLoader] = useState(false);
     const [showProceedLoader, setShowProceedLoader] = useState(false);
+    const [loginErrorContent, setLoginErrorContent] = useState("");
     const [showSaveCartLoader, setShowSaveCartLoader] = useState(false);
 
     useEffect(() => {
         if(!cart.length) {
+            setShowHomeLoader(true);
             router.push("/");
         }
         else {
@@ -36,33 +40,51 @@ const CartLayout = () => {
     }
 
     const handleSaveCart = () => {
-        setShowSaveCartLoader(true);
-        const cartItems = [];
-        cart.map(item => {
-            const orderItem = {};
-            orderItem.id = item.id;
-            orderItem.quantity = item.quantity;
-            orderItem.category = item.category;
-            cartItems.push(orderItem);
-        });
-        const body = {
-            _id: session.user.email,
-            cart : cartItems
+        if(session) {
+            setShowSaveCartLoader(true);
+            const cartItems = [];
+            cart.map(item => {
+                const orderItem = {};
+                orderItem.id = item.id;
+                orderItem.quantity = item.quantity;
+                orderItem.category = item.category;
+                cartItems.push(orderItem);
+            });
+            const body = {
+                _id: session.user.email,
+                cart : cartItems
+            }
+            axios.post("api/updateCart", body)
+                .then((response) => {
+                    if(response.data.result) {
+                        setShowSaveCartLoader(false);
+                    }
+                    else {
+                        console.log("Error occured!!!");
+                    }
+                })
         }
-        axios.post("api/updateCart", body)
-            .then((response) => {
-                if(response.data.result) {
-                    setShowSaveCartLoader(false);
-                }
-                else {
-                    console.log("Error occured!!!");
-                }
-            })
+        else {
+            setLoginErrorContent("Please Login and save your cart anytime anywhere.")
+            setLoginError(true);
+            setInterval(() => {
+                setLoginError(false);
+            }, 5000)
+        }
     }
 
     const navigateToAddress = () => {
-        setShowProceedLoader(true);
-        router.push("/address");
+        if(session) {
+            setShowProceedLoader(true);
+            router.push("/address");
+        }
+        else {
+            setLoginErrorContent("Please Login and order as much as you want.");
+            setLoginError(true);
+            setInterval(() => {
+                setLoginError(false);
+            }, 5000)
+        }
     }
 
     return (
@@ -100,6 +122,13 @@ const CartLayout = () => {
             </div>
             {showProceedLoader && <LoaderLayout title="Please Wait. Getting your address." />}
             {showSaveCartLoader && <LoaderLayout title="Please Wait. Saving your cart." />}
+            {showHomeLoader && <LoaderLayout title="Loading the menu. Please wait." />}
+            {
+                loginError && 
+                    <div className={cartLayoutStyle.loginError}>
+                        <p className={cartLayoutStyle.loginErrorContent}>You're not Logged In.<br/>{loginErrorContent}</p>
+                    </div>
+            }
         </div>
     );
 }

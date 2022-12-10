@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@400&display=swap'); /* title */
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap'); /* menuContent */
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap'); /* categoriesMenuContent */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap'); /* One */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap'); /* Howl */
 
 .titleBarParent {
     width: 100%;
@@ -47,11 +48,23 @@
 
 .title {
     margin: 0;
-    color: #3bb77e;
     cursor: pointer;
+    color: #3bb77e;
+    font-size: 2.5rem;
     text-align: center;
-    font-size: xxx-large;
-    font-family: 'Londrina Solid';
+    font-family: 'Rajdhani', sans-serif;
+}
+
+.titleAndIconContainer:hover .title {
+    font-family: 'Fredoka One', cursive;
+}
+
+.howl {
+    font-family: 'Fredoka One', cursive;
+}
+
+.titleAndIconContainer:hover .howl {
+    font-family: 'Rajdhani', sans-serif;
 }
 
 .titleIcon {
@@ -185,7 +198,7 @@
     }
 }
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 750px) {
     .titleBarContainer {
         height: 20vh;
         flex-direction: column;

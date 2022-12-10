@@ -5,12 +5,13 @@ import { FaCopyright } from "react-icons/fa";
 import { IoLogoGithub } from "react-icons/io5";
 import { IoLogoLinkedin } from "react-icons/io5";
 import { IoLogoWhatsapp } from "react-icons/io5";
-import Loader from "../loaderLayout/loaderLayout";
+import LoaderLayout from "../loaderLayout/loaderLayout";
 import footerLayoutStyle from "./footerLayout.module.css";
 
 const FooterLayout = () => {
     const router = useRouter();
-    const [showLoader, setShowLoader] = useState();
+    const [showLoader, setShowLoader] = useState(false);
+    const [showHomeLoader, setShowHomeLoader] = useState(false);
     const usefulLinks = [
         {
             title: "Help/FAQ's",
@@ -25,6 +26,7 @@ const FooterLayout = () => {
             link: "/documentation/terms&Conditions"
         }
     ];
+    const areasWeServe = ["East Delhi", "North Delhi"];
     const ourPartners = [
         {
             icon: <IoEarth className={footerLayoutStyle.containerIcon} />,
@@ -65,14 +67,20 @@ const FooterLayout = () => {
         },
     ]
 
+    const naviagteToHome = () => {
+        setShowHomeLoader(true);
+        router.push("/");
+    }
+
+
     return (
         <div className={footerLayoutStyle.footerParent}>
             <div className={footerLayoutStyle.footerParentContainer}>
-                <div className={footerLayoutStyle.footerContainer}>
-                    <p className={footerLayoutStyle.footerMainTitle}>oneHowl</p>
-                    <p className={footerLayoutStyle.containerDescription}>One Howl is a online delivery platform that helps you to order food online from top brands in India.One Howl is a online delivery platform that helps you to order food online from top brands in India.</p>
+                <div className={footerLayoutStyle.footerContainerTitleAndDescription}>
+                    <p className={footerLayoutStyle.footerMainTitle} onClick={naviagteToHome}>one<span className={footerLayoutStyle.howl}>Howl</span></p>
+                    <p className={footerLayoutStyle.containerDescription}>OneHowl is an online delivery platform that helps you to order food online from one and only oneHowl restaurant. OneHowl provides you 100 products</p>
                 </div>
-                <div className={footerLayoutStyle.footerUsefulLinksAndPartnersContainer}>
+                <div className={footerLayoutStyle.footerContainerInfo}>
                     <div className={footerLayoutStyle.footerContainer}>
                         <p className={footerLayoutStyle.containerTitle}>Useful Links</p>
                         {
@@ -82,6 +90,18 @@ const FooterLayout = () => {
                                 );
                             })
                         }
+                    </div>
+                    <div className={footerLayoutStyle.footerContainer}>
+                        <p className={footerLayoutStyle.containerTitle}>Areas We Serve</p>
+                        <div className={footerLayoutStyle.containerLinks}>
+                        {    
+                            areasWeServe.map((item, index) => {
+                                    return (
+                                         <p key={index} className={footerLayoutStyle.containerContent}>{item}</p>
+                                    );
+                                })
+                        }
+                        </div>
                     </div>
                     <div className={footerLayoutStyle.footerContainer}>
                         <p className={footerLayoutStyle.containerTitle}>Our Partners</p>
@@ -98,20 +118,20 @@ const FooterLayout = () => {
                             }
                         </div>
                     </div>
-                </div>
-                <div className={footerLayoutStyle.footerContainer}>
-                    <p className={footerLayoutStyle.containerTitle}>Connect With Us</p>
-                    <div className={footerLayoutStyle.containerLinks}>
-                        {
-                            connectWithUs.map((item, index) => {
-                                return (
-                                    <div key={index} className={footerLayoutStyle.containerLinksContainer} onClick={() => {window.open(item.link, "_blank");}}>
-                                        {item.icon}
-                                        <p className={footerLayoutStyle.containerContent}>{item.title}</p>
-                                    </div>
-                                );
-                            })
-                        }
+                    <div className={footerLayoutStyle.footerContainer}>
+                        <p className={footerLayoutStyle.containerTitle}>Connect With Us</p>
+                        <div className={footerLayoutStyle.containerLinks}>
+                            {
+                                connectWithUs.map((item, index) => {
+                                    return (
+                                        <div key={index} className={footerLayoutStyle.containerLinksContainer} onClick={() => {window.open(item.link, "_blank");}}>
+                                            {item.icon}
+                                            <p className={footerLayoutStyle.containerContent}>{item.title}</p>
+                                        </div>
+                                    );
+                                })
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
@@ -119,7 +139,8 @@ const FooterLayout = () => {
                 <FaCopyright />
                 <p style={{margin: "0"}}>&nbsp;2022 - OneHowl. All Rights Reserved.</p>
             </div>
-            {showLoader && <Loader title="Please Wait. " />}
+            {showHomeLoader && <LoaderLayout title="Loading the menu. Please Wait." />}
+            {showLoader && <LoaderLayout title="Please Wait. Getting ready for help." />}
         </div>
     );
 }

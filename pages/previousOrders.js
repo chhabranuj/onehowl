@@ -18,13 +18,22 @@ const PreviousOrders = ({ posts }) => {
 
 export const getServerSideProps = async (context) => {
     const session = await getSession(context);
-    const client = await clientPromise;
-    const database = client.db(process.env.MONGO_DB);
-    const ordersCollection = database.collection("ordersCollection");
-    const results = await ordersCollection.findOne({_id: session.user.email});
-    return {
-        props : {
-            posts: results.orders
+    if(session) {
+        const client = await clientPromise;
+        const database = client.db(process.env.MONGO_DB);
+        const ordersCollection = database.collection("ordersCollection");
+        const results = await ordersCollection.findOne({_id: session.user.email});
+        return {
+            props : {
+                posts: results.orders
+            }
+        }
+    }
+    else {
+        return {
+            props : {
+                posts: []
+            }
         }
     }
 }

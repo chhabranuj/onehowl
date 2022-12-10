@@ -50,7 +50,7 @@ const LandingLayout = (props) => {
         <div  className={landingLayoutStyle.landingParentContainer}>
                 <div className={landingLayoutStyle.landing} style={{"backgroundImage": `url(${activeImage})`}}>
                     <div className={landingLayoutStyle.catchySlogan}>
-                        <div>
+                        <div className={landingLayoutStyle.catchySloganContainer}>
                             <div>
                                 <span style={{"--i":"1"}}>T</span>
                                 <span style={{"--i":"2"}}>A</span>
@@ -71,7 +71,7 @@ const LandingLayout = (props) => {
                                 <span style={{"--i":"13"}}>D</span>
                             </div>
                         </div>
-                        <div>
+                        <div className={landingLayoutStyle.catchySloganContainer}>
                             <div>
                                 <span style={{"--i":"14"}}>&nbsp;&nbsp;W</span>
                                 <span style={{"--i":"15"}}>I</span>

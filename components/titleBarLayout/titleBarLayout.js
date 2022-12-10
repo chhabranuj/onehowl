@@ -21,19 +21,20 @@ const TitleBarLayout = () => {
     const [totalQuantity, setTotalQuantity] = useState(0);
     const [showHelpLoader, setShowHelpLoader] = useState(false);
     const [showCartLoader, setShowCartLoader] = useState(false);
+    const [showHomeLoader, setShowHomeLoader] = useState(false);
     const [showCategoryLoader, setShowCategoryLoader] = useState(false);
     const [showPreviousOrdersLoader, setShowPreviousOrdersLoader] = useState(false);
     const foodSlogans = [
-        "Good food within minutes.",
         "The food of your choice.",
-        "Filling your tummy is what we care about.",
-        "We crossed the line of taste.",
-        "Made with love, savored with interest.",
+        "Good food within minutes.",
         "Wise food for wise people.",
+        "We crossed the line of taste.",
+        "We care for your precious order.",
         "It's fast, delicious, and fresh too.",
         "Giving your hunger a brand new taste.",
+        "Made with love, savored with interest.",
         "Get the best foods from the best chefs.",
-        "We care for your precious order."
+        "Filling your tummy is what we care about."
     ];
 
     useEffect(() => {
@@ -45,15 +46,23 @@ const TitleBarLayout = () => {
         setTagline(foodSlogans[Math.floor(Math.random() * 10)])
     })
 
+    const naviagteToHome = () => {
+        setShowHomeLoader(true);
+        router.push("/");
+        setInterval(() => {
+            setShowHomeLoader(false);
+        }, 2000);
+    }
+
     return (
         <div className={titleBarLayoutStyle.titleBarParent}>
             <div className={titleBarLayoutStyle.titleBarFixedContainer}>
-                <div className={titleBarLayoutStyle.titleBarQuotesContainer} onClick={() => signOut()}>
+                <div className={titleBarLayoutStyle.titleBarQuotesContainer}>
                     <p className={titleBarLayoutStyle.titleBarQuotes}>{tagline}</p>
                 </div>
                 <div className={titleBarLayoutStyle.titleBarContainer}>
                     <div className={titleBarLayoutStyle.titleAndIconContainer}>
-                        <p className={titleBarLayoutStyle.title} onClick={() => router.push("/")}>oneHowl</p>
+                        <p className={titleBarLayoutStyle.title} onClick={naviagteToHome}>one<span className={titleBarLayoutStyle.howl}>Howl</span></p>
                         <GiWolfHowl className={titleBarLayoutStyle.titleIcon} />
                     </div>
                     <div className={titleBarLayoutStyle.categoriesContainer}>
@@ -96,6 +105,7 @@ const TitleBarLayout = () => {
                 </div>
             </div>
             {/* LOADER */}
+            {showHomeLoader && <LoaderLayout title="Loading the menu. Please Wait." />}
             {showCategoryLoader && <LoaderLayout title="Please wait. Preparing the menu." />}
             {showCartLoader && <LoaderLayout title="Please wait. Your cart is getting ready." />}
             {showPreviousOrdersLoader && <LoaderLayout title="Please wait. Getting your orders." />}

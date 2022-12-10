@@ -5,6 +5,7 @@
     height: 50vh;
     display: flex;
     margin: 0 0 2rem 0;
+    position: relative;
     align-items: center;
     justify-content: center;
 }
@@ -52,8 +53,8 @@
 
 .newsletterContent {
     color: #7e7e7e;
-    margin-top: 5px;
     font-size: 1.2rem;
+    margin-top: 0.3rem;
     font-family: "Work Sans";
 }
 
@@ -100,6 +101,21 @@
     background-color: #FDC040;
 }
 
+.reSubscribeButton {
+    right: 3%;
+    margin: 0;
+    bottom: 3%;
+    cursor: pointer;
+    font-size: small;
+    color: #3bb77e;
+    position: absolute;
+    text-decoration: underline;
+}
+
+.reSubscribeButton:hover {
+    color: green;
+}
+
 @media screen and (max-width: 1000px) {
     .newsletterChild {
         flex-direction: column;
@@ -144,5 +160,9 @@
 
     .newsletterSubscribeButton {
         width: 40%;
+    }
+
+    .reSubscribeButton {
+        right: 8%;
     }
 }

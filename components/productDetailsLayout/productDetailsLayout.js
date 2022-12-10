@@ -4,6 +4,7 @@ import { BiUpArrow } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import { BiDownArrow } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
+import LoaderLayout from "../loaderLayout/loaderLayout";
 import { productSelector } from "../store/reducers/productReducer";
 import productDetailsLayoutStyle from "./productDetailsLayout.module.css";
 import { addItem, cartSelector, removeItem } from "../store/reducers/cartReducer";
@@ -15,6 +16,7 @@ const ProductDetailsLayout = (props) => {
     const [product, setProduct] = useState({});
     const [quantity, setQuantity] = useState(0);
     const products = useSelector(productSelector);
+    const [showHomeLoader, setShowHomeLoader] = useState(false);
 
     useEffect(() => {
         if(!props.productId) {
@@ -39,6 +41,11 @@ const ProductDetailsLayout = (props) => {
         }
     })
 
+    const navigateToHome = () => {
+        setShowHomeLoader(true);
+        router.push("/");
+    }
+
     const handleAddItem = () => {
         quantity < 1?  dispatch(addItem({id: product.id, name: product.title, realPrice: product.realPrice, discount: product.discount, category: props.categoryId, quantity: 1})): dispatch(addItem({id: product.id}));
         setQuantity(quantity + 1);
@@ -54,7 +61,7 @@ const ProductDetailsLayout = (props) => {
     return (
         <div className={productDetailsLayoutStyle.productDetailsParent}>
             <div className={productDetailsLayoutStyle.routeContainer}>
-                <p className={productDetailsLayoutStyle.route}><span className={productDetailsLayoutStyle.from} onClick={() => router.push("/")}>Home &#8658;&nbsp;</span> <span style={{color: "#77a464"}}>Products &#8658;&nbsp;</span> {product.title}</p>
+                <p className={productDetailsLayoutStyle.route}><span className={productDetailsLayoutStyle.from} onClick={navigateToHome}>Home &#8658;&nbsp;</span> <span style={{color: "#77a464"}}>Products &#8658;&nbsp;</span> {product.title}</p>
             </div>
             <div className={productDetailsLayoutStyle.productDetailsChild}>
                 <div className={productDetailsLayoutStyle.productDetailsChildLeft}>
@@ -119,6 +126,7 @@ const ProductDetailsLayout = (props) => {
                 </div>
             </div>
             <p className={productDetailsLayoutStyle.otherProductsTitle}>Other Products</p>
+            {showHomeLoader && <LoaderLayout title="Loading the menu. Please wait." />}
         </div>
     );
 }

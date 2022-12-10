@@ -25,8 +25,8 @@ const HelpLayout = () => {
             answer: <p>Delivery fee varies from place to place and is applicable if order value is below a certain amount.<br/>Additionally, certain products might have fixed packaging fees. Delivery fee (if any) is specified on the 'Confirm Order' page. 😃</p>
         },
         {
-            question: "Which area do we currently serve?",
-            answer: <p>OneHowl is just in East Delhi as of now. But don't worry, we are extending our services to reach each and everyone of you. 😉</p>
+            question: "Which area do you currently serve?",
+            answer: <p>OneHowl is just in East Delhi and North Delhi as of now. But don't worry, we are extending our services to reach each and everyone of you. 😉</p>
         },
         {
             question: "Can I order in advance?",
