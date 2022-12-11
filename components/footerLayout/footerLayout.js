@@ -14,6 +14,10 @@ const FooterLayout = () => {
     const [showHomeLoader, setShowHomeLoader] = useState(false);
     const usefulLinks = [
         {
+            title: "About Us",
+            link: "/aboutUs"
+        },
+        {
             title: "Help/FAQ's",
             link: "/help"
         },
@@ -70,6 +74,9 @@ const FooterLayout = () => {
     const naviagteToHome = () => {
         setShowHomeLoader(true);
         router.push("/");
+        setInterval(() => {
+            setShowHomeLoader(false);
+        }, 2000)
     }
 
 
@@ -78,7 +85,7 @@ const FooterLayout = () => {
             <div className={footerLayoutStyle.footerParentContainer}>
                 <div className={footerLayoutStyle.footerContainerTitleAndDescription}>
                     <p className={footerLayoutStyle.footerMainTitle} onClick={naviagteToHome}>one<span className={footerLayoutStyle.howl}>Howl</span></p>
-                    <p className={footerLayoutStyle.containerDescription}>OneHowl is an online delivery platform that helps you to order food online from one and only oneHowl restaurant. OneHowl provides you 100 products</p>
+                    <p className={footerLayoutStyle.containerDescription}>OneHowl is an online delivery platform that helps you to order food online from one and only oneHowl restaurant. OneHowl provides you more than 100 products which you can order anytime & anywhere.</p>
                 </div>
                 <div className={footerLayoutStyle.footerContainerInfo}>
                     <div className={footerLayoutStyle.footerContainer}>

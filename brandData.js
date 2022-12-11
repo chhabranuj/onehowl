@@ -779,6 +779,22 @@ chinese: [
         }
     },
     {
+        id: "chilliChicken",
+        image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/chinese/chilliChicken.avif",
+        title: "Chilli Chicken",
+        rating: "4.7",
+        realPrice: "240",
+        discount: "5",
+        isVeg: false,
+        info: {
+            about: "Chili Chicken is made of chunks of boneless chicken mixed with dry red chilies, finely chopped ginger and garlic, onions and other Indo Chinese spices to make a spicy Indian flare dish along with the distinct traditional Chinese flavors.",
+            course: "Starter",
+            servingTemperature: "Hot",
+            mainIngredient: "Chicken & Various Sauces",
+            quantity: "Per Plate (8 Pieces)"
+        }
+    },
+    {
         id: "vegChowmein",
         image: "https://onehowl-bucket.s3.ap-south-1.amazonaws.com/chinese/vegChowmein.avif",
         title: "Veg Chowmein",

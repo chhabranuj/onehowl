@@ -56,21 +56,21 @@
 }
 
 .titleAndIconContainer:hover .title {
-    font-family: 'Fredoka One', cursive;
+    color: #229954;
 }
 
 .howl {
     font-family: 'Fredoka One', cursive;
 }
 
-.titleAndIconContainer:hover .howl {
-    font-family: 'Rajdhani', sans-serif;
-}
-
 .titleIcon {
     color: #3bb77e;
     font-size: 3.5rem;
     margin-left: 0.5rem;
+}
+
+.titleAndIconContainer:hover .titleIcon {
+    color: #229954;
 }
 
 .menuButton {

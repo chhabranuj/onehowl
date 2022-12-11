@@ -1,6 +1,7 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 import Layout from "../../components/layout/layout";
+import CheckoutFooterLayout from "../../components/checkoutFooterLayout/checkoutFooterLayout";
 import SpecificCategoriesLayout from "../../components/Categories/specificCategoriesLayout/specificCategoriesLayout";
 
 
@@ -13,6 +14,7 @@ const Category = () => {
                 <title>Category | OneHowl</title>
             </Head>
             <SpecificCategoriesLayout categoryId={router.query.categoryId} />
+            <CheckoutFooterLayout />
         </Layout>
     );
 }

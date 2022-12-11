@@ -62,15 +62,11 @@
 }
 
 .footerMainTitle:hover {
-    font-family: 'Fredoka One', cursive;
+    color: #229954;
 }
 
 .howl {
     font-family: 'Fredoka One', cursive;
-}
-
-.footerMainTitle:hover .howl{
-    font-family: 'Rajdhani', sans-serif;
 }
 
 .containerDescription {

@@ -1,108 +1,189 @@
 .aboutParent {
-    height: 85vh;
+    width: 100%;
     display: flex;
+    padding-top: 2rem;
     align-items: center;
-    background-size: cover;
+    padding-bottom: 1rem;
+    flex-direction: column;
     justify-content: center;
-    background-position: top;
-    background-color: #fff;
-    background-repeat: no-repeat;
-    background-image: url("../../public/static/images/aboutBg2.png");
 }
 
-.leftContainer {
-    width: 40%;
-    margin: 0 4%;
-    height: 100%;
+.whoWeAreParent {
+    width: 88%;
+    display: flex;
+    margin: 2rem 0;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.whoWeAreContainer {
+    width: 48%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.title {
+    width: 100%;
+    margin-top: 0;
+    color: #253D4E;
+    font-weight: bold;
+    font-size: xxx-large;
+    margin-bottom: 0.75rem;
+    font-family: 'Rajdhani';
+}
+
+.whoWeAreContainerContent {
+    margin: 0;
+    color: #363636;
+    line-height: 1.5;
+    font-weight: 300;
+}
+
+.whoWeAreContainerImage {
+    width: 90%;
+    border-radius: 0.5rem;
+}
+
+.believeParent {
+    width: 90%;
+    display: flex;
+    margin: 2rem 0;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.believeChild {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.believeContainer {
+    width: 23%;
+    display: flex;
+    align-items: center;
+    padding: 1rem 0.25rem;
+    border-radius: 0.5rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    border: 1px solid #3bb77e;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.believeContainer:hover {
+    border: 1px solid #229954;;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.believeTitle {
+    color: #253D4E;
+    font-size: x-large;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+.imagesParent {
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
 }
 
-.title{
-    color: #fff;
-    font-size: 3.5rem;
-    margin: 0 0 1rem 0;
-    background-clip: text;
-    background-size: 200% auto;
-    -webkit-text-fill-color: transparent;
-    animation: textclip 3s linear infinite;
-    font-family: "Londrina Solid",Sans-serif;
-    background-image: linear-gradient(-225deg, #231557 0%, #44107a 29%, #ff1361 67%, #fff800 100%);
-}
-
-@keyframes textclip {
-  to {
-    background-position: 200% center;
-  }
-}
-
-.content {
-    margin: 0;
-    color: black;
-    line-height: 1.2;
-    font-size: large;
-    text-align: center;
-}
-
-.rightContainer {
-    width: 50%;
-    height: 100%;
+.imagesChild {
+    width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.fastFoodImages {
-    border-radius: 15px;
+.imagesContainer {
+    width: 35%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
-@media screen and (max-width: 1000px) {
-    .aboutParent {
-        width: 100%;
-        padding: 5%;
-        height: auto;
-        align-items: center;
-        flex-direction: column;
-        /* background-image: url("../../public/static/images/aboutbg4Vertical.jpeg"); */
-        background-image: url("../../public/static/images/brandsMobileVertical.png");
-    }
+.image {
+    width: 90%;
+    height: 40vh;
+    margin: 0.5rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
 
-    .leftContainer {
-        width: 90%;
-        margin: 6% 4%;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-content: center;
-    }
+.middleImage {
+    width: 30%;
+    border-radius: 0.5rem;
+    height: calc(80vh + 1rem);
+}
 
-    .title {
-        font-weight: bold;
+.behindParent {
+    width: 85%;
+    display: flex;
+    margin-top: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 1100px) {
+    .believeContainer {
+        width: 45%;
         margin-bottom: 1rem;
     }
 
-    .content {
-        width: 100%;
+    .imagesContainer {
+        width: 48%;
     }
 
-    .rightContainer {
-        width: 70%;
-        margin-top: 20px;
+    .image {
+        width: 95%;
+    }
+
+    .middleImage {
+        display: none;
     }
 }
 
-@media screen and (max-width: 750px) {
-    .aboutParent {
-        padding: 50px 5%;
+@media screen and (max-width: 800px) {
+    .whoWeAreParent {
+        margin: 0;
+        flex-direction: column-reverse;
     }
 
-    .rightContainer {
+    .whoWeAreContainer {
         width: 100%;
     }
 
-    .fastFoodImages {
-        max-width: 90%;
+    .title {
+        margin-top: 1rem;
+        margin-bottom: 0;
+    }
+
+    .whoWeAreContainerImage {
+        width: 100%;
+    }
+
+    .believeContainer {
+        width: 100%;
+    }
+
+    .imagesChild {
+        flex-direction: column;
+    }
+
+    .imagesContainer {
+        width: 100%;
+    }
+
+    .image {
+        width: 100%;
     }
 }

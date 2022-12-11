@@ -20,6 +20,7 @@ const ProductDetailsLayout = (props) => {
 
     useEffect(() => {
         if(!props.productId) {
+            setShowHomeLoader(true);
             router.push("/");
         }
         else {
