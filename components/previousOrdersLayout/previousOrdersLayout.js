@@ -1,4 +1,3 @@
-import moment from "moment";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
@@ -18,15 +17,7 @@ const PreviousOrdersLayout = (props) => {
             router.push("/");
         }
         else {
-            for(let i=0; i<props.data.length; i++) {
-                for (let j=0; j<props.data.length; j++) {
-                    if(moment(props.data[i].date).isAfter(moment(props.data[j].date))) {
-                        let temp = props.data[i];
-                        props.data[i] = props.data[j];
-                        props.data[j] = temp;
-                    }
-                }
-            }
+            props.data.sort((a,b) => new Date(b.date) - new Date(a.date))
             setOrderData(props.data);
         }
     })

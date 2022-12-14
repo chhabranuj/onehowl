@@ -126,6 +126,16 @@ const ConfirmOrderLayout = (props) => {
     }
 
     const navigateToOrderSummary = () => {
+        let productImage = "";
+        products.map(item => {
+            if(item.category == cart[0].category) {
+                item.items.map(itemData => {
+                    if(itemData.id == cart[0].id) {
+                        productImage = itemData.image;
+                    }
+                })
+            }
+        })
         const wholeAddress = addressData.address + ", " + addressData.state + ", " + addressData.city + ", " + addressData.pinCode;
         setShowLoader(true);
         const body = {
@@ -136,7 +146,7 @@ const ConfirmOrderLayout = (props) => {
                 date: new Date().getFullYear()+'-'+(new Date().getMonth()+1)+'-'+new Date().getDate(),
                 items: orderData,
                 totalPrice: priceSummary.priceToPay,
-                image: products[Math.floor(Math.random() * products.length)]["items"][Math.floor(Math.random() * 9)]["image"],
+                image: productImage,
                 couponDiscount: priceSummary.offer,
                 coupon: couponApplied.coupon != "Coupon Code..." && couponApplied.coupon? couponApplied.coupon: "No Coupon Applied",
             }

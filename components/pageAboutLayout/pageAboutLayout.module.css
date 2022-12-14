@@ -4,7 +4,7 @@
     display: flex;
     margin: 0 0 2rem 0;
     align-items: center;
-    border-radius: 20px;
+    border-radius: 1.2rem;
     flex-direction: column;
     background-size: cover;
     justify-content: center;
@@ -15,10 +15,10 @@
 
 .yourCartTitle {
     margin: 0;
+    font-size: 3rem;
     color: #253D4E;
     font-weight: 700;
     text-align: center;
-    font-size: xxx-large;
     font-family: 'Quicksand', sans-serif;
 }
 

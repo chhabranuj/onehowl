@@ -76,7 +76,7 @@ const FooterLayout = () => {
         router.push("/");
         setInterval(() => {
             setShowHomeLoader(false);
-        }, 2000)
+        }, 2500)
     }
 
 
@@ -93,7 +93,12 @@ const FooterLayout = () => {
                         {
                             usefulLinks.map((item, index) => {
                                 return(
-                                    <p key={index} className={footerLayoutStyle.containerContent} onClick={() => {setShowLoader(true); router.push({pathname: item.link, query: {title: item.title}}, item.link); setShowLoader(false);}}>{item.title}</p>
+                                    <p key={index} className={footerLayoutStyle.containerContent} onClick={() => {
+                                        setShowLoader(true);
+                                        router.push({pathname: item.link, query: {title: item.title}}, item.link);
+                                        setInterval(() => {
+                                            setShowLoader(false);
+                                        }, 3500)}}>{item.title}</p>
                                 );
                             })
                         }
@@ -147,7 +152,7 @@ const FooterLayout = () => {
                 <p style={{margin: "0"}}>&nbsp;2022 - OneHowl. All Rights Reserved.</p>
             </div>
             {showHomeLoader && <LoaderLayout title="Loading the menu. Please Wait." />}
-            {showLoader && <LoaderLayout title="Please Wait. Getting ready for help." />}
+            {showLoader && <LoaderLayout title="Please Wait. Fetching the information." />}
         </div>
     );
 }

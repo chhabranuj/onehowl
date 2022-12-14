@@ -14,11 +14,11 @@ const HelpLayout = () => {
         },
         {
             question: "How to see the details of any product?",
-            answer: <p>You first need to add the product in your cart. Click on the name of the product once you add it in your cart. 😃"</p>
+            answer: <p>You first need to add the product in your cart. Click on the name of the product once you add it in your cart. 😃</p>
         },
         {
             question: "Is there a minimum order value?",
-            answer: <p>We have no minimum order value and you can order for any amount. 😎"</p>
+            answer: <p>We have no minimum order value and you can order for any amount. 😎</p>
         },
         {
             question: "Do you charge for delivery?",
@@ -34,7 +34,7 @@ const HelpLayout = () => {
         },
         {
             question: "How can I signout from OneHowl?",
-            answer: <p>Once you logged in, you can signout from the account section. 😔"</p>
+            answer: <p>Once you logged in, you can signout from the account section. 😔</p>
         },
     ]
 

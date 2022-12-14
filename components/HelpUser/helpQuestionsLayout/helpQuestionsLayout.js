@@ -12,7 +12,7 @@ const HelpQuestionsLayout = (props) => {
                 <p className={helpQuestionsLayoutStyle.question}>{props.data.question}</p>
                 {showAnswer? <BiUpArrow style={{color: "red", width: "10%"}} />: <BiDownArrow style={{color: "#3bb77e",  width: "10%"}} />}
             </div>
-            {showAnswer && <p className={helpQuestionsLayoutStyle.answer}>{props.data.answer}</p>}
+            {showAnswer && <div className={helpQuestionsLayoutStyle.answer}>{props.data.answer}</div>}
         </div>
     );
 }

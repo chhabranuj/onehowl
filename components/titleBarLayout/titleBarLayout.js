@@ -9,6 +9,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { IoMdHelpCircleOutline } from "react-icons/io";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import LoaderLayout from "../loaderLayout/loaderLayout";
+import { HiOutlineInformationCircle } from "react-icons/hi";
 import { cartSelector } from "../store/reducers/cartReducer";
 import titleBarLayoutStyle from "./titleBarLayout.module.css";
 import { productSelector } from "../store/reducers/productReducer";
@@ -22,6 +23,7 @@ const TitleBarLayout = () => {
     const [showHelpLoader, setShowHelpLoader] = useState(false);
     const [showCartLoader, setShowCartLoader] = useState(false);
     const [showHomeLoader, setShowHomeLoader] = useState(false);
+    const [showAboutLoader, setShowAboutLoader] = useState(false);
     const [showCategoryLoader, setShowCategoryLoader] = useState(false);
     const [showPreviousOrdersLoader, setShowPreviousOrdersLoader] = useState(false);
     const foodSlogans = [
@@ -51,7 +53,7 @@ const TitleBarLayout = () => {
         router.push("/");
         setInterval(() => {
             setShowHomeLoader(false);
-        }, 2000);
+        }, 2500);
     }
 
     return (
@@ -71,30 +73,59 @@ const TitleBarLayout = () => {
                             Browse All Categories
                         </button>
                         <div className={titleBarLayoutStyle.categoriesMenu}>
-                        {
-                            productData.map((item, index) => {
-                                return(
-                                    <div className={titleBarLayoutStyle.categoriesMenuContent} key={index} onClick={() => {setShowCategoryLoader(true); router.push({pathname: `/category/${item.category}`, query: { categoryId: item.category }}, `/category/${item.category}`)}}>
-                                        <p className={titleBarLayoutStyle.categoriesMenuContentTitle}>{item.category}</p>
-                                        <p className={titleBarLayoutStyle.categoriesMenuContentQuantity}>{item['items'].length}</p>
-                                    </div>
-                                );
-                            })
-                        }
-                    </div>
+                            {
+                                productData.map((item, index) => {
+                                    return(
+                                        <div className={titleBarLayoutStyle.categoriesMenuContent} key={index} onClick={() => {
+                                            setShowCategoryLoader(true);
+                                            router.push({pathname: `/category/${item.category}`, query: { categoryId: item.category }}, `/category/${item.category}`)
+                                            setInterval(() => {
+                                                setShowCategoryLoader(false);
+                                            }, 2500);}}>
+                                            <p className={titleBarLayoutStyle.categoriesMenuContentTitle}>{item.category}</p>
+                                            <p className={titleBarLayoutStyle.categoriesMenuContentQuantity}>{item['items'].length}</p>
+                                        </div>
+                                    );
+                                })
+                            }
+                        </div>
                     </div>
                     <div className={titleBarLayoutStyle.servicesContainer}>
-                        <div className={titleBarLayoutStyle.services} onClick={() => {setShowPreviousOrdersLoader(true); router.push("/previousOrders")}}>
+                        <div className={titleBarLayoutStyle.services} onClick={() => {
+                            setShowAboutLoader(true);
+                            router.push("/aboutUs");
+                            setInterval(() => {
+                                setShowAboutLoader(false);
+                            }, 2500);}}>
+                            <HiOutlineInformationCircle className={titleBarLayoutStyle.serviceIcon} />&nbsp;
+                            <p className={titleBarLayoutStyle.serviceTitle}>About</p>
+                        </div>
+                        <div className={titleBarLayoutStyle.services} onClick={() => {
+                            setShowPreviousOrdersLoader(true);
+                            router.push("/previousOrders");
+                            setInterval(() => {
+                                setShowPreviousOrdersLoader(false);
+                            }, 2500);}}>
                             <GoPackage className={titleBarLayoutStyle.serviceIcon} />&nbsp;
                             <p className={titleBarLayoutStyle.serviceTitle}>Orders</p>
                         </div>
-                        <div className={titleBarLayoutStyle.services} onClick={() => {setShowHelpLoader(true); router.push("/help")}}>
+                        <div className={titleBarLayoutStyle.services} onClick={() => {
+                            setShowHelpLoader(true);
+                            router.push("/help");
+                            setInterval(() => {
+                                setShowHelpLoader(false);
+                            }, 2500);}}>
                             <IoMdHelpCircleOutline className={titleBarLayoutStyle.serviceIcon} />&nbsp;
                             <p className={titleBarLayoutStyle.serviceTitle}>Help</p>
                         </div>
-                        <div className={titleBarLayoutStyle.services}>
+                        <div className={titleBarLayoutStyle.services} onClick={() => {
+                                setShowCartLoader(true);
+                                router.push("/cart");
+                                setInterval(() => {
+                                    setShowCartLoader(false);
+                                }, 2500);}}>
                             <AiOutlineShoppingCart className={titleBarLayoutStyle.serviceIcon} />&nbsp;
-                            <p className={titleBarLayoutStyle.serviceTitle} onClick={() => {setShowCartLoader(true); router.push("/cart")}}>Cart</p>
+                            <p className={titleBarLayoutStyle.serviceTitle}>Cart</p>
                             {totalQuantity > 0 && <p className={titleBarLayoutStyle.cartQuantity}>{totalQuantity}</p>}
                         </div>
                         <div className={titleBarLayoutStyle.services}>
@@ -107,9 +138,10 @@ const TitleBarLayout = () => {
             {/* LOADER */}
             {showHomeLoader && <LoaderLayout title="Loading the menu. Please Wait." />}
             {showCategoryLoader && <LoaderLayout title="Please wait. Preparing the menu." />}
+            {showHelpLoader && <LoaderLayout title="Please wait. Getting ready to help you." />}
+            {showAboutLoader && <LoaderLayout title="Please wait. Fetching the information." />}
             {showCartLoader && <LoaderLayout title="Please wait. Your cart is getting ready." />}
             {showPreviousOrdersLoader && <LoaderLayout title="Please wait. Getting your orders." />}
-            {showHelpLoader && <LoaderLayout title="Please wait. Getting ready to help you." />}
         </div>
     );
 }

@@ -42,7 +42,7 @@ const CategoriesItemLayout = (props) => {
         }, "/productDetails");
         setInterval(() => {
             setShowLoader(false);
-        }, 2000);
+        }, 2500);
     }
 
     const addToCart = () => {
@@ -101,7 +101,7 @@ const CategoriesItemLayout = (props) => {
                         <p className={categoriesItemLayoutStyle.price}>Now At ₹{Math.floor((100-props.data.discount)*props.data.realPrice*0.01)}</p>
                         <p className={categoriesItemLayoutStyle.discount}><span style={{textDecoration: "line-through"}}>₹{props.data.realPrice}</span> ({props.data.discount}% Off)</p>
                     </div>
-                    <ButtonLayout buttonText={addDeleteButton.title} buttonWidth="auto" buttonPadding="10px 20px" buttonBgColor={addDeleteButton.bgColor} buttonBgHoverColor="#FDC040" leftButtonIcon={<AiOutlineShoppingCart style={{maginRight: "5px"}} />} handleButtonClick={addToCart} />
+                    <ButtonLayout buttonText={addDeleteButton.title} buttonWidth="auto" buttonPadding="0.65rem 1.2rem" buttonBgColor={addDeleteButton.bgColor} buttonBgHoverColor="#FDC040" leftButtonIcon={<AiOutlineShoppingCart style={{maginRight: "0.3rem"}} />} handleButtonClick={addToCart} />
                 </div>
             </div>
             {/* LOADER */}

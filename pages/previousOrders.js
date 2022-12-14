@@ -1,10 +1,20 @@
 import Head from "next/head";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 import clientPromise from "../lib/mongodb";
-import { getSession } from "next-auth/react";
 import Layout from "../components/layout/layout";
+import { getSession, useSession } from "next-auth/react";
 import PreviousOrdersLayout from "../components/previousOrdersLayout/previousOrdersLayout";
 
 const PreviousOrders = ({ posts }) => {
+    const router = useRouter();
+    const {data: session} = useSession();
+
+    useEffect(() => {
+        if(!session) {
+            router.push("/");
+        }
+    })
 
     return (
         <Layout>

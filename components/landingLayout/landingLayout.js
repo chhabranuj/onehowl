@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import {useSession } from "next-auth/react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../store/reducers/cartReducer";
+import LoaderLayout from "../loaderLayout/loaderLayout";
 import landingLayoutStyle from "./landingLayout.module.css";
 import { productSelector } from "../store/reducers/productReducer";
 import { addUser, userSelector } from "../store/reducers/userReducer";
@@ -14,6 +15,7 @@ const LandingLayout = (props) => {
     const products = useSelector(productSelector);
     const images = ["/static/bg.png", "/static/bg2.png"];
     const [activeImage, setActiveImage] = useState(images[0]);
+    const [showHomeLoader, setShowHomeLoader] = useState(false);
 
     useEffect(() => {
         let count = 0
@@ -24,9 +26,10 @@ const LandingLayout = (props) => {
             else{
                 count += 1;
             }
-            setActiveImage(images[count])
+            setActiveImage(images[count]);
         }, 10000);
         if(session && !user.firstName) {
+            setShowHomeLoader(true);
             const body = { data: session.user.email }
             axios.post("/api/getUserData", body)
             .then((response) => {
@@ -43,69 +46,80 @@ const LandingLayout = (props) => {
                     })
                 })
             })
+            setInterval(() => {
+                setShowHomeLoader(false);
+            }, 2500);
         }
     })
 
     return (
         <div  className={landingLayoutStyle.landingParentContainer}>
-                <div className={landingLayoutStyle.landing} style={{"backgroundImage": `url(${activeImage})`}}>
-                    <div className={landingLayoutStyle.catchySlogan}>
-                        <div className={landingLayoutStyle.catchySloganContainer}>
-                            <div>
-                                <span style={{"--i":"1"}}>T</span>
-                                <span style={{"--i":"2"}}>A</span>
-                                <span style={{"--i":"3"}}>S</span>
-                                <span style={{"--i":"4"}}>T</span>
-                                <span style={{"--i":"5"}}>E</span>
-                            </div>
-                            <div>
-                                <span style={{"--i":"6"}}>&nbsp;&nbsp;T</span>
-                                <span style={{"--i":"7"}}>H</span>
-                                <span style={{"--i":"8"}}>E</span>
-                            </div>
-                            <div>
-                                <span style={{"--i":"9"}}>&nbsp;&nbsp;W</span>
-                                <span style={{"--i":"10"}}>O</span>
-                                <span style={{"--i":"11"}}>R</span>
-                                <span style={{"--i":"12"}}>L</span>
-                                <span style={{"--i":"13"}}>D</span>
-                            </div>
+            {/* <div className={landingLayoutStyle.landing} style={{"backgroundImage": `url(${activeImage})`}}>
+                <div className={landingLayoutStyle.catchySlogan}>
+                    <div className={landingLayoutStyle.catchySloganContainer}>
+                        <div>
+                            <span style={{"--i":"1"}}>T</span>
+                            <span style={{"--i":"2"}}>A</span>
+                            <span style={{"--i":"3"}}>S</span>
+                            <span style={{"--i":"4"}}>T</span>
+                            <span style={{"--i":"5"}}>E</span>
                         </div>
-                        <div className={landingLayoutStyle.catchySloganContainer}>
-                            <div>
-                                <span style={{"--i":"14"}}>&nbsp;&nbsp;W</span>
-                                <span style={{"--i":"15"}}>I</span>
-                                <span style={{"--i":"16"}}>T</span>
-                                <span style={{"--i":"17"}}>H</span>
-                                <span style={{"--i":"18"}}>O</span>
-                                <span style={{"--i":"19"}}>U</span>
-                                <span style={{"--i":"20"}}>T</span>
-                            </div>
-                            <div>
-                                <span style={{"--i":"21"}}>&nbsp;&nbsp;L</span>
-                                <span style={{"--i":"22"}}>E</span>
-                                <span style={{"--i":"23"}}>A</span>
-                                <span style={{"--i":"24"}}>V</span>
-                                <span style={{"--i":"25"}}>I</span>
-                                <span style={{"--i":"26"}}>N</span>
-                                <span style={{"--i":"27"}}>G</span>
-                            </div>
-                            <div>
-                                <span style={{"--i":"28"}}>&nbsp;&nbsp;Y</span>
-                                <span style={{"--i":"29"}}>O</span>
-                                <span style={{"--i":"30"}}>U</span>
-                                <span style={{"--i":"31"}}>R</span>
-                            </div>
-                            <div>
-                                <span style={{"--i":"32"}}>&nbsp;&nbsp;C</span>
-                                <span style={{"--i":"33"}}>H</span>
-                                <span style={{"--i":"34"}}>A</span>
-                                <span style={{"--i":"35"}}>I</span>
-                                <span style={{"--i":"36"}}>R</span>
-                            </div>
+                        <div>
+                            <span style={{"--i":"6"}}>&nbsp;&nbsp;T</span>
+                            <span style={{"--i":"7"}}>H</span>
+                            <span style={{"--i":"8"}}>E</span>
+                        </div>
+                        <div>
+                            <span style={{"--i":"9"}}>&nbsp;&nbsp;W</span>
+                            <span style={{"--i":"10"}}>O</span>
+                            <span style={{"--i":"11"}}>R</span>
+                            <span style={{"--i":"12"}}>L</span>
+                            <span style={{"--i":"13"}}>D</span>
+                        </div>
+                    </div>
+                    <div className={landingLayoutStyle.catchySloganContainer}>
+                        <div>
+                            <span style={{"--i":"14"}}>&nbsp;&nbsp;W</span>
+                            <span style={{"--i":"15"}}>I</span>
+                            <span style={{"--i":"16"}}>T</span>
+                            <span style={{"--i":"17"}}>H</span>
+                            <span style={{"--i":"18"}}>O</span>
+                            <span style={{"--i":"19"}}>U</span>
+                            <span style={{"--i":"20"}}>T</span>
+                        </div>
+                        <div>
+                            <span style={{"--i":"21"}}>&nbsp;&nbsp;L</span>
+                            <span style={{"--i":"22"}}>E</span>
+                            <span style={{"--i":"23"}}>A</span>
+                            <span style={{"--i":"24"}}>V</span>
+                            <span style={{"--i":"25"}}>I</span>
+                            <span style={{"--i":"26"}}>N</span>
+                            <span style={{"--i":"27"}}>G</span>
+                        </div>
+                        <div>
+                            <span style={{"--i":"28"}}>&nbsp;&nbsp;Y</span>
+                            <span style={{"--i":"29"}}>O</span>
+                            <span style={{"--i":"30"}}>U</span>
+                            <span style={{"--i":"31"}}>R</span>
+                        </div>
+                        <div>
+                            <span style={{"--i":"32"}}>&nbsp;&nbsp;C</span>
+                            <span style={{"--i":"33"}}>H</span>
+                            <span style={{"--i":"34"}}>A</span>
+                            <span style={{"--i":"35"}}>I</span>
+                            <span style={{"--i":"36"}}>R</span>
                         </div>
                     </div>
                 </div>
+                <p>Now 5% off on everything!!!</p>
+            </div> */}
+            <div className={landingLayoutStyle.imagesContainer}>
+                {
+                    ["https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/zpkkdkmvlj5cuvqbc50t", "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/awurei8ypqkafoqay9ym", "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/pneknawbadtvceqzwiep", "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_520,h_520/rng/md/carousel/production/s5ug2key6e2sptaxku5v"]
+                        .map(item => <img src={item} className={landingLayoutStyle.images}/>)
+                }
+            </div>
+            {showHomeLoader && <LoaderLayout title="Loading the menu. Please wait." />}
         </div>
     );
 }

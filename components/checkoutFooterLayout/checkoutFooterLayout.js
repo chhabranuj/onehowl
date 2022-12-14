@@ -44,7 +44,7 @@ const CheckoutFooterLayout = () => {
                             <p className={checkoutFooterLayoutStyle.totalPrice}>₹{totalPrice}<br /><span className={checkoutFooterLayoutStyle.discount}>(Saved ₹{totalDiscount})</span></p>
                         </div>
                         <p className={checkoutFooterLayoutStyle.checkoutSlogan}>A fresh kind of fast food for a new generation.</p>
-                        <ButtonLayout buttonText="CHECKOUT" buttonWidth="auto" buttonPadding="10px 20px" buttonBgColor="#3BB77E" buttonBgHoverColor="#FDC040" rightButtonIcon={<BsArrowRight />} handleButtonClick={navigateToCart} />
+                        <ButtonLayout buttonText="CHECKOUT" buttonWidth="auto" buttonPadding="0.65rem 1.2rem" buttonBgColor="#3BB77E" buttonBgHoverColor="#FDC040" rightButtonIcon={<BsArrowRight />} handleButtonClick={navigateToCart} />
                     </div>
             }
             {showLoader && <LoaderLayout title="Please wait. Your cart is getting ready." />}

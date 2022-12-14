@@ -23,7 +23,7 @@ const CartLayoutTableContent = (props) => {
             <td className={cartLayoutTableContentStyle.cartTableContent}>
                 <div className={cartLayoutTableContentStyle.addRemoveConatiner}>
                     <IoMdRemoveCircle style={{fontSize: "x-large", color: "rgb(255,111,111)", cursor: "pointer"}} onClick={handleRemoveItem} />
-                    <p style={{margin: "0 8px"}}>{props.data.quantity}</p>
+                    <p style={{margin: "0 0.4rem"}}>{props.data.quantity}</p>
                     <IoMdAddCircle style={{fontSize: "x-large", color: "#3BB77E", cursor: "pointer"}} onClick={handleAddItem} />
                 </div>
             </td>

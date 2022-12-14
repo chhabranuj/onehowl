@@ -254,7 +254,7 @@ const LoginLayout = () => {
             setProceedError(true);
             setTimeout(() => {
                 setProceedError(false);
-            }, 2000);
+            }, 2500);
         }
         else {
             if(user.firstName != inputData.firstName ||
@@ -277,7 +277,7 @@ const LoginLayout = () => {
                                 setProceedError(true);
                                 setTimeout(() => {
                                     setProceedError(false);
-                                }, 2000);
+                                }, 2500);
                             }
                             else {
                                 dispatch(addUser({data: response.data.infoData}));
@@ -297,7 +297,7 @@ const LoginLayout = () => {
             setProceedError(true);
             setTimeout(() => {
                 setProceedError(false);
-            }, 2000);
+            }, 2500);
         }
         else {
             setShowLoader(true);
@@ -408,10 +408,10 @@ const LoginLayout = () => {
                                 {
                                     Object.keys(user).length != 0?
                                         <div className={loginLayoutStyle.buttonContainer}>
-                                            <ButtonLayout buttonText="Sign Out" buttonWidth="40%" buttonPadding="10px" buttonBgColor="rgb(57 62 64)" buttonBgHoverColor="#CD6155" handleButtonClick={handleSignOutButton} />
-                                            <ButtonLayout buttonText="Update" buttonWidth="40%" buttonPadding="10px" buttonBgColor="rgb(57 62 64)" buttonBgHoverColor="#3bb77e" handleButtonClick={handleUpdateButton} />
+                                            <ButtonLayout buttonText="Sign Out" buttonWidth="40%" buttonPadding="0.75rem" buttonBgColor="rgb(57 62 64)" buttonBgHoverColor="#CD6155" handleButtonClick={handleSignOutButton} />
+                                            <ButtonLayout buttonText="Update" buttonWidth="40%" buttonPadding="0.75rem" buttonBgColor="rgb(57 62 64)" buttonBgHoverColor="#3bb77e" handleButtonClick={handleUpdateButton} />
                                         </div>:
-                                        <ButtonLayout buttonText="Proceed" buttonWidth="40%" buttonPadding="10px" buttonBgColor="rgb(57 62 64)" buttonBgHoverColor="#3bb77e" handleButtonClick={handleProceedButton} />
+                                        <ButtonLayout buttonText="Proceed" buttonWidth="40%" buttonPadding="0.75rem" buttonBgColor="rgb(57 62 64)" buttonBgHoverColor="#3bb77e" handleButtonClick={handleProceedButton} />
                                 }
                             </div>
                     }
@@ -430,5 +430,3 @@ const LoginLayout = () => {
 }
 
 export default LoginLayout;
-
-// session.user.name.split(" ")[0]? session.user.name.split(" ")[0]

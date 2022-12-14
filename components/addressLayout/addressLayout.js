@@ -248,8 +248,8 @@ const AddressLayout = () => {
                     }
                 </div>
             </div>
-            {showLoader && <LoaderLayout title="Please Wait. While we get your summary." />}
             {showHomeLoader && <LoaderLayout title="Loading the menu. Please wait." />}
+            {showLoader && <LoaderLayout title="Please Wait. While we get your summary." />}
         </div>
     );
 }
