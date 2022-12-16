@@ -63,7 +63,7 @@ const NewsletterLayout = () => {
         <div className={newsletterLayoutStyle.newsletterParent}>
             {
                 !user.newsletterEmail?   
-                   <div className={newsletterLayoutStyle.newsletterChild} style={{backgroundImage: "url('static/bg2.png')"}}>
+                   <div className={newsletterLayoutStyle.newsletterChild}>
                     <div className={newsletterLayoutStyle.newsletterContentContainer}>
                         <p className={newsletterLayoutStyle.newsletterTitle}>SUBSCRIBE TO<br />NEWSLETTER</p>
                         <p className={newsletterLayoutStyle.newsletterContent}>Don't miss any of upcoming events.</p>
@@ -76,7 +76,7 @@ const NewsletterLayout = () => {
                         {newsletterEmailError && <p style={{color: "red", fontSize: "small"}}>Please enter a valid Gmail Id.</p>}
                     </div>
                 </div>:
-                <div className={newsletterLayoutStyle.newsletterChild} style={{backgroundImage: "url('/static/bg.png')"}}>
+                <div className={newsletterLayoutStyle.newsletterChildSubscribed}>
                     <div className={newsletterLayoutStyle.blurBg}>
                         <div className={newsletterLayoutStyle.newsletterContentContainer} style={{marginTop: "2rem"}}>
                             <p className={newsletterLayoutStyle.newsletterTitle}>THANKYOU</p>

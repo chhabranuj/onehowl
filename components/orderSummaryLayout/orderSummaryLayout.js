@@ -1,19 +1,35 @@
+import axios from "axios";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
 import { HiArrowNarrowLeft } from "react-icons/hi";
 import LoaderLayout from "../loaderLayout/loaderLayout";
+import { insertCart } from "../store/reducers/cartReducer";
 import PageAboutLayout from "../pageAboutLayout/pageAboutLayout";
 import ButtonLayout from "../Attributes/buttonLayout/buttonLayout";
 import orderSummaryLayoutStyle from "./orderSummaryLayout.module.css";
 
 const OrderSummaryLayout = (props) => {
     const router = useRouter();
+    const dispatch = useDispatch();
+    const {data: session} = useSession();
     const [showHomeLoader, setShowHomeLoader] = useState(false);
 
     useEffect(() => {
-        if(!props.priceToPay) {
+        if(!props.priceToPay || !session) {
             setShowHomeLoader(true);
             router.push("/");
+        }
+        else if(session) {
+            dispatch(insertCart({data: []}));
+            const body = {
+                _id: session.user.email,
+                cart: []
+            }
+            axios.post("/api/updateCart", body)
+                .then((response) => {
+                })
         }
     })
 

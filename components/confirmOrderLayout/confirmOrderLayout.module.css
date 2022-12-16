@@ -122,6 +122,7 @@
 .couponAppliedContainer {
     bottom: 3%;
     width: 30%;
+    z-index: 1;
     display: flex;
     color: white;
     position: fixed;

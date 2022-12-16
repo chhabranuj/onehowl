@@ -20,6 +20,20 @@
     background-position: top;
     background-repeat: no-repeat;
     justify-content: space-evenly;
+    background-image: url("../../public/static/greenBg.png");
+}
+
+.newsletterChildSubscribed {
+    width: 98%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 2rem;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    justify-content: space-evenly;
+    background-image: url("../../public/static/yellowBg.png");
 }
 
 .blurBg {

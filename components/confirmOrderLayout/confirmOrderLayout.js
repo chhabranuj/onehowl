@@ -1,25 +1,24 @@
 import axios from "axios";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 import ReactConfetti from "react-confetti"; 
 import { useEffect, useState } from "react";
 import { FaTicketAlt } from "react-icons/fa";
 import { useSession } from "next-auth/react";
 import { MdLocalOffer } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
 import LoaderLayout from "../loaderLayout/loaderLayout";
+import { cartSelector } from "../store/reducers/cartReducer";
 import PageAboutLayout from "../pageAboutLayout/pageAboutLayout";
 import ButtonLayout from "../Attributes/buttonLayout/buttonLayout";
 import { productSelector } from "../store/reducers/productReducer";
 import OrderPreview from "../orderPreviewLayout/orderPreviewLayout";
 import confirmOrderLayoutStyle from "./confirmOrderLayout.module.css";
-import { cartSelector, insertCart } from "../store/reducers/cartReducer";
 import addressLayoutStyle from "../addressLayout/addressLayout.module.css";
 import inputLayoutStyle from "../Attributes/inputLayout/inputLayout.module.css";
 
 const ConfirmOrderLayout = (props) => {
     const DELIVERY_PERCENTAGE = 20;
     const router = useRouter();
-    const dispatch = useDispatch();
     const {data: session} = useSession();
     const cart = useSelector(cartSelector);
     const [coupons, setCoupons] = useState([]);
@@ -158,7 +157,6 @@ const ConfirmOrderLayout = (props) => {
                     console.log("Something went wrong. Please try again.");
                 }
                 else {
-                    dispatch(insertCart({data: []}));
                     router.push({
                         pathname: "/orderSummary",
                         query: {priceToPay: priceSummary.priceToPay}
@@ -235,7 +233,7 @@ const ConfirmOrderLayout = (props) => {
                                                             <MdLocalOffer style={{color: "#CD6155"}} />
                                                             <p className={confirmOrderLayoutStyle.coupon}>{item.couponCode}</p>
                                                         </div>
-                                                        <p className={confirmOrderLayoutStyle.couponDetail}>{item.couponDetail} &nbsp;<span style={{color: "grey", fontSize: "smaller"}} onClick={naviagteToTermsAndCondition}>T&C apply</span></p>
+                                                        <p className={confirmOrderLayoutStyle.couponDetail}>{item.couponDetail} &nbsp;<span style={{color: "grey", fontSize: "smaller", cursor: "pointer"}} onClick={naviagteToTermsAndCondition}>T&C apply</span></p>
                                                     </div>
                                                 )
                                             }
@@ -253,7 +251,7 @@ const ConfirmOrderLayout = (props) => {
                 </div>
             </div>
             {showLoader && <LoaderLayout title="Please Wait. Confirming your order." />}
-            {showTacLoader && <LoaderLayout title="Please Wait. Loading Terms & Conditionse" />}
+            {showTacLoader && <LoaderLayout title="Please Wait. Loading Terms & Conditions" />}
             {showConfetti && <ReactConfetti recycle={false} numberOfPieces={800} tweenDuration={4800} />}
             {showHomeLoader && <LoaderLayout title="Loading the menu. Please wait." />}
             {

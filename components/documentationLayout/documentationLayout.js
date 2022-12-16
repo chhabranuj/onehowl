@@ -1,7 +1,12 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
+import LoaderLayout from "../loaderLayout/loaderLayout";
 import PageAboutLayout from "../pageAboutLayout/pageAboutLayout";
 import documentationLayoutStyle from "./documentationLayout.module.css";
 
 const DocumentationLayout = (props) => {
+    const router = useRouter();
+    const [showLoader, setShowLoader] = useState(false);
 
     return (
         <div className={documentationLayoutStyle.documentationParent}>
@@ -9,7 +14,7 @@ const DocumentationLayout = (props) => {
             {
                 props.title == "Privacy Policy"?
                     <div className={documentationLayoutStyle.documentationChild}>
-                        <p className={documentationLayoutStyle.documentationText}><strong>Last updated:</strong> November 25, 2022</p>
+                        <p className={documentationLayoutStyle.documentationText}><strong>Last updated:</strong> December 16, 2022</p>
                         <p className={documentationLayoutStyle.documentationText}>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
                         <p className={documentationLayoutStyle.documentationText}>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.</p>
 
@@ -243,7 +248,12 @@ const DocumentationLayout = (props) => {
                         <p className={documentationLayoutStyle.documentationText}>We shall not be hold responsible for any content that appears on your Website. You agree to protect and defend us against all claims that is rising on your Website. No link(s) should appear on any Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.</p>
 
                         <h1>Your Privacy</h1>
-                        <p className={documentationLayoutStyle.documentationText}>Please read Privacy Policy</p>
+                        <p className={documentationLayoutStyle.documentationText} style={{cursor: "pointer"}}>Please read <span style={{color: "#3bb77e"}} onClick={() => {
+                            setShowLoader(true);
+                            router.push({pathname: "/documentation/privacyPolicy", query: {title: "Privacy Policy"}}, "/documentation/privacyPolicy");
+                            setInterval(() => {
+                                setShowLoader(false);
+                            }, 3500)}}>Privacy Policy</span>.</p>
 
                         <h1>Reservation of Rights</h1>
                         <p className={documentationLayoutStyle.documentationText}>We reserve the right to request that you remove all links or any particular link to our Website. You approve to immediately remove all links to our Website upon request. We also reserve the right to amen these terms and conditions and it’s linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions.</p>
@@ -268,6 +278,7 @@ const DocumentationLayout = (props) => {
                         <p className={documentationLayoutStyle.documentationText}>As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.</p>
                     </div>
             }
+            {showLoader && <LoaderLayout title="Please Wait. Fetching the information." />}
         </div>
     );
 }

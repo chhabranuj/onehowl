@@ -1,19 +1,19 @@
 import axios from "axios";
 import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { BsArrowLeft } from "react-icons/bs";
 import { indianStates } from "../utils/indianStates";
+import { useDispatch, useSelector } from "react-redux";
 import loginLayoutStyle from "./loginLayout.module.css";
 import LoaderLayout from "../loaderLayout/loaderLayout";
 import InputLayout from "../Attributes/inputLayout/inputLayout";
-import { getSession, signIn, signOut, useSession } from "next-auth/react";
-import { addUser, userSelector } from "../store/reducers/userReducer";
 import ButtonLayout from "../Attributes/buttonLayout/buttonLayout";
+import { addUser, userSelector } from "../store/reducers/userReducer";
+import { getSession, signIn, signOut, useSession } from "next-auth/react";
 import inputLayoutStyle from "../Attributes/inputLayout/inputLayout.module.css";
 
 const LoginLayout = () => {
-    const bg = ["/static/bg.png", "/static/bg2.png"];
+    const bg = ["/static/yellowBg.png", "/static/greenBg.png"];
     const router = useRouter();
     const dispatch = useDispatch();
     const {data: session} = useSession();
