@@ -208,7 +208,7 @@ const ConfirmOrderLayout = (props) => {
                                         <div className={inputLayoutStyle.input} style={{padding: "0.2rem 0.8rem", width: "100%", marginTop: "0.6rem"}}>
                                             {!couponApplied.isApplied || offerCantAvailError.isError? <p className={confirmOrderLayoutStyle.inputText}>Coupon Code...</p>: <p className={confirmOrderLayoutStyle.inputText} style={{color: "black"}}>{couponApplied.coupon}</p>}
                                         </div>
-                                        {offerCantAvailError.isError && <p style={{fontSize: "small", margin: "0", color: "red", marginLeft: "0.3rem"}}>Sorry, offer can't avail on order less than ₹{offerCantAvailError.value}.</p>}
+                                        {offerCantAvailError.isError && <p style={{fontSize: "small", margin: "0", color: "red", marginLeft: "0.3rem"}}>Sorry, offer can&apos;t avail on order less than ₹{offerCantAvailError.value}.</p>}
                                     </div>
                                     <ButtonLayout buttonText="Apply" buttonWidth="30%" buttonPadding="1rem 0 " buttonBgColor="#3BB77E" buttonBgHoverColor="#FDC040" handleButtonClick={handleCoupon} />
                                 </div>

@@ -126,7 +126,7 @@ const CartLayout = () => {
             {
                 loginError && 
                     <div className={cartLayoutStyle.loginError}>
-                        <p className={cartLayoutStyle.loginErrorContent}>You're not Logged In.<br/>{loginErrorContent}</p>
+                        <p className={cartLayoutStyle.loginErrorContent}>You&apos;re not Logged In.<br/>{loginErrorContent}</p>
                     </div>
             }
         </div>

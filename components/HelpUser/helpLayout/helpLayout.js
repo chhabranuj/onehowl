@@ -14,7 +14,7 @@ const HelpLayout = () => {
         },
         {
             question: "How to see the details of any product?",
-            answer: <p>You first need to add the product in your cart. Click on the name of the product once you add it in your cart. 😃</p>
+            answer: <p>You first need to add the product in your cart. Click on the name of the product once you add it in your cart. 😃&apos;</p>
         },
         {
             question: "Is there a minimum order value?",
@@ -22,11 +22,11 @@ const HelpLayout = () => {
         },
         {
             question: "Do you charge for delivery?",
-            answer: <p>Delivery fee varies from place to place and is applicable if order value is below a certain amount.<br/>Additionally, certain products might have fixed packaging fees. Delivery fee (if any) is specified on the 'Confirm Order' page. 😃</p>
+            answer: <p>Delivery fee varies from place to place and is applicable if order value is below a certain amount.<br/>Additionally, certain products might have fixed packaging fees. Delivery fee (if any) is specified on the &apos;Confirm Order&apos; page. 😃</p>
         },
         {
             question: "Which area do you currently serve?",
-            answer: <p>OneHowl is just in East Delhi and North Delhi as of now. But don't worry, we are extending our services to reach each and everyone of you. 😉</p>
+            answer: <p>OneHowl is just in East Delhi and North Delhi as of now. But don&apos;t worry, we are extending our services to reach each and everyone of you. 😉</p>
         },
         {
             question: "Can I order in advance?",

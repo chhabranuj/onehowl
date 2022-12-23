@@ -66,7 +66,7 @@ const NewsletterLayout = () => {
                    <div className={newsletterLayoutStyle.newsletterChild}>
                     <div className={newsletterLayoutStyle.newsletterContentContainer}>
                         <p className={newsletterLayoutStyle.newsletterTitle}>SUBSCRIBE TO<br />NEWSLETTER</p>
-                        <p className={newsletterLayoutStyle.newsletterContent}>Don't miss any of upcoming events.</p>
+                        <p className={newsletterLayoutStyle.newsletterContent}>Don&apos;t miss any of upcoming events.</p>
                     </div>
                     <div className={newsletterLayoutStyle.newsletterInputContainerParent}>
                         <div className={newsletterLayoutStyle.newsletterInputContainer}>

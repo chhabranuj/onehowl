@@ -74,7 +74,7 @@ const PreviousOrdersLayout = (props) => {
                     </div>:
                     <div className={previousOrdersLayoutStyle.noOrdersContainer}>
                         <p className={previousOrdersLayoutStyle.noOrdersContent}  style={{fontSize: "medium", color: "#3BB77E", margin: "0"}}>No Orders Yet!!!</p>
-                        <p className={previousOrdersLayoutStyle.noOrdersContent}>Why don't we find something for you.</p>
+                        <p className={previousOrdersLayoutStyle.noOrdersContent}>Why don&apos;t we find something for you.</p>
                         <ButtonLayout buttonText="Home" buttonWidth="80%" buttonPadding="1rem 0" buttonBgColor="#3BB77E" buttonBgHoverColor="#FDC040" leftButtonIcon={<HiArrowNarrowLeft />} handleButtonClick={navigateToHome} />
                     </div>
             }

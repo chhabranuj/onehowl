@@ -57,7 +57,7 @@ const AboutLayout = () => {
                     <p className={aboutLayoutStyle.title}>Who <span style={{color: "#3bb77e"}}>we</span> are?</p>
                     <p className={aboutLayoutStyle.aboutContent}>OneHowl is an online delivery platform that helps you to order food online from one and only oneHowl restaurant. OneHowl provides you more than 100 food products including categories like Veg, Non-Veg, Chinese, South-Indian, Rice, Breads, Desserts and various Drinks which you can order anytime & anywhere.<br/><br/></p>
                     <p className={aboutLayoutStyle.aboutContent}> OneHowl offers a wide array of Indian cuisines, we provide the detailed description of every item so that you get to know about the product before ordering your food. Also we have the best chefs of the town with an exprerience of 15+ years in cooking.<br/><br/></p>
-                    <p className={aboutLayoutStyle.aboutContent}>We provide the best delivery service cause we got delivery ninjas who'll fight anything to delivery your food on time. And our website is very user friendly in which user can easily order food.</p>
+                    <p className={aboutLayoutStyle.aboutContent}>We provide the best delivery service cause we got delivery ninjas who&apos;ll fight anything to delivery your food on time. And our website is very user friendly in which user can easily order food.</p>
                 </div>
                 <div className={aboutLayoutStyle.whoWeAreContainer}>
                     <img className={aboutLayoutStyle.whoWeAreContainerImage} src="https://onehowl-bucket.s3.ap-south-1.amazonaws.com/others/AboutUs/aboutUs.avif" />
@@ -123,7 +123,7 @@ const AboutLayout = () => {
                         </div>
                         <p className={aboutLayoutStyle.aboutContent}>A 3rd year student currently persuing Bachelor of Technology in Computer Science Engineering from Delhi Technical campus, Guru Gobind Singh Indraprastha University. Passionate for coding and created many projects in the field of web development. <br/><br/></p>
                         <p className={aboutLayoutStyle.aboutContent}>Experienced software engineer with a passion for developing innovative programs that expedite the efficiency and effectiveness of organisational success. Well-versed in technology and writing code to create systems that are reliable and user-friendly. <br/><br/></p>
-                        <p className={aboutLayoutStyle.aboutContent}>Confident communicator, strategic thinker and innovative creater to develop software that is customised to meet a company's organisational needs, highlight their core competencies, and further their sucess. <br/><br/></p>
+                        <p className={aboutLayoutStyle.aboutContent}>Confident communicator, strategic thinker and innovative creater to develop software that is customised to meet a company&apos;s organisational needs, highlight their core competencies, and further their sucess. <br/><br/></p>
                     </div>
                 </div>
             </div>

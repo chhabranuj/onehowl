@@ -198,7 +198,7 @@ const AddressLayout = () => {
                     {
                         errors.serveError &&
                             <div className={addressLayoutStyle.serveError}>
-                                <p className={addressLayoutStyle.serveErrorTitle}>Sorry, we don't serve in {addressData.state}.</p>
+                                <p className={addressLayoutStyle.serveErrorTitle}>Sorry, we don&apos;t serve in {addressData.state}.</p>
                             </div>
                     }
                     {

@@ -66,7 +66,7 @@ const OrderSummaryLayout = (props) => {
                 </div>
                 <div className={orderSummaryLayoutStyle.childContainer}>
                     <p className={orderSummaryLayoutStyle.homeContent}  style={{fontSize: "medium", color: "#3BB77E", margin: "0"}}>Our chefs are preparing your food.</p>
-                    <p className={orderSummaryLayoutStyle.homeContent}>Why don't you prepare your next order.</p>
+                    <p className={orderSummaryLayoutStyle.homeContent}>Why don&apos;t you prepare your next order.</p>
                     <ButtonLayout buttonText="Home" buttonWidth="80%" buttonPadding="1rem 0" buttonBgColor="#3BB77E" buttonBgHoverColor="#FDC040" leftButtonIcon={<HiArrowNarrowLeft />} handleButtonClick={navigateToHome} />
                 </div>
             </div>
