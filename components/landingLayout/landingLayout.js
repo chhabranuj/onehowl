@@ -47,7 +47,7 @@ const LandingLayout = () => {
                 setShowHomeLoader(false);
             })
         }
-        cart.length? setBottom("13%"): setBottom("5%");
+        cart.length? setBottom("18%"): setBottom("5%");
     })
 
     return (
