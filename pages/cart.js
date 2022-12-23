@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Layout from "../components/layout/layout";
-import CartLayout from "../components/ViewCart/cartLayout/cartlayout";
+import CartLayout from "../components/ViewCart/cartLayout/cartLayout";
 
 const Cart = () => {
 

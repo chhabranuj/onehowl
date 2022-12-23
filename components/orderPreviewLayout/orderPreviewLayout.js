@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { cartSelector } from "../store/reducers/cartReducer";
-import orderPreviewLayoutStyle from "./orderPreviewlayout.module.css";
+import orderPreviewLayoutStyle from "./orderPreviewLayout.module.css";
 
 const OrderPreview = () => {
     const cart = useSelector(cartSelector);
