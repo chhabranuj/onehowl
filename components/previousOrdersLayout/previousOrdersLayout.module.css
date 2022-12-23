@@ -68,6 +68,22 @@
     margin-bottom: 0.5rem;
 }
 
+.noOrdersContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.noOrdersContent {
+    margin: 0.5rem;
+    color: #FDC040;
+    text-align: center;
+    font-size: x-large;
+    font-family: 'Quicksand', sans-serif;
+}
+
 @media screen and (max-width: 1075px) {
     .previousOrdersContainer {
         width: 35%;
@@ -76,6 +92,10 @@
 
 @media screen and (max-width: 850px) {
     .previousOrdersContainer {
+        width: 90%;
+    }
+
+    .noOrdersContainer {
         width: 90%;
     }
 }

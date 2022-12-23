@@ -35,7 +35,7 @@ export const getServerSideProps = async (context) => {
         const results = await ordersCollection.findOne({_id: session.user.email});
         return {
             props : {
-                posts: results.orders
+                posts: results?results.orders: []
             }
         }
     }
