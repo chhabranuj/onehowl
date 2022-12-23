@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap'); /* Description */
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap'); /* One */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap'); /* Howl */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap'); /* Title */
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap'); /* menuContent */
+
 html,
 body {
   margin: 0;
