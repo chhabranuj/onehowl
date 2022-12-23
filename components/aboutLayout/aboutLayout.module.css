@@ -136,7 +136,7 @@
     width: calc(90% - 2rem);
     justify-content: center;
     background-repeat: no-repeat;
-    background-image: url("../../public/static/greenBg.png");
+    background-image: url("/static/greenBg.png");
 }
 
 .behindChild {

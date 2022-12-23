@@ -20,7 +20,7 @@
     background-position: top;
     background-repeat: no-repeat;
     justify-content: space-evenly;
-    background-image: url("../../public/static/greenBg.png");
+    background-image: url("/static/greenBg.png");
 }
 
 .newsletterChildSubscribed {
@@ -33,7 +33,7 @@
     background-position: top;
     background-repeat: no-repeat;
     justify-content: space-evenly;
-    background-image: url("../../public/static/yellowBg.png");
+    background-image: url("/static/yellowBg.png");
 }
 
 .blurBg {
