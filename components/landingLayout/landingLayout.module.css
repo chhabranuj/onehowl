@@ -2,7 +2,7 @@
     border-radius: 1rem;
     width: calc(100% - 2rem);
     margin: 2rem 1rem 1rem 1rem;
-    background-image: url("static/greenBg.png");
+    background-image: url("/static/greenBg.png");
 }
 
 .imagesContainer {
