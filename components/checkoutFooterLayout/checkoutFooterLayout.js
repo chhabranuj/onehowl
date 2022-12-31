@@ -14,6 +14,7 @@ const CheckoutFooterLayout = () => {
     const [totalPrice, setTotalPrice] = useState(0);
     const [showLoader, setShowLoader] = useState(false);
     const [totalDiscount, setTotalDiscount] = useState(0);
+    const [isItemsInCart, setIsItemsInCart] = useState(false);
 
     useEffect(() => {
         let tempTotalPrice = 0;
@@ -26,6 +27,7 @@ const CheckoutFooterLayout = () => {
         });
         setTotalPrice(tempTotalPrice);
         setTotalDiscount(tempTotalDiscount);
+        cart.length > 0? setIsItemsInCart(true): setIsItemsInCart(false);
     })
 
     const navigateToCart = () => {
@@ -34,21 +36,23 @@ const CheckoutFooterLayout = () => {
     }
 
     return (
-        <div className={checkoutFooterLayoutStyle.checkoutFooterParent}>
+        <>
             {
-                cart.length > 0 &&
-                    <div className={checkoutFooterLayoutStyle.checkoutFooterContainer}>
-                        <div className={checkoutFooterLayoutStyle.itemAndPriceContainer}>
-                            <p className={checkoutFooterLayoutStyle.totalItems}>{totalItems}<br/><span className={checkoutFooterLayoutStyle.discount}>Items</span></p>
-                            <span className={checkoutFooterLayoutStyle.divider}></span>
-                            <p className={checkoutFooterLayoutStyle.totalPrice}>₹{totalPrice}<br /><span className={checkoutFooterLayoutStyle.discount}>(Saved ₹{totalDiscount})</span></p>
+                isItemsInCart &&
+                    <div className={checkoutFooterLayoutStyle.checkoutFooterParent}>
+                        <div className={checkoutFooterLayoutStyle.checkoutFooterContainer}>
+                            <div className={checkoutFooterLayoutStyle.itemAndPriceContainer}>
+                                <p className={checkoutFooterLayoutStyle.totalItems}>{totalItems}<br/><span className={checkoutFooterLayoutStyle.discount}>Items</span></p>
+                                <span className={checkoutFooterLayoutStyle.divider}></span>
+                                <p className={checkoutFooterLayoutStyle.totalPrice}>₹{totalPrice}<br /><span className={checkoutFooterLayoutStyle.discount}>(Saved ₹{totalDiscount})</span></p>
+                            </div>
+                            <p className={checkoutFooterLayoutStyle.checkoutSlogan}>A fresh kind of fast food for a new generation.</p>
+                            <ButtonLayout buttonText="CHECKOUT" buttonWidth="auto" buttonPadding="0.65rem 1.2rem" buttonBgColor="#3BB77E" buttonBgHoverColor="#FDC040" rightButtonIcon={<BsArrowRight />} handleButtonClick={navigateToCart} />
                         </div>
-                        <p className={checkoutFooterLayoutStyle.checkoutSlogan}>A fresh kind of fast food for a new generation.</p>
-                        <ButtonLayout buttonText="CHECKOUT" buttonWidth="auto" buttonPadding="0.65rem 1.2rem" buttonBgColor="#3BB77E" buttonBgHoverColor="#FDC040" rightButtonIcon={<BsArrowRight />} handleButtonClick={navigateToCart} />
+                        {showLoader && <LoaderLayout title="Please wait. Your cart is getting ready." />}
                     </div>
             }
-            {showLoader && <LoaderLayout title="Please wait. Your cart is getting ready." />}
-        </div>
+        </>
     );
 }
 

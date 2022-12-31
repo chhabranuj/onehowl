@@ -38,6 +38,9 @@ const ProductDetailsLayout = (props) => {
                 if(item.id == tempId) {
                     setQuantity(item.quantity);
                 }
+                else {
+                    setQuantity(0);
+                }
             })
         }
     })

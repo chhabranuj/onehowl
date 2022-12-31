@@ -14,7 +14,7 @@ const HelpLayout = () => {
         },
         {
             question: "How to see the details of any product?",
-            answer: <p>You first need to add the product in your cart. Click on the name of the product once you add it in your cart. 😃&apos;</p>
+            answer: <p>You first need to add the product in your cart. Click on the name of the product once you add it in your cart. 😃</p>
         },
         {
             question: "Is there a minimum order value?",

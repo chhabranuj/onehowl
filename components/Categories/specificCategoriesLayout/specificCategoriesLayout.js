@@ -31,9 +31,9 @@ const SpecificCategoriesLayout = (props) => {
             <PageAboutLayout title={props.categoryId} path="Category" display={props.display} />
             <div className={specificCategoriesLayoutStyle.itemContainer}>
                 {
-                    productData.filter(item => item.id != props.productId).map((item, index) => {
+                    productData.filter(item => item.id != props.productId).map(item => {
                         return (
-                            <CategoriesItemLayout key={index} data={item} categoryId={props.categoryId} />
+                            <CategoriesItemLayout key={item.id} data={item} categoryId={props.categoryId} />
                         );
                     })
                 }
