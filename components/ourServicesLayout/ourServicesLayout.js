@@ -8,8 +8,13 @@ const OurServicesLayout = () => {
     const services = [
         {
             image: <GoPackage style={{fontSize: "3.5rem", color: "#3bb77e"}} />,
-            title: "Free shipping on first order",
-            content: "Sign up for updates and get free shipping."
+            title: "Great Delivery Experience",
+            content: "Sign up for updates and get best delivery experience."
+        },
+        {
+            image: <MdFastfood style={{fontSize: "3.5rem", color: "#3bb77e"}} />,
+            title: "Variety of dishes",
+            content: "In our menu you'll find a wide variety of dishes, desserts, and drinks."
         },
         {
             image: <GiFullPizza style={{fontSize: "3.5rem", color: "#3bb77e"}} />,
@@ -20,12 +25,7 @@ const OurServicesLayout = () => {
             image: <FaShippingFast style={{fontSize: "3.5rem", color: "#3bb77e"}} />,
             title: "30 minutes delivery",
             content: "Everything you order will be quickly delivered to your door."
-        },
-        {
-            image: <MdFastfood style={{fontSize: "3.5rem", color: "#3bb77e"}} />,
-            title: "Variety of dishes",
-            content: "In our menu you’ll find a wide variety of dishes, desserts, and drinks."
-        },
+        }
     ];
 
     return (

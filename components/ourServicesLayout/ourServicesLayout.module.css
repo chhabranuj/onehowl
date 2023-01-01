@@ -16,11 +16,11 @@
 
 .ourServicesContainer {
     width: 25%;
-    padding: 2%;
-    height: 20vh;
     margin: 0 2%;
     display: flex;
     color: white;
+    padding: 0.5% 2%;
+    min-height: 20vh;
     text-align: center;
     align-items: center;
     border-radius: 1.2rem;
@@ -31,7 +31,7 @@
 
 .ourServicesContainerTitle {
     color: #253d4e;
-    font-size: large;
+    font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 0.3rem;
 }
@@ -67,11 +67,5 @@
 
     .ourServicesChild {
         flex-direction: column;
-    }
-}
-
-@media screen and (max-height: 500px) {
-    .ourServicesContainer {
-        height: 30vh
     }
 }
